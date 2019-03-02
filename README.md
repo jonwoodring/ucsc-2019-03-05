@@ -4,7 +4,9 @@
 
 <https://courses.soe.ucsc.edu/courses/cmps107/Winter19/01>
 
-### Notes
+### Slides
+
+<https://jonwoodring.github.io/ucsc-2019-03-05/slides/index.html>
 
 ### Anaconda Python 3.7, R 3.5, RStudio 1.1
 
