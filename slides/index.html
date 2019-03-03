@@ -50,6 +50,12 @@ https://jonwoodring.github.io/ucsc-2019-03-05/slides/index.html
 <!-- END SLIDE --></section></section>
 
 <!-- START SLIDE --><section data-markdown><section data-template>
+![https://github.com/jonwoodring/ucsc-2019-03-05](local/qr2.png)
+
+https://github.com/jonwoodring/ucsc-2019-03-05
+<!-- END SLIDE --></section></section>
+
+<!-- START SLIDE --><section data-markdown><section data-template>
 ### Visualization and Analysis
 
 - Visualization
@@ -93,9 +99,11 @@ https://jonwoodring.github.io/ucsc-2019-03-05/slides/index.html
 - We have big data sets
 - We like to use Python and R for analysis
 - There's a lot of hype in machine learning
-- We use GPUs for both computation and visualization
+- We use GPUs
+  - The scientific visualization and graphics communities did most
+    of the initial research into using and advancing GPU technologies
 - We use BLAS, LAPACK, FFTW, GSL, etc.
-  - We (the scientific community at large) created them!
+  - The scientific and numerical computation communities created them
   - Many are embedded in Python and R
 <!-- END SLIDE --></section></section>
 
@@ -103,9 +111,6 @@ https://jonwoodring.github.io/ucsc-2019-03-05/slides/index.html
 ### Differences -- at the DOE we:
 
 - Typically favor speed over portability
-  - Cloud: made to run everywhere
-  - Supercomputers: made to run as fast
-
 - *Don't* use the cloud
 - *Don't* use Java, we use Fortran, C++, and MPI
   - Supercomputers have fast, specialized networks, for large, parallel
@@ -117,8 +122,8 @@ https://jonwoodring.github.io/ucsc-2019-03-05/slides/index.html
 <!-- START SLIDE --><section data-markdown><section data-template>
 ### Some other open source tools that I won't cover that I have used at some point in my career
 
-OpenGL, Spark, Flink, ggobi, Torch, gnuplot, D3, Vega/Vega-lite, Pure Data +
-GEM, Orange, MeshLab, VisIt, Mayavi, Processing, vvvv, xmdvtool, Plotly,
+OpenGL, Spark, Flink, Dask, ggobi, Torch, gnuplot, D3, Vega/Vega-lite, Pure
+Data + GEM, Orange, MeshLab, VisIt, Mayavi, Processing, vvvv, xmdvtool, Plotly,
 charts.js, Octave, Blender, Slicer
 <!-- END SLIDE --></section></section>
 
@@ -130,12 +135,52 @@ charts.js, Octave, Blender, Slicer
 ### Python
 <!-- END SLIDE --></section></section>
 
+<!-- START SLIDE --><section data-markdown><section data-template>
+### Getting Started with Python and R
+
+Download: https://www.anaconda.com/distribution/#download-section or
+https://docs.conda.io/en/latest/miniconda.html
+
+In a shell that has Anaconda (*conda*) installed:
+```bash
+$ conda create -n ucsc python=3
+$ conda activate ucsc
+$ conda install jupyter pandas scipy matplotlib bokeh rstudio r-ggplot2 r-dplyr r-rsqlite
+```
+
+This installs *both* Python, R, and packages that I will demonstrate.
+<!-- END SLIDE --></section></section>
+
+<!-- START SLIDE --><section data-markdown><section data-template>
+### Python Jupyter Notebook
+
+https://jonwoodring.github.io/ucsc-2019-03-05/python.html
+
+```bash
+$ jupyter notebook
+```
+
+open *python.ipynb* from the github repository
+<!-- END SLIDE --></section></section>
+
 <!-- END VERTICAL --></section>
 
 <!-- START VERTICAL --><section>
 
 <!-- START SLIDE --><section data-markdown><section data-template>
 ### R
+<!-- END SLIDE --></section></section>
+
+<!-- START SLIDE --><section data-markdown><section data-template>
+### R RStudio Notebook
+
+https://jonwoodring.github.io/ucsc-2019-03-05/r.nb.html
+
+```bash
+$ rstudio
+```
+
+open *r.rmd* from the github repository
 <!-- END SLIDE --></section></section>
 
 <!-- END VERTICAL --></section>
@@ -160,6 +205,15 @@ charts.js, Octave, Blender, Slicer
 
 <!-- START SLIDE --><section data-markdown><section data-template>
 ### Conclusion
+<!-- END SLIDE --></section></section>
+
+<!-- START SLIDE --><section data-markdown><section data-template>
+![https://jonwoodring.github.io/ucsc-2019-03-05/slides/index.html](local/qr.png)
+![https://github.com/jonwoodring/ucsc-2019-03-05](local/qr2.png)
+
+https://jonwoodring.github.io/ucsc-2019-03-05/slides/index.html
+
+https://github.com/jonwoodring/ucsc-2019-03-05
 <!-- END SLIDE --></section></section>
 
 <!-- END VERTICAL --></section>

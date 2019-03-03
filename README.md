@@ -18,7 +18,7 @@ In a terminal that has Conda:
 ```bash
 $ conda create -n ucsc python=3
 $ conda activate ucsc
-$ conda install jupyter scipy matplotlib bokeh rstudio r-ggplot2 r-dplyr r-rsqlite
+$ conda install jupyter pandas scipy matplotlib bokeh rstudio r-ggplot2 r-dplyr r-rsqlite
 ```
 
 ### ParaView 5.6.0
