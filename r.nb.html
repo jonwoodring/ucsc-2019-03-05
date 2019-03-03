@@ -1669,7 +1669,7 @@ $(document).ready(function () {
 </style>
 <script>
 $(document).ready(function () {
-  window.initializeSourceEmbed("r.Rmd");
+  window.initializeSourceEmbed("r.rmd");
   window.initializeCodeFolding("show" === "show");
 });
 </script>
@@ -1699,21 +1699,305 @@ $(document).ready(function () {
 
 
 <!-- rnb-text-begin -->
-<p>This is an <a href="http://rmarkdown.rstudio.com">R Markdown</a> Notebook. When you execute code within the notebook, the results appear beneath the code.</p>
-<p>Try executing this chunk by clicking the <em>Run</em> button within the chunk or by placing your cursor inside it and pressing <em>Ctrl+Shift+Enter</em>.</p>
+<!-- rnb-text-end -->
+<!-- rnb-text-begin -->
+<div id="r-markdown" class="section level2">
+<h2>R Markdown</h2>
+<p>This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <a href="http://rmarkdown.rstudio.com" class="uri">http://rmarkdown.rstudio.com</a>.</p>
+<p>When you click the <strong>Knit</strong> button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucGxvdChjYXJzKVxuYGBgIn0= -->
-<pre class="r"><code>plot(cars)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3VtbWFyeShjYXJzKVxuYGBgIn0= -->
+<pre class="r"><code>summary(cars)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<p>Add a new chunk by clicking the <em>Insert Chunk</em> button on the toolbar or by pressing <em>Ctrl+Alt+I</em>.</p>
-<p>When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the <em>Preview</em> button or press <em>Ctrl+Shift+K</em> to preview the HTML file).</p>
-<p>The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike <em>Knit</em>, <em>Preview</em> does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.</p>
+</div>
+<div id="including-plots" class="section level2">
+<h2>Including Plots</h2>
+<p>You can also embed plots, for example:</p>
 <!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Note that the <code>echo = FALSE</code> parameter was added to the code chunk to prevent printing of the R code that generated the plot.</p>
+<p>===</p>
+</div>
+<div id="start-of-class-notes" class="section level1">
+<h1>Start of class notes</h1>
+<p>I left the previous section in just to give you the sample of what the initial R markdown document is.</p>
+</div>
+<div id="r" class="section level1">
+<h1>R</h1>
+<p>R is a functional language primarily used for statistics. It is most similar to SAS and Tableau.</p>
+<ul>
+<li>This is the focal point for the statistics community in sharing code
+<ul>
+<li>Most advanced statistics algorithms are implemented in R</li>
+</ul></li>
+<li>They community has a good open source repository
+<ul>
+<li>CRAN - the R interpreter is automatically integrated with CRAN</li>
+</ul></li>
+<li>RStudio provides steroids for R with
+<ul>
+<li>Interactive editing and debugging environment</li>
+<li>Automatic integration with CRAN</li>
+<li>Hyperlink help browser</li>
+<li>Plot viewer integration</li>
+<li>RMarkdown support (like Jupyter)</li>
+<li>Shiny support (like Bokeh)</li>
+</ul></li>
+</ul>
+</div>
+<div id="rstudio" class="section level1">
+<h1>RStudio</h1>
+<p>I really like RStudio/R markdown/knitr and there are features that I really wish I had in Jupyter. For example:</p>
+<ul>
+<li>the package installer to CRAN
+<ul>
+<li>the command line to install Anaconda packages is pretty good</li>
+<li>but outside of Anaconda, pip and PyPI is horrible in comparison to CRAN
+<ul>
+<li>R is far more user friendly than Python</li>
+</ul></li>
+</ul></li>
+<li>the ability to save a document immediately that is statically viewable
+<ul>
+<li>again, you can do this from the command line with Jupyter notebooks
+<ul>
+<li>but Rstudio again is more user friendly</li>
+</ul></li>
+</ul></li>
+<li>literate programming through interspersed markdown and R
+<ul>
+<li>once again, you have markdown cells and code cells in Jupyter, but it’s not seemless
+<ul>
+<li>it makes code documentation very easy</li>
+<li>to me, it feels more natural to be typing inline code and then inline comments
+<ul>
+<li>it’s a little jarring in Jupyter to switch between markdown and code cells</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>help viewer
+<ul>
+<li>you can do help() and dir() anywhere in a Python cell, but the hyperlink viewer is nicer in Rstudio</li>
+</ul></li>
+</ul>
+</div>
+<div id="r-rstudio-cran" class="section level1">
+<h1>R, RStudio, CRAN</h1>
+<p>They are the products of a great open source community that is really connected.</p>
+<p>Let’s visualize some data…</p>
+<p>First, we need to load dplyr.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>dplyr is that DSL (similar to LINQ) that I was talking about for relational data. We’ll use it to load our can as we did before, and I’ll show how it works to compose queries on your data sets.</p>
+<p>Let’s load the can again.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGIgPC0gc3JjX3NxbGl0ZShcImNhbi5kYlwiKVxudCA8LSB0YmwoZGIsIFwiY2FuXCIpXG5gYGAifQ== -->
+<pre class="r"><code>db &lt;- src_sqlite(&quot;can.db&quot;)
+t &lt;- tbl(db, &quot;can&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>t is our table with the data.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudFxuYGBgIn0= -->
+<pre class="r"><code>t</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Now, we can start selecting data from our table.</p>
+<p>Note, that t is not actually loaded into memory, but it is a reference to our SQLite database. This is a difference from data frames, where a typical data frame (both in R and Python) are in memory. dplyr is “lazily evaluated” and only fetches data from disk when you either display it or <code>collect()</code> it.</p>
+<p>The way we select data with dplyr is through functional combinators aka pipelines aka data flow graphs.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudCAlPiUgZmlsdGVyKFBvaW50c18yID4gLTYpICU+JSBmaWx0ZXIoUG9pbnRzXzIgPCAtNClcbmBgYCJ9 -->
+<pre class="r"><code>t %&gt;% filter(Points_2 &gt; -6) %&gt;% filter(Points_2 &lt; -4)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>The “%&gt;%” symbol is pipe, you can think of it the same as a Unix pipe, “|”. It is piping the data from the previous command, to the next.</p>
+<p>What this small little program fragment says is:</p>
+<ul>
+<li>load table t</li>
+<li>filter the previous step where Points_2 &gt; -6</li>
+<li>filter the previous step where Points_2 &lt; -4</li>
+<li>(display the data)</li>
+</ul>
+<p>We’ve selected the points that are between -6 &lt; z &lt; -4.</p>
+<p>The interesting thing is that our little functional program is being transformed into SQL code, and that it is streaming/being executed on disk. The data is never loaded into memory unless you force it to (with collect()).</p>
+<p>Let’s plot the data to show you that they really are the same as before. We’ll use ggplot2.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucmVxdWlyZShnZ3Bsb3QyKVxuXG50ICU+JSBcbiAgZmlsdGVyKFBvaW50c18yID4gLTYpICU+JSBcbiAgZmlsdGVyKFBvaW50c18yIDwgLTQpICU+JSBcbiAgY29sbGVjdCgpICU+JSBcbiAgZ2dwbG90KGFlcyhQb2ludHNfMCwgUG9pbnRzXzIsIGNvbG91cj1Qb2ludHNfMSkpICsgXG4gIGdlb21fcG9pbnQoKVxuYGBgIn0= -->
+<pre class="r"><code>require(ggplot2)
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiUiBhbmQgZ2dwbG90MiIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKVGhpcyBpcyBhbiBbUiBNYXJrZG93bl0oaHR0cDovL3JtYXJrZG93bi5yc3R1ZGlvLmNvbSkgTm90ZWJvb2suIFdoZW4geW91IGV4ZWN1dGUgY29kZSB3aXRoaW4gdGhlIG5vdGVib29rLCB0aGUgcmVzdWx0cyBhcHBlYXIgYmVuZWF0aCB0aGUgY29kZS4gCgpUcnkgZXhlY3V0aW5nIHRoaXMgY2h1bmsgYnkgY2xpY2tpbmcgdGhlICpSdW4qIGJ1dHRvbiB3aXRoaW4gdGhlIGNodW5rIG9yIGJ5IHBsYWNpbmcgeW91ciBjdXJzb3IgaW5zaWRlIGl0IGFuZCBwcmVzc2luZyAqQ3RybCtTaGlmdCtFbnRlciouIAoKYGBge3J9CnBsb3QoY2FycykKYGBgCgpBZGQgYSBuZXcgY2h1bmsgYnkgY2xpY2tpbmcgdGhlICpJbnNlcnQgQ2h1bmsqIGJ1dHRvbiBvbiB0aGUgdG9vbGJhciBvciBieSBwcmVzc2luZyAqQ3RybCtBbHQrSSouCgpXaGVuIHlvdSBzYXZlIHRoZSBub3RlYm9vaywgYW4gSFRNTCBmaWxlIGNvbnRhaW5pbmcgdGhlIGNvZGUgYW5kIG91dHB1dCB3aWxsIGJlIHNhdmVkIGFsb25nc2lkZSBpdCAoY2xpY2sgdGhlICpQcmV2aWV3KiBidXR0b24gb3IgcHJlc3MgKkN0cmwrU2hpZnQrSyogdG8gcHJldmlldyB0aGUgSFRNTCBmaWxlKS4KClRoZSBwcmV2aWV3IHNob3dzIHlvdSBhIHJlbmRlcmVkIEhUTUwgY29weSBvZiB0aGUgY29udGVudHMgb2YgdGhlIGVkaXRvci4gQ29uc2VxdWVudGx5LCB1bmxpa2UgKktuaXQqLCAqUHJldmlldyogZG9lcyBub3QgcnVuIGFueSBSIGNvZGUgY2h1bmtzLiBJbnN0ZWFkLCB0aGUgb3V0cHV0IG9mIHRoZSBjaHVuayB3aGVuIGl0IHdhcyBsYXN0IHJ1biBpbiB0aGUgZWRpdG9yIGlzIGRpc3BsYXllZC4K</div>
+t %&gt;% 
+  filter(Points_2 &gt; -6) %&gt;% 
+  filter(Points_2 &lt; -4) %&gt;% 
+  collect() %&gt;% 
+  ggplot(aes(Points_0, Points_2, colour=Points_1)) + 
+  geom_point()</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Here, we’ve added an additional pipe to our data to transform it into graphics, where “+” is the pipe operator for ggplot2 functions.</p>
+<p>What this little program says now is:</p>
+<ul>
+<li>load table t</li>
+<li>filter the previous step where Points_2 &gt; -6</li>
+<li>filter the previous step where Points_2 &lt; -4</li>
+<li>collect the previous step into memory</li>
+<li>transform the previous step into an x-y plot</li>
+<li>apply point primitives to the x-y plot</li>
+<li>(display the data)</li>
+</ul>
+</div>
+<div id="relationship-between-data-flow-relational-stores-functional-combinators-and-data-parallelism" class="section level1">
+<h1>Relationship between data flow, relational stores, functional combinators, and data parallelism</h1>
+<p>The “gg” in ggplot stands for the grammar of graphics. It is a functional combinator way of describing graphics, as well, such that you pipe graphics primitives to transformers until you get the final output.</p>
+<p>You can think of the entire pipeline from data to picture is:</p>
+<p><code>data =&gt; data transformers =&gt; graphics transformers =&gt; picture</code></p>
+<p>where dplyr is our set of data transformers, and ggplot2 is our set of graphics transformers.</p>
+<p>Graphics and visualization treats data in a data parallel way, such that data flows through a program and is transformed along the way. Examples of where the graph is explicit can be found in data flow programming tools, such as LabView, Simulink, Pure Data, Max/MSP, ParaView, VTK, etc. Generally, “state” or “values” in a graphics pipeline is immutable, and it is transformed along the way.</p>
+<p>This is evident in how the graphics pipeline is taught, how ParaView and VTK represent the program as a directed acyclic graph (DAG), how OpenGL represents transforms on graphics primitives, how Cuda and GPUs treat data as vectors, etc. Hopefully, you can see also there is a relationship between functional programming and the relational data model as well.</p>
+<p>Let’s do one more example.</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudCAlPiUgXG4gIG11dGF0ZSh2ZWwgPSBWRUxfMCpWRUxfMCtWRUxfMSpWRUxfMStWRUxfMipWRUxfMikgJT4lXG4gIGZpbHRlcih2ZWwgPiAxZTcpICU+JVxuICBtdXRhdGUoZGlzcCA9IGZsb29yKChhYnMoRElTUExfMCkrYWJzKERJU1BMXzEpK2FicyhESVNQTF8yKSkpKSAlPiVcbiAgc2VsZWN0KHZlbCwgZGlzcCkgJT4lXG4gIGdyb3VwX2J5KGRpc3ApICU+JSBcbiAgc3VtbWFyaXplKGF2ZWwgPSBtZWFuKHZlbCkpICU+JVxuICBjb2xsZWN0KCkgJT4lXG4gIGdncGxvdChhZXMoZGlzcCwgYXZlbCkpICsgZ2VvbV9iYXIoc3RhdD1cImlkZW50aXR5XCIpXG5gYGAifQ== -->
+<pre class="r"><code>t %&gt;% 
+  mutate(vel = VEL_0*VEL_0+VEL_1*VEL_1+VEL_2*VEL_2) %&gt;%
+  filter(vel &gt; 1e7) %&gt;%
+  mutate(disp = floor((abs(DISPL_0)+abs(DISPL_1)+abs(DISPL_2)))) %&gt;%
+  select(vel, disp) %&gt;%
+  group_by(disp) %&gt;% 
+  summarize(avel = mean(vel)) %&gt;%
+  collect() %&gt;%
+  ggplot(aes(disp, avel)) + geom_bar(stat=&quot;identity&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>A summary of what I did:</p>
+<ul>
+<li>load t</li>
+<li>add a column that is velocity squared</li>
+<li>filter where velocity squared is &gt; 1e7</li>
+<li>add a column that discretizes displacement into integers</li>
+<li>select only the two new columns</li>
+<li>group by displacement</li>
+<li>get the average velocity per displacement group</li>
+<li>collect the data</li>
+<li>create a ggplot</li>
+<li>map to bars</li>
+<li>(display data)</li>
+</ul>
+<p>Let’s go on and show one more feature of R and its graphics ecosystem, Shiny. The following code is taken from the Shiny example web page, but applied to our can data. Again, Shiny is similar to Bokeh. Plotly and Tableau are commercial solutions similar to these to deploy web visualizations (though plotly itself is open source technology).</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucmVxdWlyZShzaGlueSlcblxucyA8LSB0ICU+JSBmaWx0ZXIoUG9pbnRzXzIgPiAtNikgJT4lIGZpbHRlcihQb2ludHNfMiA8IC00KSAlPiUgY29sbGVjdCgpXG5cbnVpIDwtIGZsdWlkUGFnZShcbiAgIyBTb21lIGN1c3RvbSBDU1MgZm9yIGEgc21hbGxlciBmb250IGZvciBwcmVmb3JtYXR0ZWQgdGV4dFxuICB0YWdzJGhlYWQoXG4gICAgdGFncyRzdHlsZShIVE1MKFwiXG4gICAgICBwcmUsIHRhYmxlLnRhYmxlIHtcbiAgICAgICAgZm9udC1zaXplOiBzbWFsbGVyO1xuICAgICAgfVxuICAgIFwiKSlcbiAgKSxcblxuICBmbHVpZFJvdyhcbiAgICBjb2x1bW4od2lkdGggPSA0LCB3ZWxsUGFuZWwoXG4gICAgICByYWRpb0J1dHRvbnMoXCJwbG90X3R5cGVcIiwgXCJQbG90IHR5cGVcIixcbiAgICAgICAgYyhcImJhc2VcIiwgXCJnZ3Bsb3QyXCIpXG4gICAgICApXG4gICAgKSksXG4gICAgY29sdW1uKHdpZHRoID0gNCxcbiAgICAgICMgSW4gYSBwbG90T3V0cHV0LCBwYXNzaW5nIHZhbHVlcyBmb3IgY2xpY2ssIGRibGNsaWNrLCBob3Zlciwgb3IgYnJ1c2hcbiAgICAgICMgd2lsbCBlbmFibGUgdGhvc2UgaW50ZXJhY3Rpb25zLlxuICAgICAgcGxvdE91dHB1dChcInBsb3QxXCIsIGhlaWdodCA9IDM1MCxcbiAgICAgICAgIyBFcXVpdmFsZW50IHRvOiBjbGljayA9IGNsaWNrT3B0cyhpZCA9IFwicGxvdF9jbGlja1wiKVxuICAgICAgICBjbGljayA9IFwicGxvdF9jbGlja1wiLFxuICAgICAgICBkYmxjbGljayA9IGRibGNsaWNrT3B0cyhcbiAgICAgICAgICBpZCA9IFwicGxvdF9kYmxjbGlja1wiXG4gICAgICAgICksXG4gICAgICAgIGhvdmVyID0gaG92ZXJPcHRzKFxuICAgICAgICAgIGlkID0gXCJwbG90X2hvdmVyXCJcbiAgICAgICAgKSxcbiAgICAgICAgYnJ1c2ggPSBicnVzaE9wdHMoXG4gICAgICAgICAgaWQgPSBcInBsb3RfYnJ1c2hcIlxuICAgICAgICApXG4gICAgICApXG4gICAgKVxuICApLFxuICBmbHVpZFJvdyhcbiAgICBjb2x1bW4od2lkdGggPSAzLFxuICAgICAgdmVyYmF0aW1UZXh0T3V0cHV0KFwiY2xpY2tfaW5mb1wiKVxuICAgICksXG4gICAgY29sdW1uKHdpZHRoID0gMyxcbiAgICAgIHZlcmJhdGltVGV4dE91dHB1dChcImRibGNsaWNrX2luZm9cIilcbiAgICApLFxuICAgIGNvbHVtbih3aWR0aCA9IDMsXG4gICAgICB2ZXJiYXRpbVRleHRPdXRwdXQoXCJob3Zlcl9pbmZvXCIpXG4gICAgKSxcbiAgICBjb2x1bW4od2lkdGggPSAzLFxuICAgICAgdmVyYmF0aW1UZXh0T3V0cHV0KFwiYnJ1c2hfaW5mb1wiKVxuICAgIClcbiAgKVxuKVxuXG5cbnNlcnZlciA8LSBmdW5jdGlvbihpbnB1dCwgb3V0cHV0KSB7XG4gIG91dHB1dCRwbG90MSA8LSByZW5kZXJQbG90KHtcbiAgICBpZiAoaW5wdXQkcGxvdF90eXBlID09IFwiYmFzZVwiKSB7XG4gICAgICBwbG90KHMkUG9pbnRzXzAsIHMkUG9pbnRzXzIpXG4gICAgfSBlbHNlIGlmIChpbnB1dCRwbG90X3R5cGUgPT0gXCJnZ3Bsb3QyXCIpIHtcbiAgICAgIGdncGxvdChzLCBhZXMoUG9pbnRzXzAsIFBvaW50c18yKSkgKyBnZW9tX3BvaW50KClcbiAgICB9XG4gIH0pXG5cbiAgb3V0cHV0JGNsaWNrX2luZm8gPC0gcmVuZGVyUHJpbnQoe1xuICAgIGNhdChcImlucHV0JHBsb3RfY2xpY2s6XFxuXCIpXG4gICAgc3RyKGlucHV0JHBsb3RfY2xpY2spXG4gIH0pXG4gIG91dHB1dCRob3Zlcl9pbmZvIDwtIHJlbmRlclByaW50KHtcbiAgICBjYXQoXCJpbnB1dCRwbG90X2hvdmVyOlxcblwiKVxuICAgIHN0cihpbnB1dCRwbG90X2hvdmVyKVxuICB9KVxuICBvdXRwdXQkZGJsY2xpY2tfaW5mbyA8LSByZW5kZXJQcmludCh7XG4gICAgY2F0KFwiaW5wdXQkcGxvdF9kYmxjbGljazpcXG5cIilcbiAgICBzdHIoaW5wdXQkcGxvdF9kYmxjbGljaylcbiAgfSlcbiAgb3V0cHV0JGJydXNoX2luZm8gPC0gcmVuZGVyUHJpbnQoe1xuICAgIGNhdChcImlucHV0JHBsb3RfYnJ1c2g6XFxuXCIpXG4gICAgc3RyKGlucHV0JHBsb3RfYnJ1c2gpXG4gIH0pXG5cbn1cblxuXG5zaGlueUFwcCh1aSwgc2VydmVyKVxuYGBgIn0= -->
+<pre class="r"><code>require(shiny)
+
+s &lt;- t %&gt;% filter(Points_2 &gt; -6) %&gt;% filter(Points_2 &lt; -4) %&gt;% collect()
+
+ui &lt;- fluidPage(
+  # Some custom CSS for a smaller font for preformatted text
+  tags$head(
+    tags$style(HTML(&quot;
+      pre, table.table {
+        font-size: smaller;
+      }
+    &quot;))
+  ),
+
+  fluidRow(
+    column(width = 4, wellPanel(
+      radioButtons(&quot;plot_type&quot;, &quot;Plot type&quot;,
+        c(&quot;base&quot;, &quot;ggplot2&quot;)
+      )
+    )),
+    column(width = 4,
+      # In a plotOutput, passing values for click, dblclick, hover, or brush
+      # will enable those interactions.
+      plotOutput(&quot;plot1&quot;, height = 350,
+        # Equivalent to: click = clickOpts(id = &quot;plot_click&quot;)
+        click = &quot;plot_click&quot;,
+        dblclick = dblclickOpts(
+          id = &quot;plot_dblclick&quot;
+        ),
+        hover = hoverOpts(
+          id = &quot;plot_hover&quot;
+        ),
+        brush = brushOpts(
+          id = &quot;plot_brush&quot;
+        )
+      )
+    )
+  ),
+  fluidRow(
+    column(width = 3,
+      verbatimTextOutput(&quot;click_info&quot;)
+    ),
+    column(width = 3,
+      verbatimTextOutput(&quot;dblclick_info&quot;)
+    ),
+    column(width = 3,
+      verbatimTextOutput(&quot;hover_info&quot;)
+    ),
+    column(width = 3,
+      verbatimTextOutput(&quot;brush_info&quot;)
+    )
+  )
+)
+
+
+server &lt;- function(input, output) {
+  output$plot1 &lt;- renderPlot({
+    if (input$plot_type == &quot;base&quot;) {
+      plot(s$Points_0, s$Points_2)
+    } else if (input$plot_type == &quot;ggplot2&quot;) {
+      ggplot(s, aes(Points_0, Points_2)) + geom_point()
+    }
+  })
+
+  output$click_info &lt;- renderPrint({
+    cat(&quot;input$plot_click:\n&quot;)
+    str(input$plot_click)
+  })
+  output$hover_info &lt;- renderPrint({
+    cat(&quot;input$plot_hover:\n&quot;)
+    str(input$plot_hover)
+  })
+  output$dblclick_info &lt;- renderPrint({
+    cat(&quot;input$plot_dblclick:\n&quot;)
+    str(input$plot_dblclick)
+  })
+  output$brush_info &lt;- renderPrint({
+    cat(&quot;input$plot_brush:\n&quot;)
+    str(input$plot_brush)
+  })
+
+}
+
+
+shinyApp(ui, server)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>You probably won’t see anything unless you are running the interactive version of this document.</p>
+<p>As you can see, we are able to get the same sort of interactive graphics that is available through Bokeh in Python, and D3 and the like in Javascript all in one ecosystem.</p>
+<p>If I provided more controls, I could change it such that a user within the application could change the filtering on the data set, which is done at the SQL/file layer, while the additional graphics transformations are done while computing.</p>
+<p>Let’s head back to the Jupyter notebook to finish up the slides.</p>
+<!-- rnb-text-end -->
+</div>
+
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiUiBhbmQgZ2dwbG90MiIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKYGBge3Igc2V0dXAsIGluY2x1ZGU9RkFMU0V9CmtuaXRyOjpvcHRzX2NodW5rJHNldChlY2hvID0gVFJVRSkKYGBgCgojIyBSIE1hcmtkb3duCgpUaGlzIGlzIGFuIFIgTWFya2Rvd24gZG9jdW1lbnQuIE1hcmtkb3duIGlzIGEgc2ltcGxlIGZvcm1hdHRpbmcgc3ludGF4IGZvciBhdXRob3JpbmcgSFRNTCwgUERGLCBhbmQgTVMgV29yZCBkb2N1bWVudHMuIEZvciBtb3JlIGRldGFpbHMgb24gdXNpbmcgUiBNYXJrZG93biBzZWUgPGh0dHA6Ly9ybWFya2Rvd24ucnN0dWRpby5jb20+LgoKV2hlbiB5b3UgY2xpY2sgdGhlICoqS25pdCoqIGJ1dHRvbiBhIGRvY3VtZW50IHdpbGwgYmUgZ2VuZXJhdGVkIHRoYXQgaW5jbHVkZXMgYm90aCBjb250ZW50IGFzIHdlbGwgYXMgdGhlIG91dHB1dCBvZiBhbnkgZW1iZWRkZWQgUiBjb2RlIGNodW5rcyB3aXRoaW4gdGhlIGRvY3VtZW50LiBZb3UgY2FuIGVtYmVkIGFuIFIgY29kZSBjaHVuayBsaWtlIHRoaXM6CgpgYGB7ciBjYXJzfQpzdW1tYXJ5KGNhcnMpCmBgYAoKIyMgSW5jbHVkaW5nIFBsb3RzCgpZb3UgY2FuIGFsc28gZW1iZWQgcGxvdHMsIGZvciBleGFtcGxlOgoKYGBge3IgcHJlc3N1cmUsIGVjaG89RkFMU0V9CnBsb3QocHJlc3N1cmUpCmBgYAoKTm90ZSB0aGF0IHRoZSBgZWNobyA9IEZBTFNFYCBwYXJhbWV0ZXIgd2FzIGFkZGVkIHRvIHRoZSBjb2RlIGNodW5rIHRvIHByZXZlbnQgcHJpbnRpbmcgb2YgdGhlIFIgY29kZSB0aGF0IGdlbmVyYXRlZCB0aGUgcGxvdC4KCj09PQoKIyBTdGFydCBvZiBjbGFzcyBub3RlcyAjCgpJIGxlZnQgdGhlIHByZXZpb3VzIHNlY3Rpb24gaW4ganVzdCB0byBnaXZlIHlvdSB0aGUgc2FtcGxlIG9mIHdoYXQgdGhlIAppbml0aWFsIFIgbWFya2Rvd24gZG9jdW1lbnQgaXMuCgojIFIgIwoKUiBpcyBhIGZ1bmN0aW9uYWwgbGFuZ3VhZ2UgcHJpbWFyaWx5IHVzZWQgZm9yIHN0YXRpc3RpY3MuIEl0IGlzIG1vc3QKc2ltaWxhciB0byBTQVMgYW5kIFRhYmxlYXUuCgotIFRoaXMgaXMgdGhlIGZvY2FsIHBvaW50IGZvciB0aGUgc3RhdGlzdGljcyBjb21tdW5pdHkgaW4gc2hhcmluZyBjb2RlCiAgICAtIE1vc3QgYWR2YW5jZWQgc3RhdGlzdGljcyBhbGdvcml0aG1zIGFyZSBpbXBsZW1lbnRlZCBpbiBSCi0gVGhleSBjb21tdW5pdHkgaGFzIGEgZ29vZCBvcGVuIHNvdXJjZSByZXBvc2l0b3J5CiAgICAtIENSQU4gLSB0aGUgUiBpbnRlcnByZXRlciBpcyBhdXRvbWF0aWNhbGx5IGludGVncmF0ZWQgd2l0aCBDUkFOCi0gUlN0dWRpbyBwcm92aWRlcyBzdGVyb2lkcyBmb3IgUiB3aXRoCiAgICAtIEludGVyYWN0aXZlIGVkaXRpbmcgYW5kIGRlYnVnZ2luZyBlbnZpcm9ubWVudAogICAgLSBBdXRvbWF0aWMgaW50ZWdyYXRpb24gd2l0aCBDUkFOCiAgICAtIEh5cGVybGluayBoZWxwIGJyb3dzZXIKICAgIC0gUGxvdCB2aWV3ZXIgaW50ZWdyYXRpb24KICAgIC0gUk1hcmtkb3duIHN1cHBvcnQgKGxpa2UgSnVweXRlcikKICAgIC0gU2hpbnkgc3VwcG9ydCAobGlrZSBCb2tlaCkKCiMgUlN0dWRpbyAjCgpJIHJlYWxseSBsaWtlIFJTdHVkaW8vUiBtYXJrZG93bi9rbml0ciBhbmQgdGhlcmUgYXJlIGZlYXR1cmVzIHRoYXQgSSByZWFsbHkgd2lzaApJIGhhZCBpbiBKdXB5dGVyLiBGb3IgZXhhbXBsZToKCi0gdGhlIHBhY2thZ2UgaW5zdGFsbGVyIHRvIENSQU4KICAgIC0gdGhlIGNvbW1hbmQgbGluZSB0byBpbnN0YWxsIEFuYWNvbmRhIHBhY2thZ2VzIGlzIHByZXR0eSBnb29kCiAgICAtIGJ1dCBvdXRzaWRlIG9mIEFuYWNvbmRhLCBwaXAgYW5kIFB5UEkgaXMgaG9ycmlibGUgaW4gY29tcGFyaXNvbiB0byBDUkFOIAogICAgICAgIC0gUiBpcyBmYXIgbW9yZSB1c2VyIGZyaWVuZGx5IHRoYW4gUHl0aG9uCi0gdGhlIGFiaWxpdHkgdG8gc2F2ZSBhIGRvY3VtZW50IGltbWVkaWF0ZWx5IHRoYXQgaXMgc3RhdGljYWxseSB2aWV3YWJsZQogICAgLSBhZ2FpbiwgeW91IGNhbiBkbyB0aGlzIGZyb20gdGhlIGNvbW1hbmQgbGluZSB3aXRoIEp1cHl0ZXIgbm90ZWJvb2tzCiAgICAgICAgLSBidXQgUnN0dWRpbyBhZ2FpbiBpcyBtb3JlIHVzZXIgZnJpZW5kbHkKLSBsaXRlcmF0ZSBwcm9ncmFtbWluZyB0aHJvdWdoIGludGVyc3BlcnNlZCBtYXJrZG93biBhbmQgUgogICAgLSBvbmNlIGFnYWluLCB5b3UgaGF2ZSBtYXJrZG93biBjZWxscyBhbmQgY29kZSBjZWxscyBpbiBKdXB5dGVyLCBidXQgaXQncyBub3Qgc2VlbWxlc3MKICAgICAgICAtIGl0IG1ha2VzIGNvZGUgZG9jdW1lbnRhdGlvbiB2ZXJ5IGVhc3kKICAgICAgICAtIHRvIG1lLCBpdCBmZWVscyBtb3JlIG5hdHVyYWwgdG8gYmUgdHlwaW5nIGlubGluZSBjb2RlIGFuZCB0aGVuIGlubGluZSBjb21tZW50cwogICAgICAgICAgICAtIGl0J3MgYSBsaXR0bGUgamFycmluZyBpbiBKdXB5dGVyIHRvIHN3aXRjaCBiZXR3ZWVuIG1hcmtkb3duIGFuZCBjb2RlIGNlbGxzCi0gaGVscCB2aWV3ZXIKICAgIC0geW91IGNhbiBkbyBoZWxwKCkgYW5kIGRpcigpIGFueXdoZXJlIGluIGEgUHl0aG9uIGNlbGwsIGJ1dCB0aGUgaHlwZXJsaW5rCiAgICAgIHZpZXdlciBpcyBuaWNlciBpbiBSc3R1ZGlvCgojIFIsIFJTdHVkaW8sIENSQU4gIwoKVGhleSBhcmUgdGhlIHByb2R1Y3RzIG9mIGEgZ3JlYXQgb3BlbiBzb3VyY2UgY29tbXVuaXR5IHRoYXQgaXMgcmVhbGx5IGNvbm5lY3RlZC4KICAKTGV0J3MgdmlzdWFsaXplIHNvbWUgZGF0YS4uLgoKRmlyc3QsIHdlIG5lZWQgdG8gbG9hZCBkcGx5ci4KCmBgYHtyIGRwbHlyLCBlY2hvPUZBTFNFfQpyZXF1aXJlKGRwbHlyKQpgYGAKCmRwbHlyIGlzIHRoYXQgRFNMIChzaW1pbGFyIHRvIExJTlEpIHRoYXQgSSB3YXMgdGFsa2luZyBhYm91dCAKZm9yIHJlbGF0aW9uYWwgZGF0YS4gV2UnbGwgdXNlIGl0IHRvIGxvYWQgb3VyIGNhbiBhcyB3ZSBkaWQKYmVmb3JlLCBhbmQgSSdsbCBzaG93IGhvdyBpdCB3b3JrcyB0byBjb21wb3NlIHF1ZXJpZXMKb24geW91ciBkYXRhIHNldHMuCgpMZXQncyBsb2FkIHRoZSBjYW4gYWdhaW4uCgpgYGB7ciBsb2FkLWNhbn0KZGIgPC0gc3JjX3NxbGl0ZSgiY2FuLmRiIikKdCA8LSB0YmwoZGIsICJjYW4iKQpgYGAKCnQgaXMgb3VyIHRhYmxlIHdpdGggdGhlIGRhdGEuCgpgYGB7ciBzaG93LXRhYmxlfQp0CmBgYAoKTm93LCB3ZSBjYW4gc3RhcnQgc2VsZWN0aW5nIGRhdGEgZnJvbSBvdXIgdGFibGUuCgpOb3RlLCB0aGF0IHQgaXMgbm90IGFjdHVhbGx5IGxvYWRlZCBpbnRvIG1lbW9yeSwgYnV0IGl0IGlzIGEgcmVmZXJlbmNlIHRvIG91ciBTUUxpdGUgZGF0YWJhc2UuIFRoaXMgaXMgYSBkaWZmZXJlbmNlIGZyb20gZGF0YSBmcmFtZXMsIHdoZXJlIGEgdHlwaWNhbCBkYXRhIGZyYW1lIChib3RoIGluIFIgYW5kIFB5dGhvbikgYXJlIGluIG1lbW9yeS4gZHBseXIgaXMgImxhemlseSBldmFsdWF0ZWQiIGFuZCBvbmx5IGZldGNoZXMgZGF0YSBmcm9tIGRpc2sgd2hlbiB5b3UgZWl0aGVyIGRpc3BsYXkgaXQgb3IgYGNvbGxlY3QoKWAgaXQuCgpUaGUgd2F5IHdlIHNlbGVjdCBkYXRhIHdpdGggZHBseXIgaXMgdGhyb3VnaCBmdW5jdGlvbmFsIGNvbWJpbmF0b3JzIGFrYSBwaXBlbGluZXMgYWthIGRhdGEgZmxvdyBncmFwaHMuCgpgYGB7ciBzZWxlY3QtZGF0YS0xfQp0ICU+JSBmaWx0ZXIoUG9pbnRzXzIgPiAtNikgJT4lIGZpbHRlcihQb2ludHNfMiA8IC00KQpgYGAKClRoZSAiJT4lIiBzeW1ib2wgaXMgcGlwZSwgeW91IGNhbiB0aGluayBvZiBpdCB0aGUgc2FtZSBhcyBhIFVuaXggcGlwZSwgInwiLgpJdCBpcyBwaXBpbmcgdGhlIGRhdGEgZnJvbSB0aGUgcHJldmlvdXMgY29tbWFuZCwgdG8gdGhlIG5leHQuCgpXaGF0IHRoaXMgc21hbGwgbGl0dGxlIHByb2dyYW0gZnJhZ21lbnQgc2F5cyBpczoKCi0gbG9hZCB0YWJsZSB0Ci0gZmlsdGVyIHRoZSBwcmV2aW91cyBzdGVwIHdoZXJlIFBvaW50c18yID4gLTYKLSBmaWx0ZXIgdGhlIHByZXZpb3VzIHN0ZXAgd2hlcmUgUG9pbnRzXzIgPCAtNAotIChkaXNwbGF5IHRoZSBkYXRhKQoKV2UndmUgc2VsZWN0ZWQgdGhlIHBvaW50cyB0aGF0IGFyZSBiZXR3ZWVuIC02IDwgeiA8IC00LgoKVGhlIGludGVyZXN0aW5nIHRoaW5nIGlzIHRoYXQgb3VyIGxpdHRsZSBmdW5jdGlvbmFsIHByb2dyYW0gaXMKYmVpbmcgdHJhbnNmb3JtZWQgaW50byBTUUwgY29kZSwgYW5kIHRoYXQgaXQgaXMgc3RyZWFtaW5nL2JlaW5nIGV4ZWN1dGVkCm9uIGRpc2suIFRoZSBkYXRhIGlzIG5ldmVyIGxvYWRlZCBpbnRvIG1lbW9yeSB1bmxlc3MgeW91IGZvcmNlIGl0CnRvICh3aXRoIGNvbGxlY3QoKSkuCgpMZXQncyBwbG90IHRoZSBkYXRhIHRvIHNob3cgeW91IHRoYXQgdGhleSByZWFsbHkgYXJlIHRoZSBzYW1lIGFzIGJlZm9yZS4gCldlJ2xsIHVzZSBnZ3Bsb3QyLgoKYGBge3IgbG9hZC1nZ3Bsb3R9CnJlcXVpcmUoZ2dwbG90MikKCnQgJT4lIAogIGZpbHRlcihQb2ludHNfMiA+IC02KSAlPiUgCiAgZmlsdGVyKFBvaW50c18yIDwgLTQpICU+JSAKICBjb2xsZWN0KCkgJT4lIAogIGdncGxvdChhZXMoUG9pbnRzXzAsIFBvaW50c18yLCBjb2xvdXI9UG9pbnRzXzEpKSArIAogIGdlb21fcG9pbnQoKQpgYGAKCkhlcmUsIHdlJ3ZlIGFkZGVkIGFuIGFkZGl0aW9uYWwgcGlwZSB0byBvdXIgZGF0YSB0byB0cmFuc2Zvcm0KaXQgaW50byBncmFwaGljcywgd2hlcmUgIisiIGlzIHRoZSBwaXBlIG9wZXJhdG9yIGZvciBnZ3Bsb3QyCmZ1bmN0aW9ucy4KCldoYXQgdGhpcyBsaXR0bGUgcHJvZ3JhbSBzYXlzIG5vdyBpczoKCi0gbG9hZCB0YWJsZSB0Ci0gZmlsdGVyIHRoZSBwcmV2aW91cyBzdGVwIHdoZXJlIFBvaW50c18yID4gLTYKLSBmaWx0ZXIgdGhlIHByZXZpb3VzIHN0ZXAgd2hlcmUgUG9pbnRzXzIgPCAtNAotIGNvbGxlY3QgdGhlIHByZXZpb3VzIHN0ZXAgaW50byBtZW1vcnkKLSB0cmFuc2Zvcm0gdGhlIHByZXZpb3VzIHN0ZXAgaW50byBhbiB4LXkgcGxvdAotIGFwcGx5IHBvaW50IHByaW1pdGl2ZXMgdG8gdGhlIHgteSBwbG90Ci0gKGRpc3BsYXkgdGhlIGRhdGEpCgojIFJlbGF0aW9uc2hpcCBiZXR3ZWVuIGRhdGEgZmxvdywgcmVsYXRpb25hbCBzdG9yZXMsIGZ1bmN0aW9uYWwgY29tYmluYXRvcnMsIGFuZCBkYXRhIHBhcmFsbGVsaXNtICMKClRoZSAiZ2ciIGluIGdncGxvdCBzdGFuZHMgZm9yIHRoZSBncmFtbWFyIG9mIGdyYXBoaWNzLiBJdAppcyBhIGZ1bmN0aW9uYWwgY29tYmluYXRvciB3YXkgb2YgZGVzY3JpYmluZyBncmFwaGljcywgYXMgd2VsbCwKc3VjaCB0aGF0IHlvdSBwaXBlIGdyYXBoaWNzIHByaW1pdGl2ZXMgdG8gdHJhbnNmb3JtZXJzIHVudGlsCnlvdSBnZXQgdGhlIGZpbmFsIG91dHB1dC4KCllvdSBjYW4gdGhpbmsgb2YgdGhlIGVudGlyZSBwaXBlbGluZSBmcm9tIGRhdGEgdG8gcGljdHVyZSBpczoKCmBkYXRhID0+IGRhdGEgdHJhbnNmb3JtZXJzID0+IGdyYXBoaWNzIHRyYW5zZm9ybWVycyA9PiBwaWN0dXJlYAoKd2hlcmUgZHBseXIgaXMgb3VyIHNldCBvZiBkYXRhIHRyYW5zZm9ybWVycywgYW5kIGdncGxvdDIKaXMgb3VyIHNldCBvZiBncmFwaGljcyB0cmFuc2Zvcm1lcnMuCgpHcmFwaGljcyBhbmQgdmlzdWFsaXphdGlvbiB0cmVhdHMgZGF0YSBpbiBhIGRhdGEgcGFyYWxsZWwgd2F5LApzdWNoIHRoYXQgZGF0YSBmbG93cyB0aHJvdWdoIGEgcHJvZ3JhbSBhbmQgaXMgdHJhbnNmb3JtZWQKYWxvbmcgdGhlIHdheS4gRXhhbXBsZXMgb2Ygd2hlcmUgdGhlIGdyYXBoIGlzIGV4cGxpY2l0IGNhbgpiZSBmb3VuZCBpbiBkYXRhIGZsb3cgcHJvZ3JhbW1pbmcgdG9vbHMsIHN1Y2ggYXMgTGFiVmlldywKU2ltdWxpbmssIFB1cmUgRGF0YSwgTWF4L01TUCwgUGFyYVZpZXcsIFZUSywgZXRjLiBHZW5lcmFsbHksCiJzdGF0ZSIgb3IgInZhbHVlcyIgaW4gYSBncmFwaGljcyBwaXBlbGluZSBpcyBpbW11dGFibGUsIGFuZCBpdAppcyB0cmFuc2Zvcm1lZCBhbG9uZyB0aGUgd2F5LiAKClRoaXMgaXMgZXZpZGVudCBpbiBob3cgdGhlIGdyYXBoaWNzIHBpcGVsaW5lIGlzIHRhdWdodCwgaG93ClBhcmFWaWV3IGFuZCBWVEsgcmVwcmVzZW50IHRoZSBwcm9ncmFtIGFzIGEgZGlyZWN0ZWQgYWN5Y2xpYwpncmFwaCAoREFHKSwgaG93IE9wZW5HTCByZXByZXNlbnRzIHRyYW5zZm9ybXMgb24gZ3JhcGhpY3MKcHJpbWl0aXZlcywgaG93IEN1ZGEgYW5kIEdQVXMgdHJlYXQgZGF0YSBhcyB2ZWN0b3JzLCBldGMuCkhvcGVmdWxseSwgeW91IGNhbiBzZWUgYWxzbyB0aGVyZSBpcyBhIHJlbGF0aW9uc2hpcCBiZXR3ZWVuCmZ1bmN0aW9uYWwgcHJvZ3JhbW1pbmcgYW5kIHRoZSByZWxhdGlvbmFsIGRhdGEgbW9kZWwgYXMgd2VsbC4KCkxldCdzIGRvIG9uZSBtb3JlIGV4YW1wbGUuCgpgYGB7ciBvbmUtbW9yZX0KdCAlPiUgCiAgbXV0YXRlKHZlbCA9IFZFTF8wKlZFTF8wK1ZFTF8xKlZFTF8xK1ZFTF8yKlZFTF8yKSAlPiUKICBmaWx0ZXIodmVsID4gMWU3KSAlPiUKICBtdXRhdGUoZGlzcCA9IGZsb29yKChhYnMoRElTUExfMCkrYWJzKERJU1BMXzEpK2FicyhESVNQTF8yKSkpKSAlPiUKICBzZWxlY3QodmVsLCBkaXNwKSAlPiUKICBncm91cF9ieShkaXNwKSAlPiUgCiAgc3VtbWFyaXplKGF2ZWwgPSBtZWFuKHZlbCkpICU+JQogIGNvbGxlY3QoKSAlPiUKICBnZ3Bsb3QoYWVzKGRpc3AsIGF2ZWwpKSArIGdlb21fYmFyKHN0YXQ9ImlkZW50aXR5IikKYGBgCgpBIHN1bW1hcnkgb2Ygd2hhdCBJIGRpZDoKCi0gbG9hZCB0Ci0gYWRkIGEgY29sdW1uIHRoYXQgaXMgdmVsb2NpdHkgc3F1YXJlZAotIGZpbHRlciB3aGVyZSB2ZWxvY2l0eSBzcXVhcmVkIGlzID4gMWU3Ci0gYWRkIGEgY29sdW1uIHRoYXQgZGlzY3JldGl6ZXMgZGlzcGxhY2VtZW50IGludG8gaW50ZWdlcnMKLSBzZWxlY3Qgb25seSB0aGUgdHdvIG5ldyBjb2x1bW5zCi0gZ3JvdXAgYnkgZGlzcGxhY2VtZW50Ci0gZ2V0IHRoZSBhdmVyYWdlIHZlbG9jaXR5IHBlciBkaXNwbGFjZW1lbnQgZ3JvdXAKLSBjb2xsZWN0IHRoZSBkYXRhCi0gY3JlYXRlIGEgZ2dwbG90Ci0gbWFwIHRvIGJhcnMKLSAoZGlzcGxheSBkYXRhKQoKTGV0J3MgZ28gb24gYW5kIHNob3cgb25lIG1vcmUgZmVhdHVyZSBvZiBSIGFuZCBpdHMgZ3JhcGhpY3MKZWNvc3lzdGVtLCBTaGlueS4gVGhlIGZvbGxvd2luZyBjb2RlIGlzIHRha2VuIGZyb20gdGhlIFNoaW55CmV4YW1wbGUgd2ViIHBhZ2UsIGJ1dCBhcHBsaWVkIHRvIG91ciBjYW4gZGF0YS4gQWdhaW4sIFNoaW55CmlzIHNpbWlsYXIgdG8gQm9rZWguIFBsb3RseSBhbmQgVGFibGVhdSBhcmUgY29tbWVyY2lhbCAKc29sdXRpb25zIHNpbWlsYXIgdG8gdGhlc2UgdG8gZGVwbG95IHdlYiB2aXN1YWxpemF0aW9ucyAKKHRob3VnaCBwbG90bHkgaXRzZWxmIGlzIG9wZW4gc291cmNlIHRlY2hub2xvZ3kpLgoKCmBgYHtyIHNoaW55LWV4YW1wbGV9CnJlcXVpcmUoc2hpbnkpCgpzIDwtIHQgJT4lIGZpbHRlcihQb2ludHNfMiA+IC02KSAlPiUgZmlsdGVyKFBvaW50c18yIDwgLTQpICU+JSBjb2xsZWN0KCkKCnVpIDwtIGZsdWlkUGFnZSgKICAjIFNvbWUgY3VzdG9tIENTUyBmb3IgYSBzbWFsbGVyIGZvbnQgZm9yIHByZWZvcm1hdHRlZCB0ZXh0CiAgdGFncyRoZWFkKAogICAgdGFncyRzdHlsZShIVE1MKCIKICAgICAgcHJlLCB0YWJsZS50YWJsZSB7CiAgICAgICAgZm9udC1zaXplOiBzbWFsbGVyOwogICAgICB9CiAgICAiKSkKICApLAoKICBmbHVpZFJvdygKICAgIGNvbHVtbih3aWR0aCA9IDQsIHdlbGxQYW5lbCgKICAgICAgcmFkaW9CdXR0b25zKCJwbG90X3R5cGUiLCAiUGxvdCB0eXBlIiwKICAgICAgICBjKCJiYXNlIiwgImdncGxvdDIiKQogICAgICApCiAgICApKSwKICAgIGNvbHVtbih3aWR0aCA9IDQsCiAgICAgICMgSW4gYSBwbG90T3V0cHV0LCBwYXNzaW5nIHZhbHVlcyBmb3IgY2xpY2ssIGRibGNsaWNrLCBob3Zlciwgb3IgYnJ1c2gKICAgICAgIyB3aWxsIGVuYWJsZSB0aG9zZSBpbnRlcmFjdGlvbnMuCiAgICAgIHBsb3RPdXRwdXQoInBsb3QxIiwgaGVpZ2h0ID0gMzUwLAogICAgICAgICMgRXF1aXZhbGVudCB0bzogY2xpY2sgPSBjbGlja09wdHMoaWQgPSAicGxvdF9jbGljayIpCiAgICAgICAgY2xpY2sgPSAicGxvdF9jbGljayIsCiAgICAgICAgZGJsY2xpY2sgPSBkYmxjbGlja09wdHMoCiAgICAgICAgICBpZCA9ICJwbG90X2RibGNsaWNrIgogICAgICAgICksCiAgICAgICAgaG92ZXIgPSBob3Zlck9wdHMoCiAgICAgICAgICBpZCA9ICJwbG90X2hvdmVyIgogICAgICAgICksCiAgICAgICAgYnJ1c2ggPSBicnVzaE9wdHMoCiAgICAgICAgICBpZCA9ICJwbG90X2JydXNoIgogICAgICAgICkKICAgICAgKQogICAgKQogICksCiAgZmx1aWRSb3coCiAgICBjb2x1bW4od2lkdGggPSAzLAogICAgICB2ZXJiYXRpbVRleHRPdXRwdXQoImNsaWNrX2luZm8iKQogICAgKSwKICAgIGNvbHVtbih3aWR0aCA9IDMsCiAgICAgIHZlcmJhdGltVGV4dE91dHB1dCgiZGJsY2xpY2tfaW5mbyIpCiAgICApLAogICAgY29sdW1uKHdpZHRoID0gMywKICAgICAgdmVyYmF0aW1UZXh0T3V0cHV0KCJob3Zlcl9pbmZvIikKICAgICksCiAgICBjb2x1bW4od2lkdGggPSAzLAogICAgICB2ZXJiYXRpbVRleHRPdXRwdXQoImJydXNoX2luZm8iKQogICAgKQogICkKKQoKCnNlcnZlciA8LSBmdW5jdGlvbihpbnB1dCwgb3V0cHV0KSB7CiAgb3V0cHV0JHBsb3QxIDwtIHJlbmRlclBsb3QoewogICAgaWYgKGlucHV0JHBsb3RfdHlwZSA9PSAiYmFzZSIpIHsKICAgICAgcGxvdChzJFBvaW50c18wLCBzJFBvaW50c18yKQogICAgfSBlbHNlIGlmIChpbnB1dCRwbG90X3R5cGUgPT0gImdncGxvdDIiKSB7CiAgICAgIGdncGxvdChzLCBhZXMoUG9pbnRzXzAsIFBvaW50c18yKSkgKyBnZW9tX3BvaW50KCkKICAgIH0KICB9KQoKICBvdXRwdXQkY2xpY2tfaW5mbyA8LSByZW5kZXJQcmludCh7CiAgICBjYXQoImlucHV0JHBsb3RfY2xpY2s6XG4iKQogICAgc3RyKGlucHV0JHBsb3RfY2xpY2spCiAgfSkKICBvdXRwdXQkaG92ZXJfaW5mbyA8LSByZW5kZXJQcmludCh7CiAgICBjYXQoImlucHV0JHBsb3RfaG92ZXI6XG4iKQogICAgc3RyKGlucHV0JHBsb3RfaG92ZXIpCiAgfSkKICBvdXRwdXQkZGJsY2xpY2tfaW5mbyA8LSByZW5kZXJQcmludCh7CiAgICBjYXQoImlucHV0JHBsb3RfZGJsY2xpY2s6XG4iKQogICAgc3RyKGlucHV0JHBsb3RfZGJsY2xpY2spCiAgfSkKICBvdXRwdXQkYnJ1c2hfaW5mbyA8LSByZW5kZXJQcmludCh7CiAgICBjYXQoImlucHV0JHBsb3RfYnJ1c2g6XG4iKQogICAgc3RyKGlucHV0JHBsb3RfYnJ1c2gpCiAgfSkKCn0KCgpzaGlueUFwcCh1aSwgc2VydmVyKQpgYGAKCllvdSBwcm9iYWJseSB3b24ndCBzZWUgYW55dGhpbmcgdW5sZXNzIHlvdSBhcmUgcnVubmluZyB0aGUKaW50ZXJhY3RpdmUgdmVyc2lvbiBvZiB0aGlzIGRvY3VtZW50LgoKQXMgeW91IGNhbiBzZWUsIHdlIGFyZSBhYmxlIHRvIGdldCB0aGUgc2FtZSBzb3J0IG9mCmludGVyYWN0aXZlIGdyYXBoaWNzIHRoYXQgaXMgYXZhaWxhYmxlIHRocm91Z2ggQm9rZWggaW4gUHl0aG9uLAphbmQgRDMgYW5kIHRoZSBsaWtlIGluIEphdmFzY3JpcHQgYWxsIGluIG9uZSBlY29zeXN0ZW0uCgpJZiBJIHByb3ZpZGVkIG1vcmUgY29udHJvbHMsIEkgY291bGQgY2hhbmdlIGl0IHN1Y2ggdGhhdCBhCnVzZXIgd2l0aGluIHRoZSBhcHBsaWNhdGlvbiBjb3VsZCBjaGFuZ2UgdGhlIGZpbHRlcmluZyBvbgp0aGUgZGF0YSBzZXQsIHdoaWNoIGlzIGRvbmUgYXQgdGhlIFNRTC9maWxlIGxheWVyLCB3aGlsZQp0aGUgYWRkaXRpb25hbCBncmFwaGljcyB0cmFuc2Zvcm1hdGlvbnMgYXJlIGRvbmUgd2hpbGUgY29tcHV0aW5nLgoKTGV0J3MgaGVhZCBiYWNrIHRvIHRoZSBKdXB5dGVyIG5vdGVib29rIHRvIGZpbmlzaCB1cCB0aGUgc2xpZGVzLgo=</div>
 
 
 

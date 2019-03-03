@@ -33,13 +33,93 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
 <!-- START OF SLIDES --><div class="reveal"><div class="slides">
 
 <!-- START VERTICAL --><section>
-
 <!-- START SLIDE --><section data-markdown><section data-template>
-# Slide 1
+## Open Source Visualization and Analysis Tools
+
+**March 5, 2017**
+
+Jon Woodring
+
+*Los Alamos National Laboratory*
 <!-- END SLIDE --></section></section>
 
 <!-- START SLIDE --><section data-markdown><section data-template>
-# Slide 2
+![https://jonwoodring.github.io/ucsc-2019-03-05/slides/index.html](local/qr.png)
+
+https://jonwoodring.github.io/ucsc-2019-03-05/slides/index.html
+<!-- END SLIDE --></section></section>
+
+<!-- START SLIDE --><section data-markdown><section data-template>
+### Visualization and Analysis
+
+- Visualization
+  - Making a picture or movie from data
+  - Plots, interactivity, 3D, etc.
+  - Intuition and exploration
+- Analysis
+  - Fitting or making a model from data
+  - Simulation, statistics, regression (machine learning), etc.
+  - Theory and mathematics
+<!-- END SLIDE --></section></section>
+
+<!-- START SLIDE --><section data-markdown><section data-template>
+### My Work
+
+- Department of Energy (DOE), Los Alamos National Laboratory (LANL)
+  - http://lanl.gov
+  - Petabytes of data from simulations and sensors
+- I help scientists visualize and analyze their data
+- My research communities
+  - *IEEE Visualization*: http://ieeevis.org
+  - *SIGGRAPH*: http://siggraph.org
+  - *DOE Office of Science*: http://science.energy.gov
+<!-- END SLIDE --></section></section>
+
+<!-- START SLIDE --><section data-markdown><section data-template>
+### Tools
+
+- I'll cover the tools that I typically use
+  - Python, R, ParaView, and Cinema
+- Python and R are common in "data science"
+- ParaView is unique to scientific visualization
+  - ParaView was initially created at LANL
+  - Maintained by Kitware, Inc.
+- Cinema is an ongoing research project at LANL
+<!-- END SLIDE --></section></section>
+
+<!-- START SLIDE --><section data-markdown><section data-template>
+### Similarities between Data Science and Scientific Visualization
+
+- We have big data sets
+- We like to use Python and R for analysis
+- There's a lot of hype in machine learning
+- We use GPUs for both computation and visualization
+- We use BLAS, LAPACK, FFTW, GSL, etc.
+  - We (the scientific community at large) created them!
+  - Many are embedded in Python and R
+<!-- END SLIDE --></section></section>
+
+<!-- START SLIDE --><section data-markdown><section data-template>
+### Differences -- at the DOE we:
+
+- Typically favor speed over portability
+  - Cloud: made to run everywhere
+  - Supercomputers: made to run as fast
+
+- *Don't* use the cloud
+- *Don't* use Java, we use Fortran, C++, and MPI
+  - Supercomputers have fast, specialized networks, for large, parallel
+    computations and leverage MPI (Message Passing Interface)
+- *Don't* use Hadoop, Spark, the Apache stack, etc.
+- *Don't* use Docker that much (yet!)
+<!-- END SLIDE --></section></section>
+
+<!-- START SLIDE --><section data-markdown><section data-template>
+### Some other open source tools that I won't cover that I have used at some point in my career
+
+OpenGL, Spark, Flink, ggobi, Torch, gnuplot, D3, Vega/Vega-lite, Pure Data +
+GEM, Orange, MeshLab, VisIt, Mayavi, Processing, vvvv, xmdvtool, Plotly,
+charts.js, Octave, Blender, Slicer
 <!-- END SLIDE --></section></section>
 
 <!-- END VERTICAL --></section>
@@ -47,14 +127,45 @@ document.getElementsByTagName( 'head' )[0].appendChild( link );
 <!-- START VERTICAL --><section>
 
 <!-- START SLIDE --><section data-markdown><section data-template>
-# Slide 3
-<!-- END SLIDE --></section></section>
-
-<!-- START SLIDE --><section data-markdown><section data-template>
-# Slide 4
+### Python
 <!-- END SLIDE --></section></section>
 
 <!-- END VERTICAL --></section>
+
+<!-- START VERTICAL --><section>
+
+<!-- START SLIDE --><section data-markdown><section data-template>
+### R
+<!-- END SLIDE --></section></section>
+
+<!-- END VERTICAL --></section>
+
+<!-- START VERTICAL --><section>
+
+<!-- START SLIDE --><section data-markdown><section data-template>
+### ParaView
+<!-- END SLIDE --></section></section>
+
+<!-- END VERTICAL --></section>
+
+<!-- START VERTICAL --><section>
+
+<!-- START SLIDE --><section data-markdown><section data-template>
+### Cinema
+<!-- END SLIDE --></section></section>
+
+<!-- END VERTICAL --></section>
+
+<!-- START VERTICAL --><section>
+
+<!-- START SLIDE --><section data-markdown><section data-template>
+### Conclusion
+<!-- END SLIDE --></section></section>
+
+<!-- END VERTICAL --></section>
+
+<!-- START SLIDE --><section data-markdown><section data-template>
+<!-- END SLIDE --></section></section>
 
 <!-- END OF SLIDES --></div></div>
 <script src="lib/js/head.min.js"></script>
