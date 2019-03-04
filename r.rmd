@@ -3,309 +3,246 @@ title: "R and ggplot2"
 output: html_notebook
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
-## R Markdown
-
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
-
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
-
-```{r cars}
-summary(cars)
-```
-
-## Including Plots
-
-You can also embed plots, for example:
-
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
-
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
-
-===
-
-# Start of class notes #
-
-I left the previous section in just to give you the sample of what the 
-initial R markdown document is.
-
 # R #
 
-R is a functional language primarily used for statistics. It is most
-similar to SAS and Tableau.
-
-- This is the focal point for the statistics community in sharing code
-    - Most advanced statistics algorithms are implemented in R
-- They community has a good open source repository
-    - CRAN - the R interpreter is automatically integrated with CRAN
-- RStudio provides steroids for R with
-    - Interactive editing and debugging environment
+- Statistics-focused functional language
+    - It looks more like JavaScript than Python
+    - "Data scientists" will frequently swap between R and Python
+- CRAN - open source repository for algorithms and libraries
+    - The focal point for the statistics community in sharing code
+    - Many advanced statistics algorithms are implemented in R
+    - Good library support like *ggplot2* and *dplyr*
+- RStudio, an IDE for *R*
     - Automatic integration with CRAN
     - Hyperlink help browser
-    - Plot viewer integration
-    - RMarkdown support (like Jupyter)
-    - Shiny support (like Bokeh)
+    - Plot viewer and saved state integration
+    - RMarkdown support, similar to Jupyter Notebooks
+    - Shiny support, similar to Bokeh
+- R + RStudio + CRAN is an example of a good software stack from an active, open-source community
 
-# RStudio #
+---
 
-I really like RStudio/R markdown/knitr and there are features that I really wish
-I had in Jupyter. For example:
+# R Markdown
 
-- the package installer to CRAN
-    - the command line to install Anaconda packages is pretty good
-    - but outside of Anaconda, pip and PyPI is horrible in comparison to CRAN 
-        - R is far more user friendly than Python
-- the ability to save a document immediately that is statically viewable
-    - again, you can do this from the command line with Jupyter notebooks
-        - but Rstudio again is more user friendly
-- literate programming through interspersed markdown and R
-    - once again, you have markdown cells and code cells in Jupyter, but it's not seemless
-        - it makes code documentation very easy
-        - to me, it feels more natural to be typing inline code and then inline comments
-            - it's a little jarring in Jupyter to switch between markdown and code cells
-- help viewer
-    - you can do help() and dir() anywhere in a Python cell, but the hyperlink
-      viewer is nicer in Rstudio
+In *RStudio*, interactive documents or notebooks are done in Markdown.
 
-# R, RStudio, CRAN #
+Markdown is a simplified "markup" language (hence the name Markdown), for
+writing all sorts of documents: e.g., Github READMEs. It has been adopted
+for all sorts of formats, including writing web pages, documentation and code.
 
-They are the products of a great open source community that is really connected.
-  
-Let's visualize some data...
+In RStudio, a "cell" (chunk) is free-form, as it is started and ended with three backticks:
 
-First, we need to load dplyr.
+\`\`\`{r}
 
-```{r dplyr, echo=FALSE}
-require(dplyr)
-```
+`2 + 2`
 
-dplyr is that DSL (similar to LINQ) that I was talking about 
-for relational data. We'll use it to load our can as we did
-before, and I'll show how it works to compose queries
-on your data sets.
+\`\`\`
 
-Let's load the can again.
+Then, that chunk can be executed in the IDE. Combined with *knitr*, you are able
+to directly create HTML, PDF, and Word documents of your code, plots, and 
+documentation: Just like this web page was created with RMarkdown.
 
-```{r load-can}
-db <- src_sqlite("can.db")
-t <- tbl(db, "can")
-```
+---
 
-t is our table with the data.
+# Data Frames and R
 
-```{r show-table}
+- Fundamental support for data frames
+- It also has support for databases and SQL, as well
+    - DBI interface for databases
+        - SQLite, PostgreSQL, etc.
+    - Load tables using queries directly as data frames
+- I won't spend much time showing data frames in R, as they are more or less the same as Python (Pandas)
+- Rather, I'll show *dplyr*, a library/grammar for manipulating tables (relational data)
+
+---
+
+# CSV to Data Frame
+
+We can directly load our cars CSV as a data frame:
+
+```{r}
+# read the data as a data frame
+t <- read.csv("mtcars.csv") # assignment in R is <-
 t
 ```
 
-Now, we can start selecting data from our table.
+---
 
-Note, that t is not actually loaded into memory, but it is a reference to our SQLite database. This is a difference from data frames, where a typical data frame (both in R and Python) are in memory. dplyr is "lazily evaluated" and only fetches data from disk when you either display it or `collect()` it.
+# Data Frame Selection
 
-The way we select data with dplyr is through functional combinators aka pipelines aka data flow graphs.
+Just to show you that it's similar to Pandas, with slightly different syntax:
 
-```{r select-data-1}
-t %>% filter(Points_2 > -6) %>% filter(Points_2 < -4)
+```{r}
+# select rows 5-10, columns mpg and cyl
+t[5:10, c('mpg','cyl')]
 ```
 
-The "%>%" symbol is pipe, you can think of it the same as a Unix pipe, "|".
-It is piping the data from the previous command, to the next.
+---
 
-What this small little program fragment says is:
+# Selecting Columns with *dplyr*
 
-- load table t
-- filter the previous step where Points_2 > -6
-- filter the previous step where Points_2 < -4
-- (display the data)
+First, we need to load dplyr.
 
-We've selected the points that are between -6 < z < -4.
+```{r}
+library(dplyr)
+```
 
-The interesting thing is that our little functional program is
-being transformed into SQL code, and that it is streaming/being executed
-on disk. The data is never loaded into memory unless you force it
-to (with collect()).
+The way we select data with *dplyr* is through operator chaining, aka combinators, aka pipelines, aka data flow graphs.
 
-Let's plot the data to show you that they really are the same as before. 
-We'll use ggplot2.
+`%>%` is the pipe operator, like `|` in Unix, and the operator is *select* for picking columns:
 
-```{r load-ggplot}
-require(ggplot2)
-
+```{r}
 t %>% 
-  filter(Points_2 > -6) %>% 
-  filter(Points_2 < -4) %>% 
-  collect() %>% 
-  ggplot(aes(Points_0, Points_2, colour=Points_1)) + 
-  geom_point()
+  select(name, mpg, cyl)
 ```
 
-Here, we've added an additional pipe to our data to transform
-it into graphics, where "+" is the pipe operator for ggplot2
-functions.
+If we were to write this in *bash*, it would look something like:
 
-What this little program says now is:
+```bash
+cat mtcars.csv | awk -F',' '{ print $2, $3 }'
+```
 
-- load table t
-- filter the previous step where Points_2 > -6
-- filter the previous step where Points_2 < -4
-- collect the previous step into memory
-- transform the previous step into an x-y plot
-- apply point primitives to the x-y plot
-- (display the data)
+By the way, a lot of what we have done with *Python* and *R* could be done with *bash* and *gnuplot*. That's just to say what is old isn't broken, and it can work just fine in many cases: <https://adamdrake.com/command-line-tools-can-be-235x-faster-than-your-hadoop-cluster.html>
 
-# Relationship between data flow, relational stores, functional combinators, and data parallelism #
+---
 
-The "gg" in ggplot stands for the grammar of graphics. It
-is a functional combinator way of describing graphics, as well,
-such that you pipe graphics primitives to transformers until
-you get the final output.
+# Filter (Where)
 
-You can think of the entire pipeline from data to picture is:
+In *SQL*, the `WHERE` clause allows us to pick rows, and in *dplyr* it is the `filter` operator:
 
-`data => data transformers => graphics transformers => picture`
-
-where dplyr is our set of data transformers, and ggplot2
-is our set of graphics transformers.
-
-Graphics and visualization treats data in a data parallel way,
-such that data flows through a program and is transformed
-along the way. Examples of where the graph is explicit can
-be found in data flow programming tools, such as LabView,
-Simulink, Pure Data, Max/MSP, ParaView, VTK, etc. Generally,
-"state" or "values" in a graphics pipeline is immutable, and it
-is transformed along the way. 
-
-This is evident in how the graphics pipeline is taught, how
-ParaView and VTK represent the program as a directed acyclic
-graph (DAG), how OpenGL represents transforms on graphics
-primitives, how Cuda and GPUs treat data as vectors, etc.
-Hopefully, you can see also there is a relationship between
-functional programming and the relational data model as well.
-
-Let's do one more example.
-
-```{r one-more}
+```{r}
+# only show 3 gear cars, with their mpg and cyl
 t %>% 
-  mutate(vel = VEL_0*VEL_0+VEL_1*VEL_1+VEL_2*VEL_2) %>%
-  filter(vel > 1e7) %>%
-  mutate(disp = floor((abs(DISPL_0)+abs(DISPL_1)+abs(DISPL_2)))) %>%
-  select(vel, disp) %>%
-  group_by(disp) %>% 
-  summarize(avel = mean(vel)) %>%
-  collect() %>%
-  ggplot(aes(disp, avel)) + geom_bar(stat="identity")
+  filter(gear == 3) %>%
+  select(name, mpg, cyl)
 ```
 
-A summary of what I did:
+And we can combine them further:
 
-- load t
-- add a column that is velocity squared
-- filter where velocity squared is > 1e7
-- add a column that discretizes displacement into integers
-- select only the two new columns
-- group by displacement
-- get the average velocity per displacement group
-- collect the data
-- create a ggplot
-- map to bars
-- (display data)
+```{r}
+# same query as before, but only keep greater than 200 hp
+t %>%
+  filter(gear == 3) %>%
+  filter(hp > 200) %>%
+  select(name, mpg, cyl)
+```
 
-Let's go on and show one more feature of R and its graphics
-ecosystem, Shiny. The following code is taken from the Shiny
-example web page, but applied to our can data. Again, Shiny
-is similar to Bokeh. Plotly and Tableau are commercial 
-solutions similar to these to deploy web visualizations 
-(though plotly itself is open source technology).
+We can add `or` in a filter, too:
 
+```{r}
+# same query as before, 3 or 4 gears
+t %>%
+  filter(gear == 3 || gear == 4) %>%
+  filter(hp > 200) %>%
+  select(name, mpg, cyl)
+```
 
-```{r shiny-example}
-require(shiny)
+---
 
-s <- t %>% filter(Points_2 > -6) %>% filter(Points_2 < -4) %>% collect()
+# Note for Databases and *dplyr*
 
-ui <- fluidPage(
-  # Some custom CSS for a smaller font for preformatted text
-  tags$head(
-    tags$style(HTML("
-      pre, table.table {
-        font-size: smaller;
-      }
-    "))
+If *t* was a table that was in a database, it wouldn't be loaded into *R*'s memory.
+
+In *dplyr*, a table from a database it is a "reference" to the table, and commands are only executed when *R* needs it.
+
+This is "lazy evaluation," or "demand driven," a feature of both *Haskell*, *Spark*, *Dask*, and other languages. In the case of *dplyr*, when *t* is a database table, it execute queries only when you either display *t*, `collect()` it, or send it to a plot.
+
+---
+
+# Group By and Summaries
+
+Grouping, like in *SQL*, is useful for summarizing functions, like min, max, or average:
+
+```{r}
+# what's the average hp for each cylinder size?
+t %>%
+  group_by(cyl) %>%
+  summarize(mean_hp = mean(hp))
+```
+
+---
+
+# Sorting
+
+And sorting, or the *ORDER BY* in *SQL*, is done by `arrange`:
+
+```{r}
+# get cars with displacement < 100, and order by horsepower
+t %>%
+  filter(disp < 100) %>%
+  select(name, hp, mpg) %>%
+  arrange(hp)
+```
+
+---
+
+# Plotting with ggplot2
+
+Now that we know how to manipulate our data, we can plot it. We'll use *ggplot2*, where `gg` stands for the "grammar of graphics", first described by Leland Wilkinson and extended by Hadley Wickham. (Hadley wrote many of the other popular, useable libraries, like *dplyr*, and what comprises the *tidyverse* in *R*).
+
+*ggplot2* seamlessly integrates with *dplyr* by piping the output directly into the *ggplot* function:
+
+```{r}
+library(ggplot2)
+
+# plot 3 gear cars, mpg vs. hp
+t %>%
+  filter(gear == 3) %>%
+  select(mpg, hp) %>%
+  ggplot(.) + # start a plot, . is placeholder for the incoming data
+  aes(x=mpg, y=hp) + # aes, is "aesthetics" -- how to map data to geometry
+  geom_point() # the plot geometry
+```
+
+---
+
+# Shiny
+
+*Shiny* is like *Bokeh* for Python, as it is a way to generate interactive plots for R.
+
+```{r}
+library(shiny)
+
+# the front end, the UI
+ui <- basicPage(
+  plotOutput("plot1",
+    hover = "plot_hover",
+    brush = "plot_brush"
   ),
-
-  fluidRow(
-    column(width = 4, wellPanel(
-      radioButtons("plot_type", "Plot type",
-        c("base", "ggplot2")
-      )
-    )),
-    column(width = 4,
-      # In a plotOutput, passing values for click, dblclick, hover, or brush
-      # will enable those interactions.
-      plotOutput("plot1", height = 350,
-        # Equivalent to: click = clickOpts(id = "plot_click")
-        click = "plot_click",
-        dblclick = dblclickOpts(
-          id = "plot_dblclick"
-        ),
-        hover = hoverOpts(
-          id = "plot_hover"
-        ),
-        brush = brushOpts(
-          id = "plot_brush"
-        )
-      )
-    )
-  ),
-  fluidRow(
-    column(width = 3,
-      verbatimTextOutput("click_info")
-    ),
-    column(width = 3,
-      verbatimTextOutput("dblclick_info")
-    ),
-    column(width = 3,
-      verbatimTextOutput("hover_info")
-    ),
-    column(width = 3,
-      verbatimTextOutput("brush_info")
-    )
-  )
+  verbatimTextOutput("info")
 )
 
-
+# the back end, data processing
 server <- function(input, output) {
+  # the plot
   output$plot1 <- renderPlot({
-    if (input$plot_type == "base") {
-      plot(s$Points_0, s$Points_2)
-    } else if (input$plot_type == "ggplot2") {
-      ggplot(s, aes(Points_0, Points_2)) + geom_point()
+  # this is our plot that we had before
+  t %>%
+    filter(gear == 3) %>%
+    select(mpg, hp) %>%
+    ggplot(.) + 
+    aes(x=mpg, y=hp) + 
+    geom_point() 
+  })
+
+  # generating the tooltip text based on the UI
+  output$info <- renderText({
+    xy_str <- function(e) {
+      if(is.null(e)) return("NULL\n")
+      paste0("x=", round(e$x, 1), " y=", round(e$y, 1), "\n")
     }
-  })
+    xy_range_str <- function(e) {
+      if(is.null(e)) return("NULL\n")
+      paste0("xmin=", round(e$xmin, 1), " xmax=", round(e$xmax, 1), 
+             " ymin=", round(e$ymin, 1), " ymax=", round(e$ymax, 1))
+    }
 
-  output$click_info <- renderPrint({
-    cat("input$plot_click:\n")
-    str(input$plot_click)
+    paste0(
+      "hover: ", xy_str(input$plot_hover),
+      "brush: ", xy_range_str(input$plot_brush)
+    )
   })
-  output$hover_info <- renderPrint({
-    cat("input$plot_hover:\n")
-    str(input$plot_hover)
-  })
-  output$dblclick_info <- renderPrint({
-    cat("input$plot_dblclick:\n")
-    str(input$plot_dblclick)
-  })
-  output$brush_info <- renderPrint({
-    cat("input$plot_brush:\n")
-    str(input$plot_brush)
-  })
-
 }
-
 
 shinyApp(ui, server)
 ```
@@ -323,3 +260,6 @@ the data set, which is done at the SQL/file layer, while
 the additional graphics transformations are done while computing.
 
 Let's head back to the Jupyter notebook to finish up the slides.
+
+
+

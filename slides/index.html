@@ -216,11 +216,38 @@ https://jonwoodring.github.io/ucsc-2019-03-05/slides/index.html
 https://github.com/jonwoodring/ucsc-2019-03-05
 <!-- END SLIDE --></section></section>
 
-<!-- END VERTICAL --></section>
+<!-- START SLIDE --><section data-markdown><section data-template>
+# TODO
+
+# Relationship between data flow, relational stores, functional combinators, and data parallelism #
+
+You can think of the entire pipeline from data to picture is:
+
+`data => data transformers => graphics transformers => picture`
+
+where dplyr is our set of data transformers, and ggplot2
+is our set of graphics transformers.
+
+Graphics and visualization treats data in a data parallel way,
+such that data flows through a program and is transformed
+along the way. Examples of where the graph is explicit can
+be found in data flow programming tools, such as LabView,
+Simulink, Pure Data, Max/MSP, ParaView, VTK, etc. Generally,
+"state" or "values" in a graphics pipeline is immutable, and it
+is transformed along the way. 
+
+This is evident in how the graphics pipeline is taught, how
+ParaView and VTK represent the program as a directed acyclic
+graph (DAG), how OpenGL represents transforms on graphics
+primitives, how Cuda and GPUs treat data as vectors, etc.
+Hopefully, you can see also there is a relationship between
+functional programming and the relational data model as well.
+<!-- END SLIDE --></section></section>
 
 <!-- START SLIDE --><section data-markdown><section data-template>
 <!-- END SLIDE --></section></section>
 
+<!-- END VERTICAL --></section>
 <!-- END OF SLIDES --></div></div>
 <script src="lib/js/head.min.js"></script>
 <script src="js/reveal.js"></script>

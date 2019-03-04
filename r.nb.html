@@ -1699,295 +1699,308 @@ $(document).ready(function () {
 
 
 <!-- rnb-text-begin -->
-<!-- rnb-text-end -->
-<!-- rnb-text-begin -->
-<div id="r-markdown" class="section level2">
-<h2>R Markdown</h2>
-<p>This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <a href="http://rmarkdown.rstudio.com" class="uri">http://rmarkdown.rstudio.com</a>.</p>
-<p>When you click the <strong>Knit</strong> button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3VtbWFyeShjYXJzKVxuYGBgIn0= -->
-<pre class="r"><code>summary(cars)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-</div>
-<div id="including-plots" class="section level2">
-<h2>Including Plots</h2>
-<p>You can also embed plots, for example:</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<p>Note that the <code>echo = FALSE</code> parameter was added to the code chunk to prevent printing of the R code that generated the plot.</p>
-<p>===</p>
-</div>
-<div id="start-of-class-notes" class="section level1">
-<h1>Start of class notes</h1>
-<p>I left the previous section in just to give you the sample of what the initial R markdown document is.</p>
-</div>
 <div id="r" class="section level1">
 <h1>R</h1>
-<p>R is a functional language primarily used for statistics. It is most similar to SAS and Tableau.</p>
 <ul>
-<li>This is the focal point for the statistics community in sharing code
+<li>Statistics-focused functional language
 <ul>
-<li>Most advanced statistics algorithms are implemented in R</li>
+<li>It looks more like JavaScript than Python</li>
+<li>“Data scientists” will frequently swap between R and Python</li>
 </ul></li>
-<li>They community has a good open source repository
+<li>CRAN - open source repository for algorithms and libraries
 <ul>
-<li>CRAN - the R interpreter is automatically integrated with CRAN</li>
+<li>The focal point for the statistics community in sharing code</li>
+<li>Many advanced statistics algorithms are implemented in R</li>
+<li>Good library support like <em>ggplot2</em> and <em>dplyr</em></li>
 </ul></li>
-<li>RStudio provides steroids for R with
+<li>RStudio, an IDE for <em>R</em>
 <ul>
-<li>Interactive editing and debugging environment</li>
 <li>Automatic integration with CRAN</li>
 <li>Hyperlink help browser</li>
-<li>Plot viewer integration</li>
-<li>RMarkdown support (like Jupyter)</li>
-<li>Shiny support (like Bokeh)</li>
+<li>Plot viewer and saved state integration</li>
+<li>RMarkdown support, similar to Jupyter Notebooks</li>
+<li>Shiny support, similar to Bokeh</li>
 </ul></li>
+<li>R + RStudio + CRAN is an example of a good software stack from an active, open-source community</li>
 </ul>
+<hr />
 </div>
-<div id="rstudio" class="section level1">
-<h1>RStudio</h1>
-<p>I really like RStudio/R markdown/knitr and there are features that I really wish I had in Jupyter. For example:</p>
+<div id="r-markdown" class="section level1">
+<h1>R Markdown</h1>
+<p>In <em>RStudio</em>, interactive documents or notebooks are done in Markdown.</p>
+<p>Markdown is a simplified “markup” language (hence the name Markdown), for writing all sorts of documents: e.g., Github READMEs. It has been adopted for all sorts of formats, including writing web pages, documentation and code.</p>
+<p>In RStudio, a “cell” (chunk) is free-form, as it is started and ended with three backticks:</p>
+<p>```{r}</p>
+<p><code>2 + 2</code></p>
+<p>```</p>
+<p>Then, that chunk can be executed in the IDE. Combined with <em>knitr</em>, you are able to directly create HTML, PDF, and Word documents of your code, plots, and documentation: Just like this web page was created with RMarkdown.</p>
+<hr />
+</div>
+<div id="data-frames-and-r" class="section level1">
+<h1>Data Frames and R</h1>
 <ul>
-<li>the package installer to CRAN
+<li>Fundamental support for data frames</li>
+<li>It also has support for databases and SQL, as well
 <ul>
-<li>the command line to install Anaconda packages is pretty good</li>
-<li>but outside of Anaconda, pip and PyPI is horrible in comparison to CRAN
+<li>DBI interface for databases
 <ul>
-<li>R is far more user friendly than Python</li>
+<li>SQLite, PostgreSQL, etc.</li>
 </ul></li>
+<li>Load tables using queries directly as data frames</li>
 </ul></li>
-<li>the ability to save a document immediately that is statically viewable
-<ul>
-<li>again, you can do this from the command line with Jupyter notebooks
-<ul>
-<li>but Rstudio again is more user friendly</li>
-</ul></li>
-</ul></li>
-<li>literate programming through interspersed markdown and R
-<ul>
-<li>once again, you have markdown cells and code cells in Jupyter, but it’s not seemless
-<ul>
-<li>it makes code documentation very easy</li>
-<li>to me, it feels more natural to be typing inline code and then inline comments
-<ul>
-<li>it’s a little jarring in Jupyter to switch between markdown and code cells</li>
-</ul></li>
-</ul></li>
-</ul></li>
-<li>help viewer
-<ul>
-<li>you can do help() and dir() anywhere in a Python cell, but the hyperlink viewer is nicer in Rstudio</li>
-</ul></li>
+<li>I won’t spend much time showing data frames in R, as they are more or less the same as Python (Pandas)</li>
+<li>Rather, I’ll show <em>dplyr</em>, a library/grammar for manipulating tables (relational data)</li>
 </ul>
+<hr />
 </div>
-<div id="r-rstudio-cran" class="section level1">
-<h1>R, RStudio, CRAN</h1>
-<p>They are the products of a great open source community that is really connected.</p>
-<p>Let’s visualize some data…</p>
+<div id="csv-to-data-frame" class="section level1">
+<h1>CSV to Data Frame</h1>
+<p>We can directly load our cars CSV as a data frame:</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbImRhdGEuZnJhbWUiXSwibmNvbCI6MTIsIm5yb3ciOjMyfSwicmRmIjoiSDRzSUFBQUFBQUFBQTQxWFRXd2JSUlJlcnpkTzdOaU8yelJBK1VubndLRWduUGd2SVFYYWJPczBGSlNJTmtGcEJLVm9ZbStUVlRjN3p1dzZiWm9pOWRKenhRV3BpRnM1b2lJQmh4d1JsVGhSQ1U2NUlYcnBoU0lob1NCQUl2QjI1NzJOczAwcEkzMTVNMi9ldlBlOU43UGp5Y3pFZkNVem45RTBUZGVTWFFsTlQwTFgwT0ZQUWpPMGRDQXZhMXF5SHpwWmtEbVFETEFmRU9pNkFJRXVEemdFNkFZTUFBNEFuZ0E4Q1hnS2NCRHdkQmhFMC9xQ0NJQzA4cWs5QnhnRXBNS2dFQVR3RENBZzlTeWdBT2dGOUFEMnFmaTdDS1ljYTlWeVBMUmtxTzA5UGwxbmIzS1lzVjFVN2EvenB1MDR2TUVtSGN2eUx3blJ4SmxNblM5ektkZzdsVEhVN0tzdnlUWFBzU1I3WTdsbFNaczdaRHJCZmEvdHNwZkxKZFFVSmtSejBXTDFKZTQ0bHJ0b3ljaXk3Zm5nb0RwS2x0bEpTMG91YlRaaHV3SjFQWk0yOTFrNUNwd094L1BsNGhGVTVDZUZiTExUM0FWZm5FMVJlcWVFMitTc2JxL2FEVEk4SmFScithekdKcVM5YWxFaXFKMXRDZW56QmRIMmNhSi95bllid25GWlhiaSs3VnF1SCtXWW5SSisyMk1uMjFLME9PcHkwOXdEQXI3TlRnaEp5dlEwdndJc1p1WnJPMWFvWUdmNUlxVTRiY2tHcTFSTDBhcHdYQ3RON0RZWWl4bU1sZXBVeWxCUkd5bk5ubnhJRTFWa1IwUExDcWVEMUlMOXRxVzFZRXZhN3R4cEliM0drc1dPbEd2RkNwWHZiYkVtZkNpcGtBSU9DWmwyYUYxU2RzOXh4NFlOSVM1endsa1ZyRnlybkl3ZHphNkd3ejA2bWRGNXZjQWJ2cERRMjhZdmg1a2pXdGdpT2ZwZDBPNmFJeGZDWmxhK3JBYk5yQnk4Q2Uxajg2V2JTbzdoUE5sWFZUUExPQzdoZkhsS2pZZHcvRHpPa3l5aUhoMll4Mmo4bXhxUFhGTzhocEVmK1hrUmVWRGNWekhPSzJoSGZvYkpEdk1Zb256VlBONGlERytCRk40UUtmenFTUm9kZXRMdEJTT0cvNXFQKzFmNzBVUitKTjlGMldKS3JtSTluTmg0WVU3bHl6SGZKdGFQNU1wcnFqNXgrUUd1di9xMWt1czRudjFNemM4OFVQTE10OHIvK1pTUzNrL0t6a04rYlJ5djRYZ1cvWjN2Vi9IUDR2cjJyOGdYK2N2djBjN1VzTkYrdUlqM1VINE9zQUZiZ0dPQTl3SHJpSzg2Y0Jld0NiZ1BPQUdvQVk0RE9PQWp4QmI2QythRENxL0FSOUtqZEltM1FDNUgrOUdINTR0a0hzOXR6NjNOek5IV3AyWWE5YWtEVis2OWZ2dUFtYjRkZHN6YzljR05NejlmTi92T0hkNzY1c2E1aDJUUGpiRHprT3h1Qlk1WHpCNnNZem9JYzJ2VExJQ3p3WTBaczM4ajdKaUZJTnFWZTJZTzl6dUtqM3h5dUk1NDB2cDl1RDRmMG5naDhwTU5ob2QvTjdOb1YxQThvam9ZT04rTnZIVGttMFovdlpodkwrYWZwWG5VRTYvSURtVWhESDhxNHBzL0dnWTJCekRPd0JmRi9KeHgwQnpnaW1kQzVUditwN0lmL3h2cm1VUWVXY3lyTnl6SHVwbW5mQVA2VzNmR3R6R1BSQmorMFBnZkkrTlhmL2x3eVV5am54U3VKLzRweFNlcVE2bXQxcGU3RlAvS0oycGRGZmVOOUxVeEZYY1k2MUhEZkVidjQ3Mks5MVVGeDJXNkwzRS9LMmhmL2t2bFVmNUI3VXY1WWxDNEIyYjFzdkpmd1RwVzBVOHQzSmc3WnVuSE1MK2QrNWZXWjNmSExlRzlXTUp4RWVQU2ZWdkVmYXNvWGgzZko3VUVRb3ZKUkd4dXIvWTR1N2pmVGozeCtEOXhIdGNlNXlQT3N4UEVvL051VDhZUS8xMkl6KzlsOTZqNXJqMWc3TUdEK09rb0RlenJqNGhoeE5icU1SOTZoNCs0am43SDlQZ3p4T1hMRmoxRHNxZzBBaVgyazhzdGVxd2xHMnYwRERTYXR0ZkN2cjdVaXJUd0NpVHRKZW9aSzU1RkQxRjkxYU1lWDZiNVJZdlR3OWhvY0xrUW81aVc0dElRMFF4cXFGOVRlODZVWWZJZmJmY3JLdFBrUGgrNklJTWt3cGZVTG5mZG91WGJ3Z1ZuT3YyYjByazRJV09LdnJZYkJHOFdHMHR0OTJJeCtPd3oyczVCekdHZmRmU3pLcVJCeExyb2VRZi9BOEJ6bWtydjhBV0xDcHFISk1NY2gxclMzbmsrZ3RZYjhzWE8renNENzNMU3FGZmk5citUOUU3cXFBMEFBQT09In0= -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["name"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["mpg"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["cyl"],"name":[3],"type":["int"],"align":["right"]},{"label":["disp"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["hp"],"name":[5],"type":["int"],"align":["right"]},{"label":["drat"],"name":[6],"type":["dbl"],"align":["right"]},{"label":["wt"],"name":[7],"type":["dbl"],"align":["right"]},{"label":["qsec"],"name":[8],"type":["dbl"],"align":["right"]},{"label":["vs"],"name":[9],"type":["int"],"align":["right"]},{"label":["am"],"name":[10],"type":["int"],"align":["right"]},{"label":["gear"],"name":[11],"type":["int"],"align":["right"]},{"label":["carb"],"name":[12],"type":["int"],"align":["right"]}],"data":[{"1":"Mazda RX4","2":"21.0","3":"6","4":"160.0","5":"110","6":"3.90","7":"2.620","8":"16.46","9":"0","10":"1","11":"4","12":"4"},{"1":"Mazda RX4 Wag","2":"21.0","3":"6","4":"160.0","5":"110","6":"3.90","7":"2.875","8":"17.02","9":"0","10":"1","11":"4","12":"4"},{"1":"Datsun 710","2":"22.8","3":"4","4":"108.0","5":"93","6":"3.85","7":"2.320","8":"18.61","9":"1","10":"1","11":"4","12":"1"},{"1":"Hornet 4 Drive","2":"21.4","3":"6","4":"258.0","5":"110","6":"3.08","7":"3.215","8":"19.44","9":"1","10":"0","11":"3","12":"1"},{"1":"Hornet Sportabout","2":"18.7","3":"8","4":"360.0","5":"175","6":"3.15","7":"3.440","8":"17.02","9":"0","10":"0","11":"3","12":"2"},{"1":"Valiant","2":"18.1","3":"6","4":"225.0","5":"105","6":"2.76","7":"3.460","8":"20.22","9":"1","10":"0","11":"3","12":"1"},{"1":"Duster 360","2":"14.3","3":"8","4":"360.0","5":"245","6":"3.21","7":"3.570","8":"15.84","9":"0","10":"0","11":"3","12":"4"},{"1":"Merc 240D","2":"24.4","3":"4","4":"146.7","5":"62","6":"3.69","7":"3.190","8":"20.00","9":"1","10":"0","11":"4","12":"2"},{"1":"Merc 230","2":"22.8","3":"4","4":"140.8","5":"95","6":"3.92","7":"3.150","8":"22.90","9":"1","10":"0","11":"4","12":"2"},{"1":"Merc 280","2":"19.2","3":"6","4":"167.6","5":"123","6":"3.92","7":"3.440","8":"18.30","9":"1","10":"0","11":"4","12":"4"},{"1":"Merc 280C","2":"17.8","3":"6","4":"167.6","5":"123","6":"3.92","7":"3.440","8":"18.90","9":"1","10":"0","11":"4","12":"4"},{"1":"Merc 450SE","2":"16.4","3":"8","4":"275.8","5":"180","6":"3.07","7":"4.070","8":"17.40","9":"0","10":"0","11":"3","12":"3"},{"1":"Merc 450SL","2":"17.3","3":"8","4":"275.8","5":"180","6":"3.07","7":"3.730","8":"17.60","9":"0","10":"0","11":"3","12":"3"},{"1":"Merc 450SLC","2":"15.2","3":"8","4":"275.8","5":"180","6":"3.07","7":"3.780","8":"18.00","9":"0","10":"0","11":"3","12":"3"},{"1":"Cadillac Fleetwood","2":"10.4","3":"8","4":"472.0","5":"205","6":"2.93","7":"5.250","8":"17.98","9":"0","10":"0","11":"3","12":"4"},{"1":"Lincoln Continental","2":"10.4","3":"8","4":"460.0","5":"215","6":"3.00","7":"5.424","8":"17.82","9":"0","10":"0","11":"3","12":"4"},{"1":"Chrysler Imperial","2":"14.7","3":"8","4":"440.0","5":"230","6":"3.23","7":"5.345","8":"17.42","9":"0","10":"0","11":"3","12":"4"},{"1":"Fiat 128","2":"32.4","3":"4","4":"78.7","5":"66","6":"4.08","7":"2.200","8":"19.47","9":"1","10":"1","11":"4","12":"1"},{"1":"Honda Civic","2":"30.4","3":"4","4":"75.7","5":"52","6":"4.93","7":"1.615","8":"18.52","9":"1","10":"1","11":"4","12":"2"},{"1":"Toyota Corolla","2":"33.9","3":"4","4":"71.1","5":"65","6":"4.22","7":"1.835","8":"19.90","9":"1","10":"1","11":"4","12":"1"},{"1":"Toyota Corona","2":"21.5","3":"4","4":"120.1","5":"97","6":"3.70","7":"2.465","8":"20.01","9":"1","10":"0","11":"3","12":"1"},{"1":"Dodge Challenger","2":"15.5","3":"8","4":"318.0","5":"150","6":"2.76","7":"3.520","8":"16.87","9":"0","10":"0","11":"3","12":"2"},{"1":"AMC Javelin","2":"15.2","3":"8","4":"304.0","5":"150","6":"3.15","7":"3.435","8":"17.30","9":"0","10":"0","11":"3","12":"2"},{"1":"Camaro Z28","2":"13.3","3":"8","4":"350.0","5":"245","6":"3.73","7":"3.840","8":"15.41","9":"0","10":"0","11":"3","12":"4"},{"1":"Pontiac Firebird","2":"19.2","3":"8","4":"400.0","5":"175","6":"3.08","7":"3.845","8":"17.05","9":"0","10":"0","11":"3","12":"2"},{"1":"Fiat X1-9","2":"27.3","3":"4","4":"79.0","5":"66","6":"4.08","7":"1.935","8":"18.90","9":"1","10":"1","11":"4","12":"1"},{"1":"Porsche 914-2","2":"26.0","3":"4","4":"120.3","5":"91","6":"4.43","7":"2.140","8":"16.70","9":"0","10":"1","11":"5","12":"2"},{"1":"Lotus Europa","2":"30.4","3":"4","4":"95.1","5":"113","6":"3.77","7":"1.513","8":"16.90","9":"1","10":"1","11":"5","12":"2"},{"1":"Ford Pantera L","2":"15.8","3":"8","4":"351.0","5":"264","6":"4.22","7":"3.170","8":"14.50","9":"0","10":"1","11":"5","12":"4"},{"1":"Ferrari Dino","2":"19.7","3":"6","4":"145.0","5":"175","6":"3.62","7":"2.770","8":"15.50","9":"0","10":"1","11":"5","12":"6"},{"1":"Maserati Bora","2":"15.0","3":"8","4":"301.0","5":"335","6":"3.54","7":"3.570","8":"14.60","9":"0","10":"1","11":"5","12":"8"},{"1":"Volvo 142E","2":"21.4","3":"4","4":"121.0","5":"109","6":"4.11","7":"2.780","8":"18.60","9":"1","10":"1","11":"4","12":"2"}],"options":{"columns":{"min":{},"max":[10],"total":[12]},"rows":{"min":[10],"max":[10],"total":[32]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<hr />
+</div>
+<div id="data-frame-selection" class="section level1">
+<h1>Data Frame Selection</h1>
+<p>Just to show you that it’s similar to Pandas, with slightly different syntax:</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudFs1OjEwLCBjKCdtcGcnLCdjeWwnKV1cbmBgYCJ9 -->
+<pre class="r"><code>t[5:10, c('mpg','cyl')]</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbImRhdGEuZnJhbWUiXSwibmNvbCI6MiwibnJvdyI6Nn0sInJkZiI6Ikg0c0lBQUFBQUFBQUExMVFTMjdDTUJDZE9CL0FFZ2lKRlhjb1VSdWtxa3N2ZW9LdTJMb2gwQWhqUjRsUjI2UFFhL1FhN1pWb3h6OHA4a2lUTjM2Wk4yL3NsK2RkUlhjVUFBaWtlUUlreFRJaitFa2dnNW5CRDRCMFpSc0FGcGdGcTc2M0psaTF2bUo4c2J1cnc2ZUREZmI0WStLWGJWMmdabTUwbU5NUlpqNkx5RENYL053TVdDeXRxU1BUYzNjTVpmMHBJc21zVis5bGtBV3YzT1BFKzVsR0dudlZnZy9CSzVCMHp6VXZEejNPdzlNdGtreFVwMXNsVVVSVzNtVXNUdnFJV0Y2azJXeS9xZDh1OHJSNXVIZHI0SCtYYzQvRnFDYk9rL3o1V2JtZlZUVHkyTW9tTEMvNGF5UDhZWUZQWUYrZzdQcFc2bkFWWklkU0s4MURINjJWQ0l5OUhOeitBY055K0U0RUFnQUEifQ== -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["mpg"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["cyl"],"name":[2],"type":["int"],"align":["right"]}],"data":[{"1":"18.7","2":"8","_rn_":"5"},{"1":"18.1","2":"6","_rn_":"6"},{"1":"14.3","2":"8","_rn_":"7"},{"1":"24.4","2":"4","_rn_":"8"},{"1":"22.8","2":"4","_rn_":"9"},{"1":"19.2","2":"6","_rn_":"10"}],"options":{"columns":{"min":{},"max":[10],"total":[2]},"rows":{"min":[10],"max":[10],"total":[6]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<hr />
+</div>
+<div id="selecting-columns-with-dplyr" class="section level1">
+<h1>Selecting Columns with <em>dplyr</em></h1>
 <p>First, we need to load dplyr.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<p>dplyr is that DSL (similar to LINQ) that I was talking about for relational data. We’ll use it to load our can as we did before, and I’ll show how it works to compose queries on your data sets.</p>
-<p>Let’s load the can again.</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGIgPC0gc3JjX3NxbGl0ZShcImNhbi5kYlwiKVxudCA8LSB0YmwoZGIsIFwiY2FuXCIpXG5gYGAifQ== -->
-<pre class="r"><code>db &lt;- src_sqlite(&quot;can.db&quot;)
-t &lt;- tbl(db, &quot;can&quot;)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShkcGx5cilcbmBgYCJ9 -->
+<pre class="r"><code>library(dplyr)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<p>t is our table with the data.</p>
+<p>The way we select data with <em>dplyr</em> is through operator chaining, aka combinators, aka pipelines, aka data flow graphs.</p>
+<p><code>%&gt;%</code> is the pipe operator, like <code>|</code> in Unix, and the operator is <em>select</em> for picking columns:</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudFxuYGBgIn0= -->
-<pre class="r"><code>t</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudCAlPiUgXG4gIHNlbGVjdChuYW1lLCBtcGcsIGN5bClcbmBgYCJ9 -->
+<pre class="r"><code>t %&gt;% 
+  select(name, mpg, cyl)</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbImRhdGEuZnJhbWUiXSwibmNvbCI6MywibnJvdyI6MzJ9LCJyZGYiOiJINHNJQUFBQUFBQUFBMzFVMjI0VE1SRGRaSk8wU2U4dHQzTDFBMCtJcExtV0ZDUVUyRFFDbEVoVmkwckVtN3R4RzR1TkhYazNLZVdKM3lpL3dXL0ExL0JlbU4yZFNacUFzSFRXOXBueFhPelpPV3gyeTdsdXpyS3NwR1duRTFiU2htVXFDWitFbGJLeTRmelpzdXd0V0lERVhvR1pBVFlCSVpjR2hOd3E0QkZnQVhBVGNBTndDM0FiY0Fld0RiZ2JPYkdzdGRBRElEUytESGdBZUFqSVJFNGpQOVk5UUJqVWZjQTZZQW13Q05pSS9jOEVtUEhFV0hnK2FqSmtsMTUxSFBhT2cwUXFwRFlkM3BPZXgxM1c4b1FJenJYdW9TVG44QUUzbW4wczE1SFpjUHJtd3ZlRVlXOEhRMkVrOTBpMXlRTi9wTml6VWhHWjlhYnVuUW5tOUxubkNYVW16RVJ6NUFkZ29MSkxtc3N0WVF3M2tqV2wwc2d0dGlRUFdHbmlPQnZ0dTZYOEhoS3JMVzE2N0lBcnNNVlptOUo3bzFXUE0wZU9wVXVLYjdSUkltQlYxalJ5TENnUlpJK0cyZ1Q4Ukk4Q0ZHeTFwWEsxcDVpalZTQ1ZVTUVreCtXMkRrWSsyeDhaUGVUSXJYUzREd0VFa3IzV2hzaHNoMytCS0E2NzFha1dFdXdEUDZNVU84SzRyRndwVGs1RisycXhPYXRRbjFPb0Z4MjZ5b2lvMW9wSCszOHhreHVaTW5Scy9TQk1MWHh2YWNTSk5QVGNLd2ZhK0c1ZnNMMVNOVittNjN1dkwzUUFWNnFOaGlJaDFXdXNJbkxobUhzU0hvUmlPZGJlV0xOU3Ridy9WNXBwMStNK1ZlYWtYays1RzJnRHF5djhjMWlqWmtWak11LytDTWZQUnUwMEdvM3k5MG80R3VYdFN4amZHazh2NDdtT2N0S3Z4S05Sd24wUjVhVjJ2Qy9nL2pIS2FjNGpqd1lhTDJuL0s5N1h2c1p4N1dCOFpPY0p4a0YrWDZDZjU2aEhkblpJRC9Nb1VMNnhITHNJd3k2UXdRNlJ3YitlNXRRMW5yaC9JVFdILzhubjdNOCtuK0lEUWM5bkk1a0tTVnpiZ3lFVnVlMWVlSFBIczBhZkY4aEVtRjh5dmtYcVlQYnZ1Y3JJOVhqQUM2Y21kQkJWeDR5NUJUME1wRlpnTEVtdDkvcmhoSmtqMWtZcWRON0x1LzJSK2dSMUhyZlVSQnhERkZBQ0w1M1dkdXd5UllHbHFXU2hyMEdMb0d2eCtJbWdYckVLU1VZNUZvWkdUbjhKWVAxQ29LYzlKUWU5aHBpNDhxLytBTHpGUVlaOEJnQUEifQ== -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["name"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["mpg"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["cyl"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"Mazda RX4","2":"21.0","3":"6"},{"1":"Mazda RX4 Wag","2":"21.0","3":"6"},{"1":"Datsun 710","2":"22.8","3":"4"},{"1":"Hornet 4 Drive","2":"21.4","3":"6"},{"1":"Hornet Sportabout","2":"18.7","3":"8"},{"1":"Valiant","2":"18.1","3":"6"},{"1":"Duster 360","2":"14.3","3":"8"},{"1":"Merc 240D","2":"24.4","3":"4"},{"1":"Merc 230","2":"22.8","3":"4"},{"1":"Merc 280","2":"19.2","3":"6"},{"1":"Merc 280C","2":"17.8","3":"6"},{"1":"Merc 450SE","2":"16.4","3":"8"},{"1":"Merc 450SL","2":"17.3","3":"8"},{"1":"Merc 450SLC","2":"15.2","3":"8"},{"1":"Cadillac Fleetwood","2":"10.4","3":"8"},{"1":"Lincoln Continental","2":"10.4","3":"8"},{"1":"Chrysler Imperial","2":"14.7","3":"8"},{"1":"Fiat 128","2":"32.4","3":"4"},{"1":"Honda Civic","2":"30.4","3":"4"},{"1":"Toyota Corolla","2":"33.9","3":"4"},{"1":"Toyota Corona","2":"21.5","3":"4"},{"1":"Dodge Challenger","2":"15.5","3":"8"},{"1":"AMC Javelin","2":"15.2","3":"8"},{"1":"Camaro Z28","2":"13.3","3":"8"},{"1":"Pontiac Firebird","2":"19.2","3":"8"},{"1":"Fiat X1-9","2":"27.3","3":"4"},{"1":"Porsche 914-2","2":"26.0","3":"4"},{"1":"Lotus Europa","2":"30.4","3":"4"},{"1":"Ford Pantera L","2":"15.8","3":"8"},{"1":"Ferrari Dino","2":"19.7","3":"6"},{"1":"Maserati Bora","2":"15.0","3":"8"},{"1":"Volvo 142E","2":"21.4","3":"4"}],"options":{"columns":{"min":{},"max":[10],"total":[3]},"rows":{"min":[10],"max":[10],"total":[32]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<p>Now, we can start selecting data from our table.</p>
-<p>Note, that t is not actually loaded into memory, but it is a reference to our SQLite database. This is a difference from data frames, where a typical data frame (both in R and Python) are in memory. dplyr is “lazily evaluated” and only fetches data from disk when you either display it or <code>collect()</code> it.</p>
-<p>The way we select data with dplyr is through functional combinators aka pipelines aka data flow graphs.</p>
+<p>If we were to write this in <em>bash</em>, it would look something like:</p>
+<pre class="bash"><code>cat mtcars.csv | awk -F',' '{ print $2, $3 }'</code></pre>
+<p>By the way, a lot of what we have done with <em>Python</em> and <em>R</em> could be done with <em>bash</em> and <em>gnuplot</em>. That’s just to say what is old isn’t broken, and it can work just fine in many cases: <a href="https://adamdrake.com/command-line-tools-can-be-235x-faster-than-your-hadoop-cluster.html" class="uri">https://adamdrake.com/command-line-tools-can-be-235x-faster-than-your-hadoop-cluster.html</a></p>
+<hr />
+</div>
+<div id="filter-where" class="section level1">
+<h1>Filter (Where)</h1>
+<p>In <em>SQL</em>, the <code>WHERE</code> clause allows us to pick rows, and in <em>dplyr</em> it is the <code>filter</code> operator:</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudCAlPiUgZmlsdGVyKFBvaW50c18yID4gLTYpICU+JSBmaWx0ZXIoUG9pbnRzXzIgPCAtNClcbmBgYCJ9 -->
-<pre class="r"><code>t %&gt;% filter(Points_2 &gt; -6) %&gt;% filter(Points_2 &lt; -4)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<p>The “%&gt;%” symbol is pipe, you can think of it the same as a Unix pipe, “|”. It is piping the data from the previous command, to the next.</p>
-<p>What this small little program fragment says is:</p>
-<ul>
-<li>load table t</li>
-<li>filter the previous step where Points_2 &gt; -6</li>
-<li>filter the previous step where Points_2 &lt; -4</li>
-<li>(display the data)</li>
-</ul>
-<p>We’ve selected the points that are between -6 &lt; z &lt; -4.</p>
-<p>The interesting thing is that our little functional program is being transformed into SQL code, and that it is streaming/being executed on disk. The data is never loaded into memory unless you force it to (with collect()).</p>
-<p>Let’s plot the data to show you that they really are the same as before. We’ll use ggplot2.</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucmVxdWlyZShnZ3Bsb3QyKVxuXG50ICU+JSBcbiAgZmlsdGVyKFBvaW50c18yID4gLTYpICU+JSBcbiAgZmlsdGVyKFBvaW50c18yIDwgLTQpICU+JSBcbiAgY29sbGVjdCgpICU+JSBcbiAgZ2dwbG90KGFlcyhQb2ludHNfMCwgUG9pbnRzXzIsIGNvbG91cj1Qb2ludHNfMSkpICsgXG4gIGdlb21fcG9pbnQoKVxuYGBgIn0= -->
-<pre class="r"><code>require(ggplot2)
-
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBvbmx5IHNob3cgMyBnZWFyLCBtcGcgYW5kIGN5bFxudCAlPiUgXG4gIGZpbHRlcihnZWFyID09IDMpICU+JVxuICBzZWxlY3QobmFtZSwgbXBnLCBjeWwpXG5gYGAifQ== -->
+<pre class="r"><code># only show 3 gear, mpg and cyl
 t %&gt;% 
-  filter(Points_2 &gt; -6) %&gt;% 
-  filter(Points_2 &lt; -4) %&gt;% 
-  collect() %&gt;% 
-  ggplot(aes(Points_0, Points_2, colour=Points_1)) + 
+  filter(gear == 3) %&gt;%
+  select(name, mpg, cyl)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbImRhdGEuZnJhbWUiXSwibmNvbCI6MywibnJvdyI6MTV9LCJyZGYiOiJINHNJQUFBQUFBQUFBM1ZVVVZNVE1SQk9lNjNRQ2hUbFJYUkc4K0NUWTJ2dldoVGVxbGM2NkxRekREalk4UzNjQlpveFRUcTVYQkdmL0J2NE4vd2IrSmZRelYzU3dqSHV6R2FUTDV2TjdtWTNSLzF4VUIvWEVVSmw1RlZMcU96QnRGS0dvWVFxcUdia2Q0UzhMWmpBanJjT3NnRnM1QWJ3QytBVjRDZkEyOEJQTTBPNVRnWDRPZkNEekZoMkhqMHJHSC9BNlp6eUJHYWJ3TmlpRDkrUFF2eUp3QTRURm5vY2twaHhUaUk4NEpUcUN5bGp1MU1QeVpRb2liOEd1eFo1RkU3VVpjS3B3aCtuTTZvWTRVNjFUM1NTQ3Z6T2IxdGtzeS9qYzRyRENlR2Npbk9xRnBwcG9zRkE1NjNUWEJ0UXBZaGl1TStFdE5qcWdCR04vY1hGdFd3OTlwdDdGdGdZU0JYalF5TEFGc0ZERjk2QkZESEJJWnV6eUNrZVNDV294bDNjVjJ4T1hTQVdQWjVKcGNtcFRMWGQyQm95RVVrdWNDaUZab0lLdlloeGJTaDFtdUQ5Vk1rWnNkajZpQ1RnZ0diNGcxUU9ySTNJRC9EaWFOeGRhbGtBZnlIbkxzUVJWUkVPT3UzRnFXemRiZmZ2S3V3V0ZIYmJvVXRsQm5SMzJzZjc5NUJGUnBhSU83WjVhRUl6NzgwVVBXWEtQZmY2b1ZSSk5LRjR6KzgyQTVlK3ovSlNha2lwVkJLS3hLbmVRb1VEVjA0SVovQWd6cGNUeWVjUys5MWd2MUNhMVlpVHhGWG1vbDdQU0tTbGd0bU43WUJHYitjc28xN3d1Mk9vRjJ4ZkFmM3F2YjdLWmR2dSs4TnJvRCs5bGwyL3ZNN1hUall0dnZNVEdlcTlRYmwwK3Erc3ZVNU90Z3NidHNOV2I4bi9jZVUrZGpka1FhYlVoZXhac0dKQU8vZW1NMWNZWG5USkM4ZHJTbDYwbkFuald6bVB4UGhvRkwyL2hXeldZNkpKNjB5WkM3S00zakczSW1lYVNRSEd5dWI3cVJZT2wxUUJhS1RDWEI0M28wa3F2alY5YzRIOWVwQjFxSVNXMzVmOWtzeVZGZWRZMVQwei9BWFFWaTR0bkp4UzExOGJFR1FXWTJ1bTJMS01BRTFhV2k3N3NBNzk2WkM4V203K0FmWUxxMlJzQlFBQSJ9 -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["name"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["mpg"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["cyl"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"Hornet 4 Drive","2":"21.4","3":"6"},{"1":"Hornet Sportabout","2":"18.7","3":"8"},{"1":"Valiant","2":"18.1","3":"6"},{"1":"Duster 360","2":"14.3","3":"8"},{"1":"Merc 450SE","2":"16.4","3":"8"},{"1":"Merc 450SL","2":"17.3","3":"8"},{"1":"Merc 450SLC","2":"15.2","3":"8"},{"1":"Cadillac Fleetwood","2":"10.4","3":"8"},{"1":"Lincoln Continental","2":"10.4","3":"8"},{"1":"Chrysler Imperial","2":"14.7","3":"8"},{"1":"Toyota Corona","2":"21.5","3":"4"},{"1":"Dodge Challenger","2":"15.5","3":"8"},{"1":"AMC Javelin","2":"15.2","3":"8"},{"1":"Camaro Z28","2":"13.3","3":"8"},{"1":"Pontiac Firebird","2":"19.2","3":"8"}],"options":{"columns":{"min":{},"max":[10],"total":[3]},"rows":{"min":[10],"max":[10],"total":[15]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>And we can combine them further:</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBvbmx5IHNob3cgMyBnZWFyLCBncmVhdGVyIHRoYW4gMjAwIGhwXG50ICU+JVxuICBmaWx0ZXIoZ2VhciA9PSAzKSAlPiVcbiAgZmlsdGVyKGhwID4gMjAwKSAlPiVcbiAgc2VsZWN0KG5hbWUsIG1wZywgY3lsKVxuYGBgIn0= -->
+<pre class="r"><code># only show 3 gear, greater than 200 hp
+t %&gt;%
+  filter(gear == 3) %&gt;%
+  filter(hp &gt; 200) %&gt;%
+  select(name, mpg, cyl)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbImRhdGEuZnJhbWUiXSwibmNvbCI6MywibnJvdyI6NX0sInJkZiI6Ikg0c0lBQUFBQUFBQUEyVlV6VzRhTVJCZVdMWUpOQ1MwdklBUFBWVUY4Yk5wazF2YUJaUldJRVZKbGFMZWhsMG5XRFVlNVBXU3BxZStSdnRNN1N1bHRSZDdDY1NTOGV3MzM4eDRmc3psWU5xclRXdWU1NVU5UHloNVpWK0xsYkwrS1hrVnIyck83NTduTjdXZ05YNWRuNEhlZTdtQjV4MFo5bHEzWmZTTTB4WGxxWllhZWhPTFBuOC9pY2duMEJvbUxQUXlnb1J4RGpFWmNVclZIV0ppTmJVSUZpQ1JmTzJkV09SRk5KZjNLYWVTZkZ3c3FXVEFIWFVBS3MwRWVkZnRXS1F4d09TV2ttZ09uRk54UzJYQnpGS2xIZlRmT3ViQmlFb0prcEVCRTJpeC9SRURSYnBGNEdyK1BlMjJUaTF3T0VLWmtBc1EyaGVRc1V2dkhFVUNKR0lyRmp2aU9VcEJGUW5KUUxJVmRZbFk5R3FKVXNFTU0yVVZ6VEVUTVhKQkloU0tDU3BVa2VQQkdGV1drbUVtY1FrV3EwOGcxUmRRakh4QTZjRHFCSDdvVzF4T3d3M0xBdVFMM0xvVUoxVEdwTmZ2RkZiNWQ5Z1piQk5PZGdnbm5jaVZNZ2ZDNDg3VjhBbFNWR1NET0xQR2hVbk45SnRKT21QU3RidCtnVEtONTVTY2RzTld6NVh2TTk2ajBpVkZpWHBJSFBVUktoeTRkdzJjNllhNHUxd2pYeUhwaHIzaHptZ0dNWWZVVFdZeHJ6Y1FLNVJhZWpCaERlM3N6Uyt6ZnArOSttUFczK0pzM2VUcjdQVmFieTVrWDhYKzA3MGRXc0NDdXRDK0JTc0d0TEsvV0xvRytmRTkzekd2U3J4ck94Y21adm1ubDY5Z1RmVC83V1JWUzBCQiswYWFBSGxtVys3MmNLa1lDdTJzM0xRSlBEWXV5UjNnS0JNbWVOS0s1NW40MXVxYkFMbDZ2ZXBXRGg3SjltK2g0aTRXdUhMck42bkgyNVdGdzR5Nk9UL1VTZVk1dHBlU2JkcXAwYlN0Y1BNZWF2cWRPR1RkdFlmL1ozanBmY3dFQUFBPSJ9 -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["name"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["mpg"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["cyl"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"Duster 360","2":"14.3","3":"8"},{"1":"Cadillac Fleetwood","2":"10.4","3":"8"},{"1":"Lincoln Continental","2":"10.4","3":"8"},{"1":"Chrysler Imperial","2":"14.7","3":"8"},{"1":"Camaro Z28","2":"13.3","3":"8"}],"options":{"columns":{"min":{},"max":[10],"total":[3]},"rows":{"min":[10],"max":[10],"total":[5]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>We can add <code>or</code> in a filter, too:</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBzYW1lIHF1ZXJ5IGFzIGJlZm9yZSwgMyBvciA0IGdlYXJzXG50ICU+JVxuICBmaWx0ZXIoZ2VhciA9PSAzIHx8IGdlYXIgPT0gNCkgJT4lXG4gIGZpbHRlcihocCA+IDIwMCkgJT4lXG4gIHNlbGVjdChuYW1lLCBtcGcsIGN5bClcbmBgYCJ9 -->
+<pre class="r"><code># same query as before, 3 or 4 gears
+t %&gt;%
+  filter(gear == 3 || gear == 4) %&gt;%
+  filter(hp &gt; 200) %&gt;%
+  select(name, mpg, cyl)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbImRhdGEuZnJhbWUiXSwibmNvbCI6MywibnJvdyI6N30sInJkZiI6Ikg0c0lBQUFBQUFBQUEzVlQzVzdUTUJST201YXUzVDk3QVY5d2hXaHB1d0xiM1NCZE5kQXFUUnNhRlhkbmliZGFjMzBxeCtrWVY3d0dQQk84MHNCT2ZWSVdoQ1hISjkvNWZQNTlQcHowVzVOV0VBVFZJS3hYZ21wb3hWclZmaXBCTFdpNjgwc1FoSHRXc0pwdzA1NE52eDFwMjdHWHVtRGQ3dDNTNVNlU0w3aE1yYlJqTi9Qbyt0dHh4RDZBMVFqbG9hY1JKRUpLaU5sSWNtN3VFQk92YVVVd0E0M3NjLy9BSTd2UlZOK25rbXYyZmpibldvQWs2aEJNbWluMnB0ZjF5TTRRa3h2T29pbEl5ZFVOMXdVelM0MDFzUCthbUJzanJqVm93WVpDb2NmV1JnSU02eFdPbS9uL3BOYys5TURXQ0hYQ3prQlpXOEJPS2IwVFZBbXdTQ3hFVE1RVDFJb2JObUJETFJhY0V2SG94UnkxZ1N2TWpGZnNuUW9WbzFRc1FtV0U0c29VT1c2Y29zbFNkcHhwbklQSE5zZVEyZ0NNWU85UUU5Z2N3MWNieGZsa3NHSjVnSDJDRzBweHpIWE0rdnZkNGxiK1ArZ09IeE1PU29TRGJrU2x6SUhCcSs3RjhUOUlVWkVWUXRkMnpseHFydDlDOHl1aHFkMmJaNmpUZU1yWllXL1E3bFA1UHVJOUdsdFMxR2lIaEtoL29ZckF4aVZJWVJ0Q3NWeWlYQ0RyRGZySHBkR3N4eEpTbXN4aVhxOGhOcWl0OU9EY09udEhMNzY3OWVQbzJVKzNmaFZuK3pwZlI4KzkvcVUvT3dFdGVpMXIvOStQUTFJdzR4UlM2TUdhQTcwY3p1YlV1REMrbDZYclRZMTNIVExoZkZlL0xlTm9MSW5oNzFLMnJRUU1kSzYxYzVCbi9NaGNBK2RHb0xMR3F1NzUxMHVYSzdvRWJHZktPVS9hOFRSVHQrMmVjNUNyVjhXbytJS1FIQzVkMWlpd09yWEJ2bFU3OWxRV0NWZWM1bi9MSnBubjJKbHJzV3F6UmRPT3dkVTdhZG4zUThpeW13OS9BQytTQ0ZQc0JBQUEifQ== -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["name"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["mpg"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["cyl"],"name":[3],"type":["int"],"align":["right"]}],"data":[{"1":"Duster 360","2":"14.3","3":"8"},{"1":"Cadillac Fleetwood","2":"10.4","3":"8"},{"1":"Lincoln Continental","2":"10.4","3":"8"},{"1":"Chrysler Imperial","2":"14.7","3":"8"},{"1":"Camaro Z28","2":"13.3","3":"8"},{"1":"Ford Pantera L","2":"15.8","3":"8"},{"1":"Maserati Bora","2":"15.0","3":"8"}],"options":{"columns":{"min":{},"max":[10],"total":[3]},"rows":{"min":[10],"max":[10],"total":[7]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<hr />
+</div>
+<div id="note-for-databases-and-dplyr" class="section level1">
+<h1>Note for Databases and <em>dplyr</em></h1>
+<p>If <em>t</em> was a table that was in a database, it wouldn’t be loaded into <em>R</em>’s memory.</p>
+<p>In <em>dplyr</em>, a table from a database it is a “reference” to the table, and commands are only executed when <em>R</em> needs it.</p>
+<p>This is “lazy evaluation,” or “demand driven,” a feature of both <em>Haskell</em>, <em>Spark</em>, <em>Dask</em>, and other languages. In the case of <em>dplyr</em>, when <em>t</em> is a database table, it execute queries only when you either display <em>t</em>, <code>collect()</code> it, or send it to a plot.</p>
+<hr />
+</div>
+<div id="group-by-and-summaries" class="section level1">
+<h1>Group By and Summaries</h1>
+<p>Grouping, like in <em>SQL</em>, is useful for summarizing functions, like min, max, or average:</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyB3aGF0J3MgdGhlIGF2ZXJhZ2UgaHAgZm9yIGVhY2ggY3lsaW5kZXIgc2l6ZT9cbnQgJT4lXG4gIGdyb3VwX2J5KGN5bCkgJT4lXG4gIHN1bW1hcml6ZShtZWFuX2hwID0gbWVhbihocCkpXG5gYGAifQ== -->
+<pre class="r"><code># what's the average hp for each cylinder size?
+t %&gt;%
+  group_by(cyl) %&gt;%
+  summarize(mean_hp = mean(hp))</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbInRibF9kZiIsInRibCIsImRhdGEuZnJhbWUiXSwibmNvbCI6MiwibnJvdyI6M30sInJkZiI6Ikg0c0lBQUFBQUFBQUF3dHlpVERpaXVCaVlHQmdZbUJtWldSZ1lnWXlXWmlBQkNNREN3TW5pSzVnWUdBV0JpdGdZT0FGWXJBS0lHWURZZzRnNWdPSk9ZU3MyS1hYdmVpbFE5d2tUNVZKbnFvT1dXcTNjN2ZkemtNempEVTVKN0c0R01nUVFCTGtTa2tzU2RSTEswck1UVVZYbmdjVWd5bG5nZ295SjFmbVFKbnN1YW1KZWZFWkJXamFPSXZ5eS9WZ1drRk9abW9BRXYvLy8vOExwUDZoS1diUEx5akp6TThES21VQytaSVZ6WEdNUldnQy9LVjVJS05UZEpNelN2T3lkVTFBSGdCTFF3QXZsTTJNeEdhQ1dNbjhIMm9VSzlRb3R0Uzg5TXk4VkpobmN4S1RVbUUrNHdONkFld0R2WUtpekx3U1dFZ0JSWXYxU3ZKTEVtSHF1Skx6YzJBaVlMOHgvQU1BMXExT0I5TUJBQUE9In0= -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["cyl"],"name":[1],"type":["int"],"align":["right"]},{"label":["mean_hp"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"4","2":"82.63636"},{"1":"6","2":"122.28571"},{"1":"8","2":"209.21429"}],"options":{"columns":{"min":{},"max":[10],"total":[2]},"rows":{"min":[10],"max":[10],"total":[3]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<hr />
+</div>
+<div id="sorting" class="section level1">
+<h1>Sorting</h1>
+<p>And sorting, or the <em>ORDER BY</em> in <em>SQL</em>, is done by <code>arrange</code>:</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudCAlPiVcbiAgZmlsdGVyKGRpc3AgPCAxMDApICU+JVxuICBzZWxlY3QobmFtZSwgaHAsIG1wZykgJT4lXG4gIGFycmFuZ2UoaHApXG5gYGAifQ== -->
+<pre class="r"><code>t %&gt;%
+  filter(disp &lt; 100) %&gt;%
+  select(name, hp, mpg) %&gt;%
+  arrange(hp)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbImRhdGEuZnJhbWUiXSwibmNvbCI6MywibnJvdyI6NX0sInJkZiI6Ikg0c0lBQUFBQUFBQUEyVlRXMi9UTUJST201YlIwbzdCbnBIOEIxcjFFbllSRXVxV3RocW9sYVlOallvM04vRmFDOWNuT0U3SGVPSUh3cS9oZlhDYzJ1MFdMSjM0NUR2M2k2K0dzMTU5VnZjOHIrejUxWkpYOXBHdGxQRlQ4aXBlemR6ZlBjOC9SQVlsZmhQdktsSUQ2UTJTVVRER0J3V2paNEt0bVVnM0VvOVk5TVhaTkNRZktVcTR0TkRya01aY0NCcVJzV0JNM3dIRVZsSVA2WW9xSUY5Nkp4WjVGUzdWZlNxWUloOVdDVk9jQ3FjNnBEck5KRG51ZGl4eU1JUjR3VWk0cEVJd3VXQnFxNW1sR2gzMGo1eG1ZOHlVb29xVElaZGdzZWRqVGpYcGJnUFg4djladDNWcWdmMHhxSmhjVW9tK0tKbTQ4aTVBeHBTRWZNMGpwM2dCU2pKTkFqSlVmTTFjSVJhOVRrQnBPb2RNVzhIaGhNc0loQ1FoU00wbGszcGJZMk1DT2t2SktGT1FVSXMxcHpURkJEUW41NkFjV0p2U0g1akYxU3pZYVZtQWZLWUxWK0tVcVlqMCtwMnRWZjRmZElaUEZVNEtDaWVkMExVeUI0SzNuZXZSZjhpMkl6dkVtUjFjbXRMTXZMbGljNjdjdUp1WG9OSm95Y2hwTjJqMVhQcyt3VDFvYkNrb3dDVnhxbzlRNmNDOUd5bzREc1RsY2dOaURhUWI5RWFGMWF4R2dxWnVNN2Y3ZWtzakRRcTVCeFBBYm5tQWRJWjBidW1iU2NuSUJ1OXY4ek1ZL09tYk14ajBOL2U3eVM4OHY1MjhHRnJTRlhPaGZRdFdER2o1OGpLeG5MOUtGZ1hybW9LN3R2TmdVaXovOVBKVDNTajZmd3RGMVdPcWFmdFdHZjk1WVUvYzdVR2lPVWgwVmo2MDlUNDJMcWtDOERLVEpuamNpcGFaL05vNnNpKy90TWtoVDZoay9UamUzNFNzdU1TcXJ0djRKSEc3WFZjRW5UTzM1dnRZWkY1ak8xRjhOMDFFMDdhRzNYT280ek54eUdab0QvOEEzZVFoOThzRUFBQT0ifQ== -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["name"],"name":[1],"type":["fctr"],"align":["left"]},{"label":["hp"],"name":[2],"type":["int"],"align":["right"]},{"label":["mpg"],"name":[3],"type":["dbl"],"align":["right"]}],"data":[{"1":"Honda Civic","2":"52","3":"30.4"},{"1":"Toyota Corolla","2":"65","3":"33.9"},{"1":"Fiat 128","2":"66","3":"32.4"},{"1":"Fiat X1-9","2":"66","3":"27.3"},{"1":"Lotus Europa","2":"113","3":"30.4"}],"options":{"columns":{"min":{},"max":[10],"total":[3]},"rows":{"min":[10],"max":[10],"total":[5]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<hr />
+</div>
+<div id="plotting-with-ggplot2" class="section level1">
+<h1>Plotting with ggplot2</h1>
+<p>Now that we know how to manipulate our data, we can plot it. We’ll use <em>ggplot2</em>, where <code>gg</code> stands for the “grammar of graphics”, first described by Leland Wilkinson and extended by Hadley Wickham. (Hadley wrote many of the other popular, useable libraries, like <em>dplyr</em>, and what comprises the <em>tidyverse</em> in <em>R</em>).</p>
+<p><em>ggplot2</em> seamlessly integrates with <em>dplyr</em> by piping the output directly into the <em>ggplot</em> function:</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucmVxdWlyZShnZ3Bsb3QyKVxudCAlPiVcbiAgZmlsdGVyKGdlYXIgPT0gMykgJT4lXG4gIHNlbGVjdChtcGcsIGhwKSAlPiVcbiAgZ2dwbG90KC4pICtcbiAgYWVzKHg9bXBnLCB5PWhwKSArXG4gIGdlb21fcG9pbnQoKVxuYGBgIn0= -->
+<pre class="r"><code>require(ggplot2)
+t %&gt;%
+  filter(gear == 3) %&gt;%
+  select(mpg, hp) %&gt;%
+  ggplot(.) +
+  aes(x=mpg, y=hp) +
   geom_point()</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-plot-begin eyJjb25kaXRpb25zIjpbXSwiaGVpZ2h0Ijo0MzIuNjMyOSwic2l6ZV9iZWhhdmlvciI6MCwid2lkdGgiOjcwMH0= -->
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAArwAAAGwCAMAAAB8TkaXAAACKFBMVEUAAAASEhITExMVFRUXFxcYGBgaGhobGxscHBwdHR0eHh4fHx8gICAhISEiIiIkJCQlJSUmJiYoKCgpKSksLCwtLS0uLi4vLy8zMzM0NDQ1NTU4ODg5OTk6Ojo7Ozs+Pj4/Pz9AQEBBQUFCQkJDQ0NERERFRUVGRkZHR0dJSUlLS0tMTExNTU1QUFBRUVFSUlJUVFRVVVVWVlZYWFhZWVlcXFxdXV1eXl5fX19iYmJjY2NkZGRlZWVnZ2doaGhpaWlqampsbGxubm5vb29wcHBxcXFycnJzc3N0dHR1dXV3d3d4eHh7e3t8fHx/f3+BgYGDg4OEhISFhYWHh4eKioqLi4uMjIyNjY2QkJCSkpKTk5OUlJSVlZWWlpaYmJiZmZmampqbm5ucnJydnZ2enp6fn5+hoaGioqKkpKSlpaWmpqaoqKipqamqqqqrq6usrKytra2vr6+xsbGzs7O0tLS1tbW2tra3t7e4uLi5ubm8vLy9vb2+vr6/v7/AwMDBwcHCwsLDw8PExMTFxcXHx8fJycnKysrLy8vMzMzNzc3Ozs7Pz8/R0dHS0tLU1NTV1dXW1tbX19fY2NjZ2dna2trb29vc3Nzd3d3e3t7f39/g4ODi4uLj4+Pk5OTl5eXm5ubn5+fp6enq6urr6+vs7Ozt7e3u7u7v7+/w8PDx8fHy8vLz8/P09PT19fX29vb39/f4+Pj5+fn6+vr7+/v8/Pz9/f3+/v7////HcUTsAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAQf0lEQVR4nO3di3scVRnH8UFBrAqiCCoqV0XUxcqleEEbFQSNRbGgIHetVRBFECgqooWKUi4iIEUKBJpQK23Tpkk28+/Z35lssptsds/7ntnZnfb7fZ402d3ZkzeTzzOdTtptlhPVtGzYAxB5Ay/VNvBSbQMv1TbwUm0DL9U2H979RXPT+9M6cDhxgf2zh+o/wv6Z1AWOJH8R6SMkr2BYIAJvo9Eofm29X3pkKvR2vn8qrf8eSlxgKj+YuMDew6kjNKdTVziSusB88heRPMLsTIUj9MfbKN4aHbfAuyrwqhHDm4M3KvCq0cPbOm0Ab4/Aq0YOb6Ptgxbetzds2HDvXFE+P5fWfDNxgbk8eYURGGEheYERGCF9hegtD0XgbbR/1MK7b3x8fNtMUT43k9aR+cQFRmGEheQVmsfACM30FaK3PNgfb+fJLqcNa8Vpgxqx0wbwxgVeNWp4Oy/wcp13jcCrRgxvj4olwBsCrwKvPfAq8ILXF3gVeO2BV4H32Mb755vufqvb/b3w7rrz5mf6rwxeBV57sXi/k2XZGf/p8kAPvNvfe/RJW/suDV4FXnuReHdk6touj/TAe56ec9KefmuDV4HXXiTeOwPeC7s80gPvu8KTdvZbG7wKvPYi8T4cHH6tyyM98J4ZnjTRb23wKvDai8S75xw5fLLLIz3wbtVzru67NngVeO3F/oHtjeu/uPGpbg/0utrw0BWX/myy79LgVeC1x3VeBV7w+gKvAq898CrwgtcXeBV47YFXgRe8vsCrwGsPvAq84PUFXgVee+BV4AWvL/Aq8NoDrwIveH2BV4HXHngVeMHrC7wKvPbAq8ALXl/gVeC1B14FXvD6Aq8Crz3wKvCC1xd4FXjtgVeBF7y+wKvAaw+8Crzg9QVeBV574FXgBa8v8Crw2gOvAi94fYFXgdde9XgnHrx/d8cd4FXgtVc53qc+mGXrtrXfA14FXnuV4/2MXrT31PZ7wKvAa69yvCeEl0t/vu0e8Crw2qsc76mrXusfvAq89irHu3nVf24BXgVee5Xjnbz1vLN/+Gb7PeBV4LXHdV4FXvD6Aq8Crz3wKvCC1xd4FXjtgVeBF7y+wKvAaw+8Crzg9QVeVR+8M0X53ExaR+YTFxiFERaSV2geAyM001eI3vIgR94ijrzljFCfI2+xBHhD4FXgtQdeBV7w+gKvAq898CrwgtcXeBV47YFXgRe8vsCrwGsPvAq84PUFXgVee+BV4AWvL/Aq8NoDrwIveH2BV4HXHngVeMHrC7wKvPbAq8ALXl/gVeC1B14F3nLwvv74y/FDgDcEXuMIA8J7x0lZNjYZOwR4Q+A1jjAYvDvDSy/fFjsEeEPgNY4wGLy3BryXxg4B3hB4jSMMBu/WgPersUOANwRe4wiDwbvr/cK7beXdawXeEHiNIwwG79SOi078+D3RQ4A3BF7jCAPCawu8IfAaRwBvEXjLGQG89sCrwAteX+BV4LUHXgVe8PoCrwKvPfAq8ILXF3gVeO2BV4EXvL7Aq8BrD7wKvOD1BV4FXnvgVeAFry/wKvDaA68CL3h9gVeB1x54FXhLwfvi2Ccv+Wv0EOANgdc4wmDwvn66/g3bjtghwBsCr3GEweD9dfjXwxtjhwBvCLzGEQaD9+aAd33sEOANgdc4wmDwbg94b4gdArwh8BpHGAzeqU1H7V70VuwQ4A2B1zjCgPBO7fzlo/FDgDcEXuMIg8JrCrwh8BpHAG8ReMsZAbz2wKvAu6pGo7H6HXhXBl41YngbxVvnO/CuCrxqxPDm4I0KvGr08DZy8PYNvGrk8DZWnz3ke8fGxh6YLcrnZxNrpi4wCiMkr5C8wMLxNcJ0BN5G+9G3hXff+Pj4tpmifG4mrSPziQuMwggLySs0j4ERmukrRG95sD/eRsepA6cNa8Vpgxqx0wbwxgVeNWp4G8WlXa7z9g68asTw9qhYArwh8Crw2gOvAi94fYFXgdceeBV4wesLvAq89sCrwAteX+BV4LUHXgVe8PoCrwKvPfAq8ILXF3gVeO2BV4EXvL7Aq8BrD7wKvOD1BV4FXnvgVeAFry/wKvDaA68CL3h9gVeB1x54FXjB6wu8Crz2wKvAC15f4FXgtQdeBV7w+gKvAq898CrwgtcXeBV47YFXgRe8vsCrwGsPvAq84PUFXgVee+BV4AWvL/Aq8NoDrwIveH2BV4HXHngVeMHrC7wKvPbAq8ALXl/gVeC1N1J4dz7yqmuFxW/bk398zfKsZ7e93PoQvOD11cI78YUse88Wzwrh27b73Cxbd1/0cya/kmXZjxdvgBe8vlp4r8vUvxwrhG/bRj375Ohj7y3hsz1R3AAveH218F4QON3tWCF8284MT/9D7HMuD5v/pLgBXvD6auFdHzg97FghfNvOCU9/MvY5Y2HzLcUN8ILXVwvv76TpIxOOFcK37S49/ezJ2Oc8ps1PeaW4AV7w+lq62nDP2adt+KdnheLbdsdZH77y3/FPevD809b/Y/Fj8ILXF9d5FXjtgVeBF7y+wKvAaw+8Crzg9QVeBV574FVpeH//vR+90H2EHZs2PRG5CHjtgVcl4f2ufiz9XLdHfqVryVvjVgGvPfCqFLwvhB/VfanbQ6fokXVxy9QH72xRPj+b1lwzcYH0EWbTR0heIXmBhYQVwo/qsjO6PHIwPJL9b+AjLK4QveU0R96i4/7I+3wQur7bQ+87Jo+8xRLgDdUc79S3RfSZbo/8Qo/cFbfKsPEWv0uA11jd8U795lvXPdd9hL9cc81jkYsMGW/hNkpvsQR4Q7XHW8oIw8a7+lgM3ojAq8BrD7wKvMXHnPNaA68a9pF3OfAaAq8a9pE3vmIJ8IbAq8BrD7wKvHnkOQN4OwOvGvo5L0deT+BVw8YbbRe87YFXgdceeBV4DXqLJcAbAq8aJl7DRV7wdgZeNewjb3zFEuANgVeB1x54FXjB6wu8Crz2wKvAC15f4FXgtQdeBV7w+gKvAq898CrwgtcXeBV47YFXgRe8vsCrwGsPvAq84PUFXgVee+BV4AWvL/Aq8NoDrwIveH2BV4HXHngVeMHrC7wKvPbAq8ALXl/gVeC1B14FXvD6Aq8Crz3wKvCC1xd4FXjtgVeBF7y+wKvAaw+8Crzg9QVeBV574FXgBa8v8Crw2gOvAi94fYFXgdceeBV4wesLvAq89sCrwAteX+BV4LUHXgXe1TXCL6p4D95ugVeNGN5FrY1lyEt6iyXAG1rCu/k92ae2L9//6hUnnHDZrpgVwGscIf7IC97etfDeqf+B8QO7l+6/XLcvjlkBvMYRTKcNbXj3jY+Pb5spyudm0joyn7jAKIywsLjCxeH/D32kdfehd4fbByJWaJY1gr/kEZrpK0RveTAa7+IHLbx7x8bGHpgtyudnE2umLjAKIyyu8PmA9aHW3YeL/wx3fxUjLCSvUKsRpr14OW1YWeu04SZZXffK0v0N3b4wZgVOG4wjxJ82gLd3LbyTV2XZhx5avv+li7LsgudjVgCvcQTwFpV5qezNlzof2f1q3ArgNY4Qf9rQumTGdd7ucZ1XjRzeNSuWAG8IvAq89sCrwAteX+BV4LUHXgVe8PoCrwKvPfAq8ILXF3gVeO2BV4EXvL7Aq8BrD7wKvOD1BV4FXnvgVeAFry/wKvDaA68CL3h9gVeB1x54FXjB6wu8Crz2wKvAC15f4FXgtQdeBV7w+gKvAq898CrwgtcXeBV47YFXgRe8vsCrwGsPvAq84PUFXgVee+BV4AWvL/Aq8NoDrwIveH2BV4HXHngVeMHrC7wKvPbAq8ALXl/gVeC1B14FXvD6Aq8Crz3wKvCC1xd4FXjtgVeBF7y+wKvAaw+8Crzg9QVeBV574FXgBa8v8Crw2gOvAi94fYFXgdceeBV4wesLvAq89sCrwAteX+BV4LUHXgVe8PoCr6oP3tmifH42rblm4gLpI8ymj5C8QvICC+kr1GmEaY68RRx5yxmhPkfeYgnwhsCrwGsPvAq84PUFXgVee+BV4AWvL/Aq8NoDrwIveH2BV4HXHngVeMHrC7wKvPbAq8ALXl/gVeC1B14FXvD6Aq8Crz3wKvCC1xd4FXjtgVeBF7y+wKvAaw+8Crzg9QVeBV574FXgBa8v8Crw2gOvAi94fYFXgdceeBV4wesLvAq89sCrwAteX+BV4LUHXgVe8PoCrwKvPfAq8ILXF3hVWXgnt235e99NwVsE3nJGKAnvxDlZlm3qtyl4i8Bbzggl4f1Bph7vsyl4i8Bbzggl4W0EvLf02RS8ReAtZ4SS8F4Z8N7XZ1PwFoG3nBFKwvuE7H50os+m4C0CbzkjlHW1Yftl5179cr9NwVsE3nJG4DqvPfAq8ILXF3gVeO2BV4EXvL7Aq8BrD7yqN95nr77sxn4Xn8BrDryhweJ9+uQsy87fM+ARwGsPvKon3m+EH1o9POARwGsPvKon3s8FvLcPeATw2gOv6on32oB3+4BHAK898KqeeF85/ajdjYMeAbz2wKt6X22Y+Pn12wY+AnjtgVdxnRe8vsCrwGsPvAq84PUFXjVyeBvFr41G2zvwrgy8asTwttAWb40lzODtDLxqxPAuYgVvn8CraoH3nc2bNz96uCifPZzWzFziAofz1BVm5lNHWEj+IprJIyR/EckjNCsc4YAX79sbNmy4d64on59La76ZuMBcnrzCCIywkLzACIyQvkL0loc4bSjitKGcEWpx2gDelYFXgdceeBV418DLdd4+gVeVinf7p08867c9No3Bu2bFEuANgVeViffFdfobyH9ae1PwFoG3nBHKxHt7+Ovz31x7U/AWgbecEcrEe2PA++W1NwVvEXjLGaFMvDsC3q1rbwreIvCWM0Kpf2C75ajdq3psCt4i8JYzQrmXyl7bvqvXpuAtAm85I4zcdV7wxgReBV574FXgBa8v8Crw2gOvAi94fYFXgdceeBV4wesLvAq89sCrwAteX+BV4LUHXgVe8PoCrwKvPfAq8Jo78tMXEp5dTrc9PewJ8i1/G/YE+T2PDXuC/P5Hqv+cKXinP/ZgaXN4+8Tdw54g/+ztw54gv+SGYU+Qf/371X9O8CYHXgVee+BV4DXXfGO6tDm8TRzov82Ae/OdYU+Q79k37Anyyb3Vf84UvERDDbxU21x4O14GKu98JaiKWjFCo1H9DK0XwWqboeIJVo4whL2w6rXAqpzAgbfz5f7zFa/BV0ldR6i2thHypRGGsheWxxjCXshXvApjpXvBf+QdJt62zzesb1vbXli+Oay90Oi8WfkQ4LWPsPx+CGcNy79nL988DvfC0tcNXtsInZ92BA7+x+teAK99hM7PCt6VH1c2AXh9IyzfPJ6OOe0jdJ49VPxnxpWfGLyWEZZvHrd4O34LAG+fFudsLJ2rD/cK5zBHGIG90M5mCJd5G8ufuOoR+Akb1TbwUm0DL9U28FJtAy/VNvBSbQMv1TbwUm0DL9U28FJtA29FZXl2dF/rLXwY9rve8Q3wx76rqBbdrO3Dlmbyxb6rqGz5Lcs735Mz9l1Fgbf82HcVBd7yY99VFHjLj31XUe14+QNbObHvKqrjyMulslJi31VftuYNMsW+q77WPue0ITH2XfUt7fMsw25K7DyqbeCl2gZeqm3gpdoGXqpt4KXaBl6qbf8HSCJS5pfifBIAAAAASUVORK5CYII=" /></p>
+<!-- rnb-plot-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<p>Here, we’ve added an additional pipe to our data to transform it into graphics, where “+” is the pipe operator for ggplot2 functions.</p>
-<p>What this little program says now is:</p>
-<ul>
-<li>load table t</li>
-<li>filter the previous step where Points_2 &gt; -6</li>
-<li>filter the previous step where Points_2 &lt; -4</li>
-<li>collect the previous step into memory</li>
-<li>transform the previous step into an x-y plot</li>
-<li>apply point primitives to the x-y plot</li>
-<li>(display the data)</li>
-</ul>
+<hr />
 </div>
-<div id="relationship-between-data-flow-relational-stores-functional-combinators-and-data-parallelism" class="section level1">
-<h1>Relationship between data flow, relational stores, functional combinators, and data parallelism</h1>
-<p>The “gg” in ggplot stands for the grammar of graphics. It is a functional combinator way of describing graphics, as well, such that you pipe graphics primitives to transformers until you get the final output.</p>
-<p>You can think of the entire pipeline from data to picture is:</p>
-<p><code>data =&gt; data transformers =&gt; graphics transformers =&gt; picture</code></p>
-<p>where dplyr is our set of data transformers, and ggplot2 is our set of graphics transformers.</p>
-<p>Graphics and visualization treats data in a data parallel way, such that data flows through a program and is transformed along the way. Examples of where the graph is explicit can be found in data flow programming tools, such as LabView, Simulink, Pure Data, Max/MSP, ParaView, VTK, etc. Generally, “state” or “values” in a graphics pipeline is immutable, and it is transformed along the way.</p>
-<p>This is evident in how the graphics pipeline is taught, how ParaView and VTK represent the program as a directed acyclic graph (DAG), how OpenGL represents transforms on graphics primitives, how Cuda and GPUs treat data as vectors, etc. Hopefully, you can see also there is a relationship between functional programming and the relational data model as well.</p>
-<p>Let’s do one more example.</p>
+<div id="shiny" class="section level1">
+<h1>Shiny</h1>
+<p><em>Shiny</em> is like <em>Bokeh</em> for Python, as it is a way to generate interactive plots for R.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudCAlPiUgXG4gIG11dGF0ZSh2ZWwgPSBWRUxfMCpWRUxfMCtWRUxfMSpWRUxfMStWRUxfMipWRUxfMikgJT4lXG4gIGZpbHRlcih2ZWwgPiAxZTcpICU+JVxuICBtdXRhdGUoZGlzcCA9IGZsb29yKChhYnMoRElTUExfMCkrYWJzKERJU1BMXzEpK2FicyhESVNQTF8yKSkpKSAlPiVcbiAgc2VsZWN0KHZlbCwgZGlzcCkgJT4lXG4gIGdyb3VwX2J5KGRpc3ApICU+JSBcbiAgc3VtbWFyaXplKGF2ZWwgPSBtZWFuKHZlbCkpICU+JVxuICBjb2xsZWN0KCkgJT4lXG4gIGdncGxvdChhZXMoZGlzcCwgYXZlbCkpICsgZ2VvbV9iYXIoc3RhdD1cImlkZW50aXR5XCIpXG5gYGAifQ== -->
-<pre class="r"><code>t %&gt;% 
-  mutate(vel = VEL_0*VEL_0+VEL_1*VEL_1+VEL_2*VEL_2) %&gt;%
-  filter(vel &gt; 1e7) %&gt;%
-  mutate(disp = floor((abs(DISPL_0)+abs(DISPL_1)+abs(DISPL_2)))) %&gt;%
-  select(vel, disp) %&gt;%
-  group_by(disp) %&gt;% 
-  summarize(avel = mean(vel)) %&gt;%
-  collect() %&gt;%
-  ggplot(aes(disp, avel)) + geom_bar(stat=&quot;identity&quot;)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<p>A summary of what I did:</p>
-<ul>
-<li>load t</li>
-<li>add a column that is velocity squared</li>
-<li>filter where velocity squared is &gt; 1e7</li>
-<li>add a column that discretizes displacement into integers</li>
-<li>select only the two new columns</li>
-<li>group by displacement</li>
-<li>get the average velocity per displacement group</li>
-<li>collect the data</li>
-<li>create a ggplot</li>
-<li>map to bars</li>
-<li>(display data)</li>
-</ul>
-<p>Let’s go on and show one more feature of R and its graphics ecosystem, Shiny. The following code is taken from the Shiny example web page, but applied to our can data. Again, Shiny is similar to Bokeh. Plotly and Tableau are commercial solutions similar to these to deploy web visualizations (though plotly itself is open source technology).</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucmVxdWlyZShzaGlueSlcblxucyA8LSB0ICU+JSBmaWx0ZXIoUG9pbnRzXzIgPiAtNikgJT4lIGZpbHRlcihQb2ludHNfMiA8IC00KSAlPiUgY29sbGVjdCgpXG5cbnVpIDwtIGZsdWlkUGFnZShcbiAgIyBTb21lIGN1c3RvbSBDU1MgZm9yIGEgc21hbGxlciBmb250IGZvciBwcmVmb3JtYXR0ZWQgdGV4dFxuICB0YWdzJGhlYWQoXG4gICAgdGFncyRzdHlsZShIVE1MKFwiXG4gICAgICBwcmUsIHRhYmxlLnRhYmxlIHtcbiAgICAgICAgZm9udC1zaXplOiBzbWFsbGVyO1xuICAgICAgfVxuICAgIFwiKSlcbiAgKSxcblxuICBmbHVpZFJvdyhcbiAgICBjb2x1bW4od2lkdGggPSA0LCB3ZWxsUGFuZWwoXG4gICAgICByYWRpb0J1dHRvbnMoXCJwbG90X3R5cGVcIiwgXCJQbG90IHR5cGVcIixcbiAgICAgICAgYyhcImJhc2VcIiwgXCJnZ3Bsb3QyXCIpXG4gICAgICApXG4gICAgKSksXG4gICAgY29sdW1uKHdpZHRoID0gNCxcbiAgICAgICMgSW4gYSBwbG90T3V0cHV0LCBwYXNzaW5nIHZhbHVlcyBmb3IgY2xpY2ssIGRibGNsaWNrLCBob3Zlciwgb3IgYnJ1c2hcbiAgICAgICMgd2lsbCBlbmFibGUgdGhvc2UgaW50ZXJhY3Rpb25zLlxuICAgICAgcGxvdE91dHB1dChcInBsb3QxXCIsIGhlaWdodCA9IDM1MCxcbiAgICAgICAgIyBFcXVpdmFsZW50IHRvOiBjbGljayA9IGNsaWNrT3B0cyhpZCA9IFwicGxvdF9jbGlja1wiKVxuICAgICAgICBjbGljayA9IFwicGxvdF9jbGlja1wiLFxuICAgICAgICBkYmxjbGljayA9IGRibGNsaWNrT3B0cyhcbiAgICAgICAgICBpZCA9IFwicGxvdF9kYmxjbGlja1wiXG4gICAgICAgICksXG4gICAgICAgIGhvdmVyID0gaG92ZXJPcHRzKFxuICAgICAgICAgIGlkID0gXCJwbG90X2hvdmVyXCJcbiAgICAgICAgKSxcbiAgICAgICAgYnJ1c2ggPSBicnVzaE9wdHMoXG4gICAgICAgICAgaWQgPSBcInBsb3RfYnJ1c2hcIlxuICAgICAgICApXG4gICAgICApXG4gICAgKVxuICApLFxuICBmbHVpZFJvdyhcbiAgICBjb2x1bW4od2lkdGggPSAzLFxuICAgICAgdmVyYmF0aW1UZXh0T3V0cHV0KFwiY2xpY2tfaW5mb1wiKVxuICAgICksXG4gICAgY29sdW1uKHdpZHRoID0gMyxcbiAgICAgIHZlcmJhdGltVGV4dE91dHB1dChcImRibGNsaWNrX2luZm9cIilcbiAgICApLFxuICAgIGNvbHVtbih3aWR0aCA9IDMsXG4gICAgICB2ZXJiYXRpbVRleHRPdXRwdXQoXCJob3Zlcl9pbmZvXCIpXG4gICAgKSxcbiAgICBjb2x1bW4od2lkdGggPSAzLFxuICAgICAgdmVyYmF0aW1UZXh0T3V0cHV0KFwiYnJ1c2hfaW5mb1wiKVxuICAgIClcbiAgKVxuKVxuXG5cbnNlcnZlciA8LSBmdW5jdGlvbihpbnB1dCwgb3V0cHV0KSB7XG4gIG91dHB1dCRwbG90MSA8LSByZW5kZXJQbG90KHtcbiAgICBpZiAoaW5wdXQkcGxvdF90eXBlID09IFwiYmFzZVwiKSB7XG4gICAgICBwbG90KHMkUG9pbnRzXzAsIHMkUG9pbnRzXzIpXG4gICAgfSBlbHNlIGlmIChpbnB1dCRwbG90X3R5cGUgPT0gXCJnZ3Bsb3QyXCIpIHtcbiAgICAgIGdncGxvdChzLCBhZXMoUG9pbnRzXzAsIFBvaW50c18yKSkgKyBnZW9tX3BvaW50KClcbiAgICB9XG4gIH0pXG5cbiAgb3V0cHV0JGNsaWNrX2luZm8gPC0gcmVuZGVyUHJpbnQoe1xuICAgIGNhdChcImlucHV0JHBsb3RfY2xpY2s6XFxuXCIpXG4gICAgc3RyKGlucHV0JHBsb3RfY2xpY2spXG4gIH0pXG4gIG91dHB1dCRob3Zlcl9pbmZvIDwtIHJlbmRlclByaW50KHtcbiAgICBjYXQoXCJpbnB1dCRwbG90X2hvdmVyOlxcblwiKVxuICAgIHN0cihpbnB1dCRwbG90X2hvdmVyKVxuICB9KVxuICBvdXRwdXQkZGJsY2xpY2tfaW5mbyA8LSByZW5kZXJQcmludCh7XG4gICAgY2F0KFwiaW5wdXQkcGxvdF9kYmxjbGljazpcXG5cIilcbiAgICBzdHIoaW5wdXQkcGxvdF9kYmxjbGljaylcbiAgfSlcbiAgb3V0cHV0JGJydXNoX2luZm8gPC0gcmVuZGVyUHJpbnQoe1xuICAgIGNhdChcImlucHV0JHBsb3RfYnJ1c2g6XFxuXCIpXG4gICAgc3RyKGlucHV0JHBsb3RfYnJ1c2gpXG4gIH0pXG5cbn1cblxuXG5zaGlueUFwcCh1aSwgc2VydmVyKVxuYGBgIn0= -->
-<pre class="r"><code>require(shiny)
-
-s &lt;- t %&gt;% filter(Points_2 &gt; -6) %&gt;% filter(Points_2 &lt; -4) %&gt;% collect()
-
-ui &lt;- fluidPage(
-  # Some custom CSS for a smaller font for preformatted text
-  tags$head(
-    tags$style(HTML(&quot;
-      pre, table.table {
-        font-size: smaller;
-      }
-    &quot;))
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShzaGlueSlcbnVpIDwtIGJhc2ljUGFnZShcbiAgcGxvdE91dHB1dChcInBsb3QxXCIsXG4gICAgaG92ZXIgPSBcInBsb3RfaG92ZXJcIixcbiAgICBicnVzaCA9IFwicGxvdF9icnVzaFwiXG4gICksXG4gIHZlcmJhdGltVGV4dE91dHB1dChcImluZm9cIilcbilcbnNlcnZlciA8LSBmdW5jdGlvbihpbnB1dCwgb3V0cHV0KSB7XG4gIG91dHB1dCRwbG90MSA8LSByZW5kZXJQbG90KHtcbiAgdCAlPiVcbiAgICBmaWx0ZXIoZ2VhciA9PSAzKSAlPiVcbiAgICBzZWxlY3QobXBnLCBocCkgJT4lXG4gICAgZ2dwbG90KC4pICsgIyBzdGFydCBhIHBsb3QsIC4gaXMgcGxhY2Vob2xkZXIgZm9yIHRoZSBpbmNvbWluZyBkYXRhXG4gICAgYWVzKHg9bXBnLCB5PWhwKSArICMgYWVzLCBpcyBcImFlc3RoZXRpY3NcIiAtLSBob3cgdG8gbWFwIGRhdGEgdG8gZ2VvbWV0cnlcbiAgICBnZW9tX3BvaW50KCkgIyB0aGUgcGxvdCBnZW9tZXRyeVxuICB9KVxuICBvdXRwdXQkaW5mbyA8LSByZW5kZXJUZXh0KHtcbiAgICB4eV9zdHIgPC0gZnVuY3Rpb24oZSkge1xuICAgICAgaWYoaXMubnVsbChlKSkgcmV0dXJuKFwiTlVMTFxcblwiKVxuICAgICAgcGFzdGUwKFwieD1cIiwgcm91bmQoZSR4LCAxKSwgXCIgeT1cIiwgcm91bmQoZSR5LCAxKSwgXCJcXG5cIilcbiAgICB9XG4gICAgeHlfcmFuZ2Vfc3RyIDwtIGZ1bmN0aW9uKGUpIHtcbiAgICAgIGlmKGlzLm51bGwoZSkpIHJldHVybihcIk5VTExcXG5cIilcbiAgICAgIHBhc3RlMChcInhtaW49XCIsIHJvdW5kKGUkeG1pbiwgMSksIFwiIHhtYXg9XCIsIHJvdW5kKGUkeG1heCwgMSksIFxuICAgICAgICAgICAgIFwiIHltaW49XCIsIHJvdW5kKGUkeW1pbiwgMSksIFwiIHltYXg9XCIsIHJvdW5kKGUkeW1heCwgMSkpXG4gICAgfVxuICAgIHBhc3RlMChcbiAgICAgIFwiaG92ZXI6IFwiLCB4eV9zdHIoaW5wdXQkcGxvdF9ob3ZlciksXG4gICAgICBcImJydXNoOiBcIiwgeHlfcmFuZ2Vfc3RyKGlucHV0JHBsb3RfYnJ1c2gpXG4gICAgKVxuICB9KVxufVxuc2hpbnlBcHAodWksIHNlcnZlcilcbmBgYCJ9 -->
+<pre class="r"><code>library(shiny)
+ui &lt;- basicPage(
+  plotOutput(&quot;plot1&quot;,
+    hover = &quot;plot_hover&quot;,
+    brush = &quot;plot_brush&quot;
   ),
-
-  fluidRow(
-    column(width = 4, wellPanel(
-      radioButtons(&quot;plot_type&quot;, &quot;Plot type&quot;,
-        c(&quot;base&quot;, &quot;ggplot2&quot;)
-      )
-    )),
-    column(width = 4,
-      # In a plotOutput, passing values for click, dblclick, hover, or brush
-      # will enable those interactions.
-      plotOutput(&quot;plot1&quot;, height = 350,
-        # Equivalent to: click = clickOpts(id = &quot;plot_click&quot;)
-        click = &quot;plot_click&quot;,
-        dblclick = dblclickOpts(
-          id = &quot;plot_dblclick&quot;
-        ),
-        hover = hoverOpts(
-          id = &quot;plot_hover&quot;
-        ),
-        brush = brushOpts(
-          id = &quot;plot_brush&quot;
-        )
-      )
-    )
-  ),
-  fluidRow(
-    column(width = 3,
-      verbatimTextOutput(&quot;click_info&quot;)
-    ),
-    column(width = 3,
-      verbatimTextOutput(&quot;dblclick_info&quot;)
-    ),
-    column(width = 3,
-      verbatimTextOutput(&quot;hover_info&quot;)
-    ),
-    column(width = 3,
-      verbatimTextOutput(&quot;brush_info&quot;)
-    )
-  )
+  verbatimTextOutput(&quot;info&quot;)
 )
-
-
 server &lt;- function(input, output) {
   output$plot1 &lt;- renderPlot({
-    if (input$plot_type == &quot;base&quot;) {
-      plot(s$Points_0, s$Points_2)
-    } else if (input$plot_type == &quot;ggplot2&quot;) {
-      ggplot(s, aes(Points_0, Points_2)) + geom_point()
+  t %&gt;%
+    filter(gear == 3) %&gt;%
+    select(mpg, hp) %&gt;%
+    ggplot(.) + # start a plot, . is placeholder for the incoming data
+    aes(x=mpg, y=hp) + # aes, is &quot;aesthetics&quot; -- how to map data to geometry
+    geom_point() # the plot geometry
+  })
+  output$info &lt;- renderText({
+    xy_str &lt;- function(e) {
+      if(is.null(e)) return(&quot;NULL\n&quot;)
+      paste0(&quot;x=&quot;, round(e$x, 1), &quot; y=&quot;, round(e$y, 1), &quot;\n&quot;)
     }
+    xy_range_str &lt;- function(e) {
+      if(is.null(e)) return(&quot;NULL\n&quot;)
+      paste0(&quot;xmin=&quot;, round(e$xmin, 1), &quot; xmax=&quot;, round(e$xmax, 1), 
+             &quot; ymin=&quot;, round(e$ymin, 1), &quot; ymax=&quot;, round(e$ymax, 1))
+    }
+    paste0(
+      &quot;hover: &quot;, xy_str(input$plot_hover),
+      &quot;brush: &quot;, xy_range_str(input$plot_brush)
+    )
   })
-
-  output$click_info &lt;- renderPrint({
-    cat(&quot;input$plot_click:\n&quot;)
-    str(input$plot_click)
-  })
-  output$hover_info &lt;- renderPrint({
-    cat(&quot;input$plot_hover:\n&quot;)
-    str(input$plot_hover)
-  })
-  output$dblclick_info &lt;- renderPrint({
-    cat(&quot;input$plot_dblclick:\n&quot;)
-    str(input$plot_dblclick)
-  })
-  output$brush_info &lt;- renderPrint({
-    cat(&quot;input$plot_brush:\n&quot;)
-    str(input$plot_brush)
-  })
-
 }
-
-
 shinyApp(ui, server)</code></pre>
 <!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiXG5MaXN0ZW5pbmcgb24gaHR0cDovLzEyNy4wLjAuMTo2MTIzXG4ifQ== -->
+<pre><code>
+Listening on http://127.0.0.1:6123</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiTkFcbiJ9 -->
+<pre><code>NA</code></pre>
+<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <p>You probably won’t see anything unless you are running the interactive version of this document.</p>
@@ -1997,7 +2010,7 @@ shinyApp(ui, server)</code></pre>
 <!-- rnb-text-end -->
 </div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiUiBhbmQgZ2dwbG90MiIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKYGBge3Igc2V0dXAsIGluY2x1ZGU9RkFMU0V9CmtuaXRyOjpvcHRzX2NodW5rJHNldChlY2hvID0gVFJVRSkKYGBgCgojIyBSIE1hcmtkb3duCgpUaGlzIGlzIGFuIFIgTWFya2Rvd24gZG9jdW1lbnQuIE1hcmtkb3duIGlzIGEgc2ltcGxlIGZvcm1hdHRpbmcgc3ludGF4IGZvciBhdXRob3JpbmcgSFRNTCwgUERGLCBhbmQgTVMgV29yZCBkb2N1bWVudHMuIEZvciBtb3JlIGRldGFpbHMgb24gdXNpbmcgUiBNYXJrZG93biBzZWUgPGh0dHA6Ly9ybWFya2Rvd24ucnN0dWRpby5jb20+LgoKV2hlbiB5b3UgY2xpY2sgdGhlICoqS25pdCoqIGJ1dHRvbiBhIGRvY3VtZW50IHdpbGwgYmUgZ2VuZXJhdGVkIHRoYXQgaW5jbHVkZXMgYm90aCBjb250ZW50IGFzIHdlbGwgYXMgdGhlIG91dHB1dCBvZiBhbnkgZW1iZWRkZWQgUiBjb2RlIGNodW5rcyB3aXRoaW4gdGhlIGRvY3VtZW50LiBZb3UgY2FuIGVtYmVkIGFuIFIgY29kZSBjaHVuayBsaWtlIHRoaXM6CgpgYGB7ciBjYXJzfQpzdW1tYXJ5KGNhcnMpCmBgYAoKIyMgSW5jbHVkaW5nIFBsb3RzCgpZb3UgY2FuIGFsc28gZW1iZWQgcGxvdHMsIGZvciBleGFtcGxlOgoKYGBge3IgcHJlc3N1cmUsIGVjaG89RkFMU0V9CnBsb3QocHJlc3N1cmUpCmBgYAoKTm90ZSB0aGF0IHRoZSBgZWNobyA9IEZBTFNFYCBwYXJhbWV0ZXIgd2FzIGFkZGVkIHRvIHRoZSBjb2RlIGNodW5rIHRvIHByZXZlbnQgcHJpbnRpbmcgb2YgdGhlIFIgY29kZSB0aGF0IGdlbmVyYXRlZCB0aGUgcGxvdC4KCj09PQoKIyBTdGFydCBvZiBjbGFzcyBub3RlcyAjCgpJIGxlZnQgdGhlIHByZXZpb3VzIHNlY3Rpb24gaW4ganVzdCB0byBnaXZlIHlvdSB0aGUgc2FtcGxlIG9mIHdoYXQgdGhlIAppbml0aWFsIFIgbWFya2Rvd24gZG9jdW1lbnQgaXMuCgojIFIgIwoKUiBpcyBhIGZ1bmN0aW9uYWwgbGFuZ3VhZ2UgcHJpbWFyaWx5IHVzZWQgZm9yIHN0YXRpc3RpY3MuIEl0IGlzIG1vc3QKc2ltaWxhciB0byBTQVMgYW5kIFRhYmxlYXUuCgotIFRoaXMgaXMgdGhlIGZvY2FsIHBvaW50IGZvciB0aGUgc3RhdGlzdGljcyBjb21tdW5pdHkgaW4gc2hhcmluZyBjb2RlCiAgICAtIE1vc3QgYWR2YW5jZWQgc3RhdGlzdGljcyBhbGdvcml0aG1zIGFyZSBpbXBsZW1lbnRlZCBpbiBSCi0gVGhleSBjb21tdW5pdHkgaGFzIGEgZ29vZCBvcGVuIHNvdXJjZSByZXBvc2l0b3J5CiAgICAtIENSQU4gLSB0aGUgUiBpbnRlcnByZXRlciBpcyBhdXRvbWF0aWNhbGx5IGludGVncmF0ZWQgd2l0aCBDUkFOCi0gUlN0dWRpbyBwcm92aWRlcyBzdGVyb2lkcyBmb3IgUiB3aXRoCiAgICAtIEludGVyYWN0aXZlIGVkaXRpbmcgYW5kIGRlYnVnZ2luZyBlbnZpcm9ubWVudAogICAgLSBBdXRvbWF0aWMgaW50ZWdyYXRpb24gd2l0aCBDUkFOCiAgICAtIEh5cGVybGluayBoZWxwIGJyb3dzZXIKICAgIC0gUGxvdCB2aWV3ZXIgaW50ZWdyYXRpb24KICAgIC0gUk1hcmtkb3duIHN1cHBvcnQgKGxpa2UgSnVweXRlcikKICAgIC0gU2hpbnkgc3VwcG9ydCAobGlrZSBCb2tlaCkKCiMgUlN0dWRpbyAjCgpJIHJlYWxseSBsaWtlIFJTdHVkaW8vUiBtYXJrZG93bi9rbml0ciBhbmQgdGhlcmUgYXJlIGZlYXR1cmVzIHRoYXQgSSByZWFsbHkgd2lzaApJIGhhZCBpbiBKdXB5dGVyLiBGb3IgZXhhbXBsZToKCi0gdGhlIHBhY2thZ2UgaW5zdGFsbGVyIHRvIENSQU4KICAgIC0gdGhlIGNvbW1hbmQgbGluZSB0byBpbnN0YWxsIEFuYWNvbmRhIHBhY2thZ2VzIGlzIHByZXR0eSBnb29kCiAgICAtIGJ1dCBvdXRzaWRlIG9mIEFuYWNvbmRhLCBwaXAgYW5kIFB5UEkgaXMgaG9ycmlibGUgaW4gY29tcGFyaXNvbiB0byBDUkFOIAogICAgICAgIC0gUiBpcyBmYXIgbW9yZSB1c2VyIGZyaWVuZGx5IHRoYW4gUHl0aG9uCi0gdGhlIGFiaWxpdHkgdG8gc2F2ZSBhIGRvY3VtZW50IGltbWVkaWF0ZWx5IHRoYXQgaXMgc3RhdGljYWxseSB2aWV3YWJsZQogICAgLSBhZ2FpbiwgeW91IGNhbiBkbyB0aGlzIGZyb20gdGhlIGNvbW1hbmQgbGluZSB3aXRoIEp1cHl0ZXIgbm90ZWJvb2tzCiAgICAgICAgLSBidXQgUnN0dWRpbyBhZ2FpbiBpcyBtb3JlIHVzZXIgZnJpZW5kbHkKLSBsaXRlcmF0ZSBwcm9ncmFtbWluZyB0aHJvdWdoIGludGVyc3BlcnNlZCBtYXJrZG93biBhbmQgUgogICAgLSBvbmNlIGFnYWluLCB5b3UgaGF2ZSBtYXJrZG93biBjZWxscyBhbmQgY29kZSBjZWxscyBpbiBKdXB5dGVyLCBidXQgaXQncyBub3Qgc2VlbWxlc3MKICAgICAgICAtIGl0IG1ha2VzIGNvZGUgZG9jdW1lbnRhdGlvbiB2ZXJ5IGVhc3kKICAgICAgICAtIHRvIG1lLCBpdCBmZWVscyBtb3JlIG5hdHVyYWwgdG8gYmUgdHlwaW5nIGlubGluZSBjb2RlIGFuZCB0aGVuIGlubGluZSBjb21tZW50cwogICAgICAgICAgICAtIGl0J3MgYSBsaXR0bGUgamFycmluZyBpbiBKdXB5dGVyIHRvIHN3aXRjaCBiZXR3ZWVuIG1hcmtkb3duIGFuZCBjb2RlIGNlbGxzCi0gaGVscCB2aWV3ZXIKICAgIC0geW91IGNhbiBkbyBoZWxwKCkgYW5kIGRpcigpIGFueXdoZXJlIGluIGEgUHl0aG9uIGNlbGwsIGJ1dCB0aGUgaHlwZXJsaW5rCiAgICAgIHZpZXdlciBpcyBuaWNlciBpbiBSc3R1ZGlvCgojIFIsIFJTdHVkaW8sIENSQU4gIwoKVGhleSBhcmUgdGhlIHByb2R1Y3RzIG9mIGEgZ3JlYXQgb3BlbiBzb3VyY2UgY29tbXVuaXR5IHRoYXQgaXMgcmVhbGx5IGNvbm5lY3RlZC4KICAKTGV0J3MgdmlzdWFsaXplIHNvbWUgZGF0YS4uLgoKRmlyc3QsIHdlIG5lZWQgdG8gbG9hZCBkcGx5ci4KCmBgYHtyIGRwbHlyLCBlY2hvPUZBTFNFfQpyZXF1aXJlKGRwbHlyKQpgYGAKCmRwbHlyIGlzIHRoYXQgRFNMIChzaW1pbGFyIHRvIExJTlEpIHRoYXQgSSB3YXMgdGFsa2luZyBhYm91dCAKZm9yIHJlbGF0aW9uYWwgZGF0YS4gV2UnbGwgdXNlIGl0IHRvIGxvYWQgb3VyIGNhbiBhcyB3ZSBkaWQKYmVmb3JlLCBhbmQgSSdsbCBzaG93IGhvdyBpdCB3b3JrcyB0byBjb21wb3NlIHF1ZXJpZXMKb24geW91ciBkYXRhIHNldHMuCgpMZXQncyBsb2FkIHRoZSBjYW4gYWdhaW4uCgpgYGB7ciBsb2FkLWNhbn0KZGIgPC0gc3JjX3NxbGl0ZSgiY2FuLmRiIikKdCA8LSB0YmwoZGIsICJjYW4iKQpgYGAKCnQgaXMgb3VyIHRhYmxlIHdpdGggdGhlIGRhdGEuCgpgYGB7ciBzaG93LXRhYmxlfQp0CmBgYAoKTm93LCB3ZSBjYW4gc3RhcnQgc2VsZWN0aW5nIGRhdGEgZnJvbSBvdXIgdGFibGUuCgpOb3RlLCB0aGF0IHQgaXMgbm90IGFjdHVhbGx5IGxvYWRlZCBpbnRvIG1lbW9yeSwgYnV0IGl0IGlzIGEgcmVmZXJlbmNlIHRvIG91ciBTUUxpdGUgZGF0YWJhc2UuIFRoaXMgaXMgYSBkaWZmZXJlbmNlIGZyb20gZGF0YSBmcmFtZXMsIHdoZXJlIGEgdHlwaWNhbCBkYXRhIGZyYW1lIChib3RoIGluIFIgYW5kIFB5dGhvbikgYXJlIGluIG1lbW9yeS4gZHBseXIgaXMgImxhemlseSBldmFsdWF0ZWQiIGFuZCBvbmx5IGZldGNoZXMgZGF0YSBmcm9tIGRpc2sgd2hlbiB5b3UgZWl0aGVyIGRpc3BsYXkgaXQgb3IgYGNvbGxlY3QoKWAgaXQuCgpUaGUgd2F5IHdlIHNlbGVjdCBkYXRhIHdpdGggZHBseXIgaXMgdGhyb3VnaCBmdW5jdGlvbmFsIGNvbWJpbmF0b3JzIGFrYSBwaXBlbGluZXMgYWthIGRhdGEgZmxvdyBncmFwaHMuCgpgYGB7ciBzZWxlY3QtZGF0YS0xfQp0ICU+JSBmaWx0ZXIoUG9pbnRzXzIgPiAtNikgJT4lIGZpbHRlcihQb2ludHNfMiA8IC00KQpgYGAKClRoZSAiJT4lIiBzeW1ib2wgaXMgcGlwZSwgeW91IGNhbiB0aGluayBvZiBpdCB0aGUgc2FtZSBhcyBhIFVuaXggcGlwZSwgInwiLgpJdCBpcyBwaXBpbmcgdGhlIGRhdGEgZnJvbSB0aGUgcHJldmlvdXMgY29tbWFuZCwgdG8gdGhlIG5leHQuCgpXaGF0IHRoaXMgc21hbGwgbGl0dGxlIHByb2dyYW0gZnJhZ21lbnQgc2F5cyBpczoKCi0gbG9hZCB0YWJsZSB0Ci0gZmlsdGVyIHRoZSBwcmV2aW91cyBzdGVwIHdoZXJlIFBvaW50c18yID4gLTYKLSBmaWx0ZXIgdGhlIHByZXZpb3VzIHN0ZXAgd2hlcmUgUG9pbnRzXzIgPCAtNAotIChkaXNwbGF5IHRoZSBkYXRhKQoKV2UndmUgc2VsZWN0ZWQgdGhlIHBvaW50cyB0aGF0IGFyZSBiZXR3ZWVuIC02IDwgeiA8IC00LgoKVGhlIGludGVyZXN0aW5nIHRoaW5nIGlzIHRoYXQgb3VyIGxpdHRsZSBmdW5jdGlvbmFsIHByb2dyYW0gaXMKYmVpbmcgdHJhbnNmb3JtZWQgaW50byBTUUwgY29kZSwgYW5kIHRoYXQgaXQgaXMgc3RyZWFtaW5nL2JlaW5nIGV4ZWN1dGVkCm9uIGRpc2suIFRoZSBkYXRhIGlzIG5ldmVyIGxvYWRlZCBpbnRvIG1lbW9yeSB1bmxlc3MgeW91IGZvcmNlIGl0CnRvICh3aXRoIGNvbGxlY3QoKSkuCgpMZXQncyBwbG90IHRoZSBkYXRhIHRvIHNob3cgeW91IHRoYXQgdGhleSByZWFsbHkgYXJlIHRoZSBzYW1lIGFzIGJlZm9yZS4gCldlJ2xsIHVzZSBnZ3Bsb3QyLgoKYGBge3IgbG9hZC1nZ3Bsb3R9CnJlcXVpcmUoZ2dwbG90MikKCnQgJT4lIAogIGZpbHRlcihQb2ludHNfMiA+IC02KSAlPiUgCiAgZmlsdGVyKFBvaW50c18yIDwgLTQpICU+JSAKICBjb2xsZWN0KCkgJT4lIAogIGdncGxvdChhZXMoUG9pbnRzXzAsIFBvaW50c18yLCBjb2xvdXI9UG9pbnRzXzEpKSArIAogIGdlb21fcG9pbnQoKQpgYGAKCkhlcmUsIHdlJ3ZlIGFkZGVkIGFuIGFkZGl0aW9uYWwgcGlwZSB0byBvdXIgZGF0YSB0byB0cmFuc2Zvcm0KaXQgaW50byBncmFwaGljcywgd2hlcmUgIisiIGlzIHRoZSBwaXBlIG9wZXJhdG9yIGZvciBnZ3Bsb3QyCmZ1bmN0aW9ucy4KCldoYXQgdGhpcyBsaXR0bGUgcHJvZ3JhbSBzYXlzIG5vdyBpczoKCi0gbG9hZCB0YWJsZSB0Ci0gZmlsdGVyIHRoZSBwcmV2aW91cyBzdGVwIHdoZXJlIFBvaW50c18yID4gLTYKLSBmaWx0ZXIgdGhlIHByZXZpb3VzIHN0ZXAgd2hlcmUgUG9pbnRzXzIgPCAtNAotIGNvbGxlY3QgdGhlIHByZXZpb3VzIHN0ZXAgaW50byBtZW1vcnkKLSB0cmFuc2Zvcm0gdGhlIHByZXZpb3VzIHN0ZXAgaW50byBhbiB4LXkgcGxvdAotIGFwcGx5IHBvaW50IHByaW1pdGl2ZXMgdG8gdGhlIHgteSBwbG90Ci0gKGRpc3BsYXkgdGhlIGRhdGEpCgojIFJlbGF0aW9uc2hpcCBiZXR3ZWVuIGRhdGEgZmxvdywgcmVsYXRpb25hbCBzdG9yZXMsIGZ1bmN0aW9uYWwgY29tYmluYXRvcnMsIGFuZCBkYXRhIHBhcmFsbGVsaXNtICMKClRoZSAiZ2ciIGluIGdncGxvdCBzdGFuZHMgZm9yIHRoZSBncmFtbWFyIG9mIGdyYXBoaWNzLiBJdAppcyBhIGZ1bmN0aW9uYWwgY29tYmluYXRvciB3YXkgb2YgZGVzY3JpYmluZyBncmFwaGljcywgYXMgd2VsbCwKc3VjaCB0aGF0IHlvdSBwaXBlIGdyYXBoaWNzIHByaW1pdGl2ZXMgdG8gdHJhbnNmb3JtZXJzIHVudGlsCnlvdSBnZXQgdGhlIGZpbmFsIG91dHB1dC4KCllvdSBjYW4gdGhpbmsgb2YgdGhlIGVudGlyZSBwaXBlbGluZSBmcm9tIGRhdGEgdG8gcGljdHVyZSBpczoKCmBkYXRhID0+IGRhdGEgdHJhbnNmb3JtZXJzID0+IGdyYXBoaWNzIHRyYW5zZm9ybWVycyA9PiBwaWN0dXJlYAoKd2hlcmUgZHBseXIgaXMgb3VyIHNldCBvZiBkYXRhIHRyYW5zZm9ybWVycywgYW5kIGdncGxvdDIKaXMgb3VyIHNldCBvZiBncmFwaGljcyB0cmFuc2Zvcm1lcnMuCgpHcmFwaGljcyBhbmQgdmlzdWFsaXphdGlvbiB0cmVhdHMgZGF0YSBpbiBhIGRhdGEgcGFyYWxsZWwgd2F5LApzdWNoIHRoYXQgZGF0YSBmbG93cyB0aHJvdWdoIGEgcHJvZ3JhbSBhbmQgaXMgdHJhbnNmb3JtZWQKYWxvbmcgdGhlIHdheS4gRXhhbXBsZXMgb2Ygd2hlcmUgdGhlIGdyYXBoIGlzIGV4cGxpY2l0IGNhbgpiZSBmb3VuZCBpbiBkYXRhIGZsb3cgcHJvZ3JhbW1pbmcgdG9vbHMsIHN1Y2ggYXMgTGFiVmlldywKU2ltdWxpbmssIFB1cmUgRGF0YSwgTWF4L01TUCwgUGFyYVZpZXcsIFZUSywgZXRjLiBHZW5lcmFsbHksCiJzdGF0ZSIgb3IgInZhbHVlcyIgaW4gYSBncmFwaGljcyBwaXBlbGluZSBpcyBpbW11dGFibGUsIGFuZCBpdAppcyB0cmFuc2Zvcm1lZCBhbG9uZyB0aGUgd2F5LiAKClRoaXMgaXMgZXZpZGVudCBpbiBob3cgdGhlIGdyYXBoaWNzIHBpcGVsaW5lIGlzIHRhdWdodCwgaG93ClBhcmFWaWV3IGFuZCBWVEsgcmVwcmVzZW50IHRoZSBwcm9ncmFtIGFzIGEgZGlyZWN0ZWQgYWN5Y2xpYwpncmFwaCAoREFHKSwgaG93IE9wZW5HTCByZXByZXNlbnRzIHRyYW5zZm9ybXMgb24gZ3JhcGhpY3MKcHJpbWl0aXZlcywgaG93IEN1ZGEgYW5kIEdQVXMgdHJlYXQgZGF0YSBhcyB2ZWN0b3JzLCBldGMuCkhvcGVmdWxseSwgeW91IGNhbiBzZWUgYWxzbyB0aGVyZSBpcyBhIHJlbGF0aW9uc2hpcCBiZXR3ZWVuCmZ1bmN0aW9uYWwgcHJvZ3JhbW1pbmcgYW5kIHRoZSByZWxhdGlvbmFsIGRhdGEgbW9kZWwgYXMgd2VsbC4KCkxldCdzIGRvIG9uZSBtb3JlIGV4YW1wbGUuCgpgYGB7ciBvbmUtbW9yZX0KdCAlPiUgCiAgbXV0YXRlKHZlbCA9IFZFTF8wKlZFTF8wK1ZFTF8xKlZFTF8xK1ZFTF8yKlZFTF8yKSAlPiUKICBmaWx0ZXIodmVsID4gMWU3KSAlPiUKICBtdXRhdGUoZGlzcCA9IGZsb29yKChhYnMoRElTUExfMCkrYWJzKERJU1BMXzEpK2FicyhESVNQTF8yKSkpKSAlPiUKICBzZWxlY3QodmVsLCBkaXNwKSAlPiUKICBncm91cF9ieShkaXNwKSAlPiUgCiAgc3VtbWFyaXplKGF2ZWwgPSBtZWFuKHZlbCkpICU+JQogIGNvbGxlY3QoKSAlPiUKICBnZ3Bsb3QoYWVzKGRpc3AsIGF2ZWwpKSArIGdlb21fYmFyKHN0YXQ9ImlkZW50aXR5IikKYGBgCgpBIHN1bW1hcnkgb2Ygd2hhdCBJIGRpZDoKCi0gbG9hZCB0Ci0gYWRkIGEgY29sdW1uIHRoYXQgaXMgdmVsb2NpdHkgc3F1YXJlZAotIGZpbHRlciB3aGVyZSB2ZWxvY2l0eSBzcXVhcmVkIGlzID4gMWU3Ci0gYWRkIGEgY29sdW1uIHRoYXQgZGlzY3JldGl6ZXMgZGlzcGxhY2VtZW50IGludG8gaW50ZWdlcnMKLSBzZWxlY3Qgb25seSB0aGUgdHdvIG5ldyBjb2x1bW5zCi0gZ3JvdXAgYnkgZGlzcGxhY2VtZW50Ci0gZ2V0IHRoZSBhdmVyYWdlIHZlbG9jaXR5IHBlciBkaXNwbGFjZW1lbnQgZ3JvdXAKLSBjb2xsZWN0IHRoZSBkYXRhCi0gY3JlYXRlIGEgZ2dwbG90Ci0gbWFwIHRvIGJhcnMKLSAoZGlzcGxheSBkYXRhKQoKTGV0J3MgZ28gb24gYW5kIHNob3cgb25lIG1vcmUgZmVhdHVyZSBvZiBSIGFuZCBpdHMgZ3JhcGhpY3MKZWNvc3lzdGVtLCBTaGlueS4gVGhlIGZvbGxvd2luZyBjb2RlIGlzIHRha2VuIGZyb20gdGhlIFNoaW55CmV4YW1wbGUgd2ViIHBhZ2UsIGJ1dCBhcHBsaWVkIHRvIG91ciBjYW4gZGF0YS4gQWdhaW4sIFNoaW55CmlzIHNpbWlsYXIgdG8gQm9rZWguIFBsb3RseSBhbmQgVGFibGVhdSBhcmUgY29tbWVyY2lhbCAKc29sdXRpb25zIHNpbWlsYXIgdG8gdGhlc2UgdG8gZGVwbG95IHdlYiB2aXN1YWxpemF0aW9ucyAKKHRob3VnaCBwbG90bHkgaXRzZWxmIGlzIG9wZW4gc291cmNlIHRlY2hub2xvZ3kpLgoKCmBgYHtyIHNoaW55LWV4YW1wbGV9CnJlcXVpcmUoc2hpbnkpCgpzIDwtIHQgJT4lIGZpbHRlcihQb2ludHNfMiA+IC02KSAlPiUgZmlsdGVyKFBvaW50c18yIDwgLTQpICU+JSBjb2xsZWN0KCkKCnVpIDwtIGZsdWlkUGFnZSgKICAjIFNvbWUgY3VzdG9tIENTUyBmb3IgYSBzbWFsbGVyIGZvbnQgZm9yIHByZWZvcm1hdHRlZCB0ZXh0CiAgdGFncyRoZWFkKAogICAgdGFncyRzdHlsZShIVE1MKCIKICAgICAgcHJlLCB0YWJsZS50YWJsZSB7CiAgICAgICAgZm9udC1zaXplOiBzbWFsbGVyOwogICAgICB9CiAgICAiKSkKICApLAoKICBmbHVpZFJvdygKICAgIGNvbHVtbih3aWR0aCA9IDQsIHdlbGxQYW5lbCgKICAgICAgcmFkaW9CdXR0b25zKCJwbG90X3R5cGUiLCAiUGxvdCB0eXBlIiwKICAgICAgICBjKCJiYXNlIiwgImdncGxvdDIiKQogICAgICApCiAgICApKSwKICAgIGNvbHVtbih3aWR0aCA9IDQsCiAgICAgICMgSW4gYSBwbG90T3V0cHV0LCBwYXNzaW5nIHZhbHVlcyBmb3IgY2xpY2ssIGRibGNsaWNrLCBob3Zlciwgb3IgYnJ1c2gKICAgICAgIyB3aWxsIGVuYWJsZSB0aG9zZSBpbnRlcmFjdGlvbnMuCiAgICAgIHBsb3RPdXRwdXQoInBsb3QxIiwgaGVpZ2h0ID0gMzUwLAogICAgICAgICMgRXF1aXZhbGVudCB0bzogY2xpY2sgPSBjbGlja09wdHMoaWQgPSAicGxvdF9jbGljayIpCiAgICAgICAgY2xpY2sgPSAicGxvdF9jbGljayIsCiAgICAgICAgZGJsY2xpY2sgPSBkYmxjbGlja09wdHMoCiAgICAgICAgICBpZCA9ICJwbG90X2RibGNsaWNrIgogICAgICAgICksCiAgICAgICAgaG92ZXIgPSBob3Zlck9wdHMoCiAgICAgICAgICBpZCA9ICJwbG90X2hvdmVyIgogICAgICAgICksCiAgICAgICAgYnJ1c2ggPSBicnVzaE9wdHMoCiAgICAgICAgICBpZCA9ICJwbG90X2JydXNoIgogICAgICAgICkKICAgICAgKQogICAgKQogICksCiAgZmx1aWRSb3coCiAgICBjb2x1bW4od2lkdGggPSAzLAogICAgICB2ZXJiYXRpbVRleHRPdXRwdXQoImNsaWNrX2luZm8iKQogICAgKSwKICAgIGNvbHVtbih3aWR0aCA9IDMsCiAgICAgIHZlcmJhdGltVGV4dE91dHB1dCgiZGJsY2xpY2tfaW5mbyIpCiAgICApLAogICAgY29sdW1uKHdpZHRoID0gMywKICAgICAgdmVyYmF0aW1UZXh0T3V0cHV0KCJob3Zlcl9pbmZvIikKICAgICksCiAgICBjb2x1bW4od2lkdGggPSAzLAogICAgICB2ZXJiYXRpbVRleHRPdXRwdXQoImJydXNoX2luZm8iKQogICAgKQogICkKKQoKCnNlcnZlciA8LSBmdW5jdGlvbihpbnB1dCwgb3V0cHV0KSB7CiAgb3V0cHV0JHBsb3QxIDwtIHJlbmRlclBsb3QoewogICAgaWYgKGlucHV0JHBsb3RfdHlwZSA9PSAiYmFzZSIpIHsKICAgICAgcGxvdChzJFBvaW50c18wLCBzJFBvaW50c18yKQogICAgfSBlbHNlIGlmIChpbnB1dCRwbG90X3R5cGUgPT0gImdncGxvdDIiKSB7CiAgICAgIGdncGxvdChzLCBhZXMoUG9pbnRzXzAsIFBvaW50c18yKSkgKyBnZW9tX3BvaW50KCkKICAgIH0KICB9KQoKICBvdXRwdXQkY2xpY2tfaW5mbyA8LSByZW5kZXJQcmludCh7CiAgICBjYXQoImlucHV0JHBsb3RfY2xpY2s6XG4iKQogICAgc3RyKGlucHV0JHBsb3RfY2xpY2spCiAgfSkKICBvdXRwdXQkaG92ZXJfaW5mbyA8LSByZW5kZXJQcmludCh7CiAgICBjYXQoImlucHV0JHBsb3RfaG92ZXI6XG4iKQogICAgc3RyKGlucHV0JHBsb3RfaG92ZXIpCiAgfSkKICBvdXRwdXQkZGJsY2xpY2tfaW5mbyA8LSByZW5kZXJQcmludCh7CiAgICBjYXQoImlucHV0JHBsb3RfZGJsY2xpY2s6XG4iKQogICAgc3RyKGlucHV0JHBsb3RfZGJsY2xpY2spCiAgfSkKICBvdXRwdXQkYnJ1c2hfaW5mbyA8LSByZW5kZXJQcmludCh7CiAgICBjYXQoImlucHV0JHBsb3RfYnJ1c2g6XG4iKQogICAgc3RyKGlucHV0JHBsb3RfYnJ1c2gpCiAgfSkKCn0KCgpzaGlueUFwcCh1aSwgc2VydmVyKQpgYGAKCllvdSBwcm9iYWJseSB3b24ndCBzZWUgYW55dGhpbmcgdW5sZXNzIHlvdSBhcmUgcnVubmluZyB0aGUKaW50ZXJhY3RpdmUgdmVyc2lvbiBvZiB0aGlzIGRvY3VtZW50LgoKQXMgeW91IGNhbiBzZWUsIHdlIGFyZSBhYmxlIHRvIGdldCB0aGUgc2FtZSBzb3J0IG9mCmludGVyYWN0aXZlIGdyYXBoaWNzIHRoYXQgaXMgYXZhaWxhYmxlIHRocm91Z2ggQm9rZWggaW4gUHl0aG9uLAphbmQgRDMgYW5kIHRoZSBsaWtlIGluIEphdmFzY3JpcHQgYWxsIGluIG9uZSBlY29zeXN0ZW0uCgpJZiBJIHByb3ZpZGVkIG1vcmUgY29udHJvbHMsIEkgY291bGQgY2hhbmdlIGl0IHN1Y2ggdGhhdCBhCnVzZXIgd2l0aGluIHRoZSBhcHBsaWNhdGlvbiBjb3VsZCBjaGFuZ2UgdGhlIGZpbHRlcmluZyBvbgp0aGUgZGF0YSBzZXQsIHdoaWNoIGlzIGRvbmUgYXQgdGhlIFNRTC9maWxlIGxheWVyLCB3aGlsZQp0aGUgYWRkaXRpb25hbCBncmFwaGljcyB0cmFuc2Zvcm1hdGlvbnMgYXJlIGRvbmUgd2hpbGUgY29tcHV0aW5nLgoKTGV0J3MgaGVhZCBiYWNrIHRvIHRoZSBKdXB5dGVyIG5vdGVib29rIHRvIGZpbmlzaCB1cCB0aGUgc2xpZGVzLgo=</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiUiBhbmQgZ2dwbG90MiIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKIyBSICMKCi0gU3RhdGlzdGljcy1mb2N1c2VkIGZ1bmN0aW9uYWwgbGFuZ3VhZ2UKICAgIC0gSXQgbG9va3MgbW9yZSBsaWtlIEphdmFTY3JpcHQgdGhhbiBQeXRob24KICAgIC0gIkRhdGEgc2NpZW50aXN0cyIgd2lsbCBmcmVxdWVudGx5IHN3YXAgYmV0d2VlbiBSIGFuZCBQeXRob24KLSBDUkFOIC0gb3BlbiBzb3VyY2UgcmVwb3NpdG9yeSBmb3IgYWxnb3JpdGhtcyBhbmQgbGlicmFyaWVzCiAgICAtIFRoZSBmb2NhbCBwb2ludCBmb3IgdGhlIHN0YXRpc3RpY3MgY29tbXVuaXR5IGluIHNoYXJpbmcgY29kZQogICAgLSBNYW55IGFkdmFuY2VkIHN0YXRpc3RpY3MgYWxnb3JpdGhtcyBhcmUgaW1wbGVtZW50ZWQgaW4gUgogICAgLSBHb29kIGxpYnJhcnkgc3VwcG9ydCBsaWtlICpnZ3Bsb3QyKiBhbmQgKmRwbHlyKgotIFJTdHVkaW8sIGFuIElERSBmb3IgKlIqCiAgICAtIEF1dG9tYXRpYyBpbnRlZ3JhdGlvbiB3aXRoIENSQU4KICAgIC0gSHlwZXJsaW5rIGhlbHAgYnJvd3NlcgogICAgLSBQbG90IHZpZXdlciBhbmQgc2F2ZWQgc3RhdGUgaW50ZWdyYXRpb24KICAgIC0gUk1hcmtkb3duIHN1cHBvcnQsIHNpbWlsYXIgdG8gSnVweXRlciBOb3RlYm9va3MKICAgIC0gU2hpbnkgc3VwcG9ydCwgc2ltaWxhciB0byBCb2tlaAotIFIgKyBSU3R1ZGlvICsgQ1JBTiBpcyBhbiBleGFtcGxlIG9mIGEgZ29vZCBzb2Z0d2FyZSBzdGFjayBmcm9tIGFuIGFjdGl2ZSwgb3Blbi1zb3VyY2UgY29tbXVuaXR5CgotLS0KCiMgUiBNYXJrZG93bgoKSW4gKlJTdHVkaW8qLCBpbnRlcmFjdGl2ZSBkb2N1bWVudHMgb3Igbm90ZWJvb2tzIGFyZSBkb25lIGluIE1hcmtkb3duLgoKTWFya2Rvd24gaXMgYSBzaW1wbGlmaWVkICJtYXJrdXAiIGxhbmd1YWdlIChoZW5jZSB0aGUgbmFtZSBNYXJrZG93biksIGZvcgp3cml0aW5nIGFsbCBzb3J0cyBvZiBkb2N1bWVudHM6IGUuZy4sIEdpdGh1YiBSRUFETUVzLiBJdCBoYXMgYmVlbiBhZG9wdGVkCmZvciBhbGwgc29ydHMgb2YgZm9ybWF0cywgaW5jbHVkaW5nIHdyaXRpbmcgd2ViIHBhZ2VzLCBkb2N1bWVudGF0aW9uIGFuZCBjb2RlLgoKSW4gUlN0dWRpbywgYSAiY2VsbCIgKGNodW5rKSBpcyBmcmVlLWZvcm0sIGFzIGl0IGlzIHN0YXJ0ZWQgYW5kIGVuZGVkIHdpdGggdGhyZWUgYmFja3RpY2tzOgoKXGBcYFxge3J9CgpgMiArIDJgCgpcYFxgXGAKClRoZW4sIHRoYXQgY2h1bmsgY2FuIGJlIGV4ZWN1dGVkIGluIHRoZSBJREUuIENvbWJpbmVkIHdpdGggKmtuaXRyKiwgeW91IGFyZSBhYmxlCnRvIGRpcmVjdGx5IGNyZWF0ZSBIVE1MLCBQREYsIGFuZCBXb3JkIGRvY3VtZW50cyBvZiB5b3VyIGNvZGUsIHBsb3RzLCBhbmQgCmRvY3VtZW50YXRpb246IEp1c3QgbGlrZSB0aGlzIHdlYiBwYWdlIHdhcyBjcmVhdGVkIHdpdGggUk1hcmtkb3duLgoKLS0tCgojIERhdGEgRnJhbWVzIGFuZCBSCgotIEZ1bmRhbWVudGFsIHN1cHBvcnQgZm9yIGRhdGEgZnJhbWVzCi0gSXQgYWxzbyBoYXMgc3VwcG9ydCBmb3IgZGF0YWJhc2VzIGFuZCBTUUwsIGFzIHdlbGwKICAgIC0gREJJIGludGVyZmFjZSBmb3IgZGF0YWJhc2VzCiAgICAgICAgLSBTUUxpdGUsIFBvc3RncmVTUUwsIGV0Yy4KICAgIC0gTG9hZCB0YWJsZXMgdXNpbmcgcXVlcmllcyBkaXJlY3RseSBhcyBkYXRhIGZyYW1lcwotIEkgd29uJ3Qgc3BlbmQgbXVjaCB0aW1lIHNob3dpbmcgZGF0YSBmcmFtZXMgaW4gUiwgYXMgdGhleSBhcmUgbW9yZSBvciBsZXNzIHRoZSBzYW1lIGFzIFB5dGhvbiAoUGFuZGFzKQotIFJhdGhlciwgSSdsbCBzaG93ICpkcGx5ciosIGEgbGlicmFyeS9ncmFtbWFyIGZvciBtYW5pcHVsYXRpbmcgdGFibGVzIChyZWxhdGlvbmFsIGRhdGEpCgotLS0KCiMgQ1NWIHRvIERhdGEgRnJhbWUKCldlIGNhbiBkaXJlY3RseSBsb2FkIG91ciBjYXJzIENTViBhcyBhIGRhdGEgZnJhbWU6CgpgYGB7cn0KIyByZWFkIHRoZSBkYXRhIGFzIGEgZGF0YSBmcmFtZQp0IDwtIHJlYWQuY3N2KCJtdGNhcnMuY3N2IikgIyBhc3NpZ25tZW50IGluIFIgaXMgPC0KdApgYGAKCi0tLQoKIyBEYXRhIEZyYW1lIFNlbGVjdGlvbgoKSnVzdCB0byBzaG93IHlvdSB0aGF0IGl0J3Mgc2ltaWxhciB0byBQYW5kYXMsIHdpdGggc2xpZ2h0bHkgZGlmZmVyZW50IHN5bnRheDoKCmBgYHtyfQojIHNlbGVjdCByb3dzIDUtMTAsIGNvbHVtbnMgbXBnIGFuZCBjeWwKdFs1OjEwLCBjKCdtcGcnLCdjeWwnKV0KYGBgCgotLS0KCiMgU2VsZWN0aW5nIENvbHVtbnMgd2l0aCAqZHBseXIqCgpGaXJzdCwgd2UgbmVlZCB0byBsb2FkIGRwbHlyLgoKYGBge3J9CmxpYnJhcnkoZHBseXIpCmBgYAoKVGhlIHdheSB3ZSBzZWxlY3QgZGF0YSB3aXRoICpkcGx5ciogaXMgdGhyb3VnaCBvcGVyYXRvciBjaGFpbmluZywgYWthIGNvbWJpbmF0b3JzLCBha2EgcGlwZWxpbmVzLCBha2EgZGF0YSBmbG93IGdyYXBocy4KCmAlPiVgIGlzIHRoZSBwaXBlIG9wZXJhdG9yLCBsaWtlIGB8YCBpbiBVbml4LCBhbmQgdGhlIG9wZXJhdG9yIGlzICpzZWxlY3QqIGZvciBwaWNraW5nIGNvbHVtbnM6CgpgYGB7cn0KdCAlPiUgCiAgc2VsZWN0KG5hbWUsIG1wZywgY3lsKQpgYGAKCklmIHdlIHdlcmUgdG8gd3JpdGUgdGhpcyBpbiAqYmFzaCosIGl0IHdvdWxkIGxvb2sgc29tZXRoaW5nIGxpa2U6CgpgYGBiYXNoCmNhdCBtdGNhcnMuY3N2IHwgYXdrIC1GJywnICd7IHByaW50ICQyLCAkMyB9JwpgYGAKCkJ5IHRoZSB3YXksIGEgbG90IG9mIHdoYXQgd2UgaGF2ZSBkb25lIHdpdGggKlB5dGhvbiogYW5kICpSKiBjb3VsZCBiZSBkb25lIHdpdGggKmJhc2gqIGFuZCAqZ251cGxvdCouIFRoYXQncyBqdXN0IHRvIHNheSB3aGF0IGlzIG9sZCBpc24ndCBicm9rZW4sIGFuZCBpdCBjYW4gd29yayBqdXN0IGZpbmUgaW4gbWFueSBjYXNlczogPGh0dHBzOi8vYWRhbWRyYWtlLmNvbS9jb21tYW5kLWxpbmUtdG9vbHMtY2FuLWJlLTIzNXgtZmFzdGVyLXRoYW4teW91ci1oYWRvb3AtY2x1c3Rlci5odG1sPgoKLS0tCgojIEZpbHRlciAoV2hlcmUpCgpJbiAqU1FMKiwgdGhlIGBXSEVSRWAgY2xhdXNlIGFsbG93cyB1cyB0byBwaWNrIHJvd3MsIGFuZCBpbiAqZHBseXIqIGl0IGlzIHRoZSBgZmlsdGVyYCBvcGVyYXRvcjoKCmBgYHtyfQojIG9ubHkgc2hvdyAzIGdlYXIgY2Fycywgd2l0aCB0aGVpciBtcGcgYW5kIGN5bAp0ICU+JSAKICBmaWx0ZXIoZ2VhciA9PSAzKSAlPiUKICBzZWxlY3QobmFtZSwgbXBnLCBjeWwpCmBgYAoKQW5kIHdlIGNhbiBjb21iaW5lIHRoZW0gZnVydGhlcjoKCmBgYHtyfQojIHNhbWUgcXVlcnkgYXMgYmVmb3JlLCBidXQgb25seSBrZWVwIGdyZWF0ZXIgdGhhbiAyMDAgaHAKdCAlPiUKICBmaWx0ZXIoZ2VhciA9PSAzKSAlPiUKICBmaWx0ZXIoaHAgPiAyMDApICU+JQogIHNlbGVjdChuYW1lLCBtcGcsIGN5bCkKYGBgCgpXZSBjYW4gYWRkIGBvcmAgaW4gYSBmaWx0ZXIsIHRvbzoKCmBgYHtyfQojIHNhbWUgcXVlcnkgYXMgYmVmb3JlLCAzIG9yIDQgZ2VhcnMKdCAlPiUKICBmaWx0ZXIoZ2VhciA9PSAzIHx8IGdlYXIgPT0gNCkgJT4lCiAgZmlsdGVyKGhwID4gMjAwKSAlPiUKICBzZWxlY3QobmFtZSwgbXBnLCBjeWwpCmBgYAoKLS0tCgojIE5vdGUgZm9yIERhdGFiYXNlcyBhbmQgKmRwbHlyKgoKSWYgKnQqIHdhcyBhIHRhYmxlIHRoYXQgd2FzIGluIGEgZGF0YWJhc2UsIGl0IHdvdWxkbid0IGJlIGxvYWRlZCBpbnRvICpSKidzIG1lbW9yeS4KCkluICpkcGx5ciosIGEgdGFibGUgZnJvbSBhIGRhdGFiYXNlIGl0IGlzIGEgInJlZmVyZW5jZSIgdG8gdGhlIHRhYmxlLCBhbmQgY29tbWFuZHMgYXJlIG9ubHkgZXhlY3V0ZWQgd2hlbiAqUiogbmVlZHMgaXQuCgpUaGlzIGlzICJsYXp5IGV2YWx1YXRpb24sIiBvciAiZGVtYW5kIGRyaXZlbiwiIGEgZmVhdHVyZSBvZiBib3RoICpIYXNrZWxsKiwgKlNwYXJrKiwgKkRhc2sqLCBhbmQgb3RoZXIgbGFuZ3VhZ2VzLiBJbiB0aGUgY2FzZSBvZiAqZHBseXIqLCB3aGVuICp0KiBpcyBhIGRhdGFiYXNlIHRhYmxlLCBpdCBleGVjdXRlIHF1ZXJpZXMgb25seSB3aGVuIHlvdSBlaXRoZXIgZGlzcGxheSAqdCosIGBjb2xsZWN0KClgIGl0LCBvciBzZW5kIGl0IHRvIGEgcGxvdC4KCi0tLQoKIyBHcm91cCBCeSBhbmQgU3VtbWFyaWVzCgpHcm91cGluZywgbGlrZSBpbiAqU1FMKiwgaXMgdXNlZnVsIGZvciBzdW1tYXJpemluZyBmdW5jdGlvbnMsIGxpa2UgbWluLCBtYXgsIG9yIGF2ZXJhZ2U6CgpgYGB7cn0KIyB3aGF0J3MgdGhlIGF2ZXJhZ2UgaHAgZm9yIGVhY2ggY3lsaW5kZXIgc2l6ZT8KdCAlPiUKICBncm91cF9ieShjeWwpICU+JQogIHN1bW1hcml6ZShtZWFuX2hwID0gbWVhbihocCkpCmBgYAoKLS0tCgojIFNvcnRpbmcKCkFuZCBzb3J0aW5nLCBvciB0aGUgKk9SREVSIEJZKiBpbiAqU1FMKiwgaXMgZG9uZSBieSBgYXJyYW5nZWA6CgpgYGB7cn0KIyBnZXQgY2FycyB3aXRoIGRpc3BsYWNlbWVudCA8IDEwMCwgYW5kIG9yZGVyIGJ5IGhvcnNlcG93ZXIKdCAlPiUKICBmaWx0ZXIoZGlzcCA8IDEwMCkgJT4lCiAgc2VsZWN0KG5hbWUsIGhwLCBtcGcpICU+JQogIGFycmFuZ2UoaHApCmBgYAoKLS0tCgojIFBsb3R0aW5nIHdpdGggZ2dwbG90MgoKTm93IHRoYXQgd2Uga25vdyBob3cgdG8gbWFuaXB1bGF0ZSBvdXIgZGF0YSwgd2UgY2FuIHBsb3QgaXQuIFdlJ2xsIHVzZSAqZ2dwbG90MiosIHdoZXJlIGBnZ2Agc3RhbmRzIGZvciB0aGUgImdyYW1tYXIgb2YgZ3JhcGhpY3MiLCBmaXJzdCBkZXNjcmliZWQgYnkgTGVsYW5kIFdpbGtpbnNvbiBhbmQgZXh0ZW5kZWQgYnkgSGFkbGV5IFdpY2toYW0uIChIYWRsZXkgd3JvdGUgbWFueSBvZiB0aGUgb3RoZXIgcG9wdWxhciwgdXNlYWJsZSBsaWJyYXJpZXMsIGxpa2UgKmRwbHlyKiwgYW5kIHdoYXQgY29tcHJpc2VzIHRoZSAqdGlkeXZlcnNlKiBpbiAqUiopLgoKKmdncGxvdDIqIHNlYW1sZXNzbHkgaW50ZWdyYXRlcyB3aXRoICpkcGx5ciogYnkgcGlwaW5nIHRoZSBvdXRwdXQgZGlyZWN0bHkgaW50byB0aGUgKmdncGxvdCogZnVuY3Rpb246CgpgYGB7cn0KbGlicmFyeShnZ3Bsb3QyKQoKIyBwbG90IDMgZ2VhciBjYXJzLCBtcGcgdnMuIGhwCnQgJT4lCiAgZmlsdGVyKGdlYXIgPT0gMykgJT4lCiAgc2VsZWN0KG1wZywgaHApICU+JQogIGdncGxvdCguKSArICMgc3RhcnQgYSBwbG90LCAuIGlzIHBsYWNlaG9sZGVyIGZvciB0aGUgaW5jb21pbmcgZGF0YQogIGFlcyh4PW1wZywgeT1ocCkgKyAjIGFlcywgaXMgImFlc3RoZXRpY3MiIC0tIGhvdyB0byBtYXAgZGF0YSB0byBnZW9tZXRyeQogIGdlb21fcG9pbnQoKSAjIHRoZSBwbG90IGdlb21ldHJ5CmBgYAoKLS0tCgojIFNoaW55CgoqU2hpbnkqIGlzIGxpa2UgKkJva2VoKiBmb3IgUHl0aG9uLCBhcyBpdCBpcyBhIHdheSB0byBnZW5lcmF0ZSBpbnRlcmFjdGl2ZSBwbG90cyBmb3IgUi4KCmBgYHtyfQpsaWJyYXJ5KHNoaW55KQoKIyB0aGUgZnJvbnQgZW5kLCB0aGUgVUkKdWkgPC0gYmFzaWNQYWdlKAogIHBsb3RPdXRwdXQoInBsb3QxIiwKICAgIGhvdmVyID0gInBsb3RfaG92ZXIiLAogICAgYnJ1c2ggPSAicGxvdF9icnVzaCIKICApLAogIHZlcmJhdGltVGV4dE91dHB1dCgiaW5mbyIpCikKCiMgdGhlIGJhY2sgZW5kLCBkYXRhIHByb2Nlc3NpbmcKc2VydmVyIDwtIGZ1bmN0aW9uKGlucHV0LCBvdXRwdXQpIHsKICAjIHRoZSBwbG90CiAgb3V0cHV0JHBsb3QxIDwtIHJlbmRlclBsb3QoewogICMgdGhpcyBpcyBvdXIgcGxvdCB0aGF0IHdlIGhhZCBiZWZvcmUKICB0ICU+JQogICAgZmlsdGVyKGdlYXIgPT0gMykgJT4lCiAgICBzZWxlY3QobXBnLCBocCkgJT4lCiAgICBnZ3Bsb3QoLikgKyAKICAgIGFlcyh4PW1wZywgeT1ocCkgKyAKICAgIGdlb21fcG9pbnQoKSAKICB9KQoKICAjIGdlbmVyYXRpbmcgdGhlIHRvb2x0aXAgdGV4dCBiYXNlZCBvbiB0aGUgVUkKICBvdXRwdXQkaW5mbyA8LSByZW5kZXJUZXh0KHsKICAgIHh5X3N0ciA8LSBmdW5jdGlvbihlKSB7CiAgICAgIGlmKGlzLm51bGwoZSkpIHJldHVybigiTlVMTFxuIikKICAgICAgcGFzdGUwKCJ4PSIsIHJvdW5kKGUkeCwgMSksICIgeT0iLCByb3VuZChlJHksIDEpLCAiXG4iKQogICAgfQogICAgeHlfcmFuZ2Vfc3RyIDwtIGZ1bmN0aW9uKGUpIHsKICAgICAgaWYoaXMubnVsbChlKSkgcmV0dXJuKCJOVUxMXG4iKQogICAgICBwYXN0ZTAoInhtaW49Iiwgcm91bmQoZSR4bWluLCAxKSwgIiB4bWF4PSIsIHJvdW5kKGUkeG1heCwgMSksIAogICAgICAgICAgICAgIiB5bWluPSIsIHJvdW5kKGUkeW1pbiwgMSksICIgeW1heD0iLCByb3VuZChlJHltYXgsIDEpKQogICAgfQoKICAgIHBhc3RlMCgKICAgICAgImhvdmVyOiAiLCB4eV9zdHIoaW5wdXQkcGxvdF9ob3ZlciksCiAgICAgICJicnVzaDogIiwgeHlfcmFuZ2Vfc3RyKGlucHV0JHBsb3RfYnJ1c2gpCiAgICApCiAgfSkKfQoKc2hpbnlBcHAodWksIHNlcnZlcikKYGBgCgpZb3UgcHJvYmFibHkgd29uJ3Qgc2VlIGFueXRoaW5nIHVubGVzcyB5b3UgYXJlIHJ1bm5pbmcgdGhlCmludGVyYWN0aXZlIHZlcnNpb24gb2YgdGhpcyBkb2N1bWVudC4KCkFzIHlvdSBjYW4gc2VlLCB3ZSBhcmUgYWJsZSB0byBnZXQgdGhlIHNhbWUgc29ydCBvZgppbnRlcmFjdGl2ZSBncmFwaGljcyB0aGF0IGlzIGF2YWlsYWJsZSB0aHJvdWdoIEJva2VoIGluIFB5dGhvbiwKYW5kIEQzIGFuZCB0aGUgbGlrZSBpbiBKYXZhc2NyaXB0IGFsbCBpbiBvbmUgZWNvc3lzdGVtLgoKSWYgSSBwcm92aWRlZCBtb3JlIGNvbnRyb2xzLCBJIGNvdWxkIGNoYW5nZSBpdCBzdWNoIHRoYXQgYQp1c2VyIHdpdGhpbiB0aGUgYXBwbGljYXRpb24gY291bGQgY2hhbmdlIHRoZSBmaWx0ZXJpbmcgb24KdGhlIGRhdGEgc2V0LCB3aGljaCBpcyBkb25lIGF0IHRoZSBTUUwvZmlsZSBsYXllciwgd2hpbGUKdGhlIGFkZGl0aW9uYWwgZ3JhcGhpY3MgdHJhbnNmb3JtYXRpb25zIGFyZSBkb25lIHdoaWxlIGNvbXB1dGluZy4KCkxldCdzIGhlYWQgYmFjayB0byB0aGUgSnVweXRlciBub3RlYm9vayB0byBmaW5pc2ggdXAgdGhlIHNsaWRlcy4KCgoK</div>
 
 
 
