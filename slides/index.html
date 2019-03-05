@@ -132,10 +132,6 @@ charts.js, Octave, Blender, Slicer
 <!-- START VERTICAL --><section>
 
 <!-- START SLIDE --><section data-markdown><section data-template>
-### Python
-<!-- END SLIDE --></section></section>
-
-<!-- START SLIDE --><section data-markdown><section data-template>
 ### Getting Started with Python and R
 
 Download: https://www.anaconda.com/distribution/#download-section or
@@ -161,14 +157,6 @@ $ jupyter notebook
 ```
 
 open *python.ipynb* from the github repository
-<!-- END SLIDE --></section></section>
-
-<!-- END VERTICAL --></section>
-
-<!-- START VERTICAL --><section>
-
-<!-- START SLIDE --><section data-markdown><section data-template>
-### R
 <!-- END SLIDE --></section></section>
 
 <!-- START SLIDE --><section data-markdown><section data-template>
@@ -289,13 +277,11 @@ https://www.paraview.org/download/
 <!-- START SLIDE --><section data-markdown><section data-template>
 ### DOE-oriented Scientific Visualization Research
 
-- Focus on parallelism and large-scale data (supercomputers)
+- Focus on parallelism and large-scale data
 - Portable Parallel Algorithms
-  - Run on GPU or multi-core CPU
-- In situ Algorithms
-  - Run visualizations as the computation is running
-- In transit Algorithms
-  - Run visualizations as the data is moving
+  - Run on GPU or multi-core CPU transparently
+- In situ Algorithms - as it is running
+- In transit Algorithms - as the data are moving
 - Data compression and data reduction
   - Lossy compression algorithms
   - Data products (plots, images, etc.)
@@ -304,15 +290,39 @@ https://www.paraview.org/download/
 <!-- START SLIDE --><section data-markdown><section data-template>
 ### Cinema
 
-- TODO link to cinema website
-- What if you could save every plot/image that you ever wanted?
+- https://cinemascience.github.io/examples.html
+  - https://cinemascience.github.io/publications.html
+- Save every plot/image that was ever needed
   - Assumes that visualizations are data reduction
 - Many scientists keep spreadsheets of their work
-  - What's the simplest spreadsheet implementation? CSV
 - Viewers that can interactively show
   - The scientist's spreadsheet of their work as CSV
   - Database of every plot referenced in a CSV
 <!-- END SLIDE --></section></section>
+
+<!-- START SLIDE --><section>
+<h3>Cinema Demo (cinemascience.github.io)</h3>
+
+<video data-autoplay>
+  <source data-src="local/cinema1.mp4" type="video/mp4" />
+</video>
+<!-- END SLIDE --></section>
+
+<!-- START SLIDE --><section>
+<h3>Cinema Demo (cinemascience.github.io)</h3>
+
+<video data-autoplay>
+  <source data-src="local/cinema2.mp4" type="video/mp4" />
+</video>
+<!-- END SLIDE --></section>
+
+<!-- START SLIDE --><section>
+<h3>Cinema Demo (cinemascience.github.io)</h3>
+
+<video data-autoplay>
+  <source data-src="local/cinema3.mp4" type="video/mp4" />
+</video>
+<!-- END SLIDE --></section>
 
 <!-- START SLIDE --><section data-markdown><section data-template>
 ### Cinema Explorer
@@ -324,16 +334,10 @@ $ ${BROWSER} cinema_explorer.html
 ```
 
 - Explorer pulls resources from the web
-  - May need to edit `cinema_explorer.html` if you want to use it offline
-  - wget` the components it is using, copied locally, change `href`
-- You may need to use Firefox as your `${BROWSER}`
-  - Chrome and Safari often don't work
-<!-- END SLIDE --></section></section>
-
-<!-- START SLIDE --><section data-markdown><section data-template>
-# TODO
-
-### Cinema Viewer Demo
+  - Edit `cinema_explorer.html` if you want to use it offline
+    - `wget` the components it is using, change `href` to local copies
+  - Or use my copy at https://github.com/jonwoodring/cinema_explorer
+  - You probably need to use Firefox
 <!-- END SLIDE --></section></section>
 
 <!-- END VERTICAL --></section>
@@ -357,9 +361,9 @@ $ ${BROWSER} cinema_explorer.html
 - SQLite virtual table for a popular data format
 - Export RMarkdown or Jupyter to Cinema
 - Export ParaView visualization to reveal.js
-- Improve the SQLite reader/writer in ParaView and VTK
+- Improve the SQLite reader/writer in VTK (ParaView)
 - Programmable Filter for another language (JavaScript, Lua, LLVM IR, etc.)
-  in ParaView or VTK
+  in VTK (ParaView)
 <!-- END SLIDE --></section></section>
 
 <!-- START SLIDE --><section data-markdown><section data-template>
