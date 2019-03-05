@@ -103,12 +103,12 @@ https://github.com/jonwoodring/ucsc-2019-03-05
   - The scientific visualization and graphics communities did most
     of the initial research
 - We use BLAS, LAPACK, FFTW, GSL, etc.
-  - Created by scientific and numerical methods communities
-  - Embedded in Python and R
+  - Created by scientific and numerical methods communities --
+    inside Python and R libraries
 <!-- END SLIDE --></section></section>
 
 <!-- START SLIDE --><section data-markdown><section data-template>
-### Differences -- at the DOE we:
+### Differences -- in scientific computing and at the DOE we:
 
 - Typically favor speed over portability
 - *Don't* use the cloud
@@ -194,9 +194,9 @@ open *r.rmd* from the github repository
   - V - VAST
   - I - InfoVis
   - S - *SciVis* (Scientific Visualization)
-- Usually, "3D" (physical data) volume data
+- Usually, "3D" (physical data) meshes or volumes
   - At LANL, simulations, like climate modeling
-  - In medicine, CT, MRI, etc. scans
+  - In medicine, CT, MRI, etc.
 - Time varying, large-scale data
   - Dark matter cosmology, petabytes of data
 <!-- END SLIDE --></section></section>
@@ -204,16 +204,16 @@ open *r.rmd* from the github repository
 <!-- START SLIDE --><section data-markdown><section data-template>
 ### ParaView
 
+https://www.paraview.org/download/
+
 - Back in the late 1990s/early 2000s
-  - Needed scalable tools
   - ParaView started at DOE LANL
   - VisIt started at DOE LLNL
 - Features
   - 3D, polygonal and volume rendering
   - Scalable, distributed parallel (supercomputers)
-  - Built on VTK (Visualization ToolKit) - Kitware, Inc.
+  - VTK (Visualization ToolKit) - Kitware, Inc.
 
-https://www.paraview.org/download/
 <!-- END SLIDE --></section></section>
 
 <!-- START SLIDE --><section data-markdown><section data-template>
@@ -279,7 +279,7 @@ https://www.paraview.org/download/
 - http://sciviscontest.ieeevis.org
   - Some LANL data is available
   - Simulation of an asteroid hitting the ocean
-    - Data used for winning entry in Supercomputing visualization contest
+    - The data used for winning entry in Supercomputing contest
 <!-- END SLIDE --></section></section>
 
 <!-- END VERTICAL --></section>
@@ -287,7 +287,9 @@ https://www.paraview.org/download/
 <!-- START VERTICAL --><section>
 
 <!-- START SLIDE --><section data-markdown><section data-template>
-# Scientific Visualization Research
+# TODO
+
+### Scientific Visualization Research
 <!-- END SLIDE --></section></section>
 
 <!-- START SLIDE --><section data-markdown><section data-template>
@@ -323,16 +325,17 @@ https://www.paraview.org/download/
 <!-- END SLIDE --></section></section>
 
 <!-- START SLIDE --><section data-markdown><section data-template>
-# TODO
-
 ### One Reader to Rule them All
 
-Relationship between data flow, relational databases, parallel programming
-and functional programming
+https://github.com/jonwoodring/ortrta
 
-Though, it will also teach how to create a SQLite virtual tables, too
-
-Graphics (OpenGL) are fundamentally data parallel algorithms, too
+- A talk on the relationship between
+  - Data flow graphs
+  - Relational databases
+  - Parallel programming
+  - Functional programming
+- Also teaches how to create SQLite virtual tables
+  - Make *any* dataset SQL queryable
 <!-- END SLIDE --></section></section>
 
 <!-- START SLIDE --><section data-markdown><section data-template>
@@ -368,9 +371,6 @@ https://jonwoodring.github.io/ucsc-2019-03-05/slides/index.html
 https://github.com/jonwoodring/ucsc-2019-03-05
 
 https://www.lanl.gov/careers/career-options/student-internships/index.php
-<!-- END SLIDE --></section></section>
-
-<!-- START SLIDE --><section data-markdown><section data-template>
 <!-- END SLIDE --></section></section>
 
 <!-- END VERTICAL --></section>
