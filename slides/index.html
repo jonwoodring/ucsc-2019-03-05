@@ -287,21 +287,47 @@ https://www.paraview.org/download/
 <!-- START VERTICAL --><section>
 
 <!-- START SLIDE --><section data-markdown><section data-template>
-# TODO
+### DOE-oriented Scientific Visualization Research
 
-### Scientific Visualization Research
+- Focus on parallelism and large-scale data (supercomputers)
+- Portable Parallel Algorithms
+  - Run on GPU or multi-core CPU
+- In situ Algorithms
+  - Run visualizations as the computation is running
+- In transit Algorithms
+  - Run visualizations as the data is moving
+- Data compression and data reduction
+  - Lossy compression algorithms
+  - Data products (plots, images, etc.)
 <!-- END SLIDE --></section></section>
 
 <!-- START SLIDE --><section data-markdown><section data-template>
-# TODO
-
 ### Cinema
+
+- TODO link to cinema website
+- What if you could save every plot/image that you ever wanted?
+  - Assumes that visualizations are data reduction
+- Many scientists keep spreadsheets of their work
+  - What's the simplest spreadsheet implementation? CSV
+- Viewers that can interactively show
+  - The scientist's spreadsheet of their work as CSV
+  - Database of every plot referenced in a CSV
 <!-- END SLIDE --></section></section>
 
 <!-- START SLIDE --><section data-markdown><section data-template>
-# TODO
+### Cinema Explorer
 
-### Cinema Viewer
+```bash
+$ git clone https://github.com/cinemascience/cinema_explorer
+$ cd cinema_explorer
+$ ${BROWSER} cinema_explorer.html
+```
+
+- Explorer pulls resources from the web
+  - May need to edit `cinema_explorer.html` if you want to use it offline
+  - wget` the components it is using, copied locally, change `href`
+- You may need to use Firefox as your `${BROWSER}`
+  - Chrome and Safari often don't work
 <!-- END SLIDE --></section></section>
 
 <!-- START SLIDE --><section data-markdown><section data-template>
@@ -315,20 +341,25 @@ https://www.paraview.org/download/
 <!-- START VERTICAL --><section>
 
 <!-- START SLIDE --><section data-markdown><section data-template>
-# TODO
-
 ### Finishing Up
 
-- Slides made in *reveal.js* *Link to reveal*
-  - One more open source visualization
-  - Though, Tufte hates slides
-  - *Link to Tufte here*
+- One more open source visualization
+- Slides made in *reveal.js*
+  - https://github.com/hakimel/reveal.js/
+- Though, Tufte hates slides
+  - https://www.edwardtufte.com/tufte/
 <!-- END SLIDE --></section></section>
 
 <!-- START SLIDE --><section data-markdown><section data-template>
-# TODO
-
 ### Project ideas
+
+- ParaView/VTK plotting kernel to Jupyter or RStudio
+- SQLite virtual table for a popular data format
+- Export RMarkdown or Jupyter to Cinema
+- Export ParaView visualization to reveal.js
+- Improve the SQLite reader/writer in ParaView and VTK
+- Programmable Filter for another language (JavaScript, Lua, LLVM IR, etc.)
+  in ParaView or VTK
 <!-- END SLIDE --></section></section>
 
 <!-- START SLIDE --><section data-markdown><section data-template>
