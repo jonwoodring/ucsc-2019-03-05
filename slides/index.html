@@ -188,7 +188,98 @@ open *r.rmd* from the github repository
 <!-- START VERTICAL --><section>
 
 <!-- START SLIDE --><section data-markdown><section data-template>
+### Scientific Visualization
+
+- IEEE VIS - https://ieeevis.org
+  - V - VAST
+  - I - InfoVis
+  - S - *SciVis* (Scientific Visualization)
+- Usually, "3D" (physical data) volume data
+  - At LANL, simulations, like climate modeling
+  - In medicine, CT, MRI, etc. scans
+- Time varying, large-scale data
+  - Dark matter cosmology, petabytes of data
+<!-- END SLIDE --></section></section>
+
+<!-- START SLIDE --><section data-markdown><section data-template>
 ### ParaView
+
+- Back in the late 1990s/early 2000s
+  - Needed scalable tools
+  - ParaView started at DOE LANL
+  - VisIt started at DOE LLNL
+- Features
+  - 3D, polygonal and volume rendering
+  - Scalable, distributed parallel (supercomputers)
+  - Built on VTK (Visualization ToolKit) - Kitware, Inc.
+
+https://www.paraview.org/download/
+<!-- END SLIDE --></section></section>
+
+<!-- START SLIDE --><section data-markdown><section data-template>
+### ParaView Demo
+
+- Menu `File->Open`
+  - Many file formats
+- Open `Examples/can.ex2`
+  - Select all variables
+- Rotate and Zoom the model
+- Switch between representations
+  - Points
+  - Wireframe
+  - Feature Edges
+<!-- END SLIDE --></section></section>
+
+<!-- START SLIDE --><section data-markdown><section data-template>
+### ParaView Demo
+
+- Cut (clip)
+- Slice
+- Threshold
+- Glyph
+- Pipeline view
+- Animate
+- Tools Menu
+  - Histogram
+<!-- END SLIDE --></section></section>
+
+<!-- START SLIDE --><section data-markdown><section data-template>
+### ParaView Demo
+
+- Calculator
+  - Calculate squared distance
+- Color By
+- Edit Menu
+  - Find Data: Points, `Result <= 200`
+- View Menu
+  - Python Shell
+  - `GetSources`
+  - Start and Stop Trace
+<!-- END SLIDE --></section></section>
+
+<!-- START SLIDE --><section data-markdown><section data-template>
+### VTK and ParaView Python
+
+- `vtkpython` and `pvpython`
+  - Everything you can do in the GUI you can script
+  - Stand-alone visualization programs
+- Programmable Filter - my most used filter
+  - Python scripts executed in a VTK pipeline
+  - Custom data filtering
+    - Can directly process the data with numpy
+    - Immediate feedback/rapid prototyping
+<!-- END SLIDE --></section></section>
+
+<!-- START SLIDE --><section data-markdown><section data-template>
+### Open Source Data
+
+- SciVis holds scientific visualization contest
+  - Curates data that can be used for research, etc.
+  - Every year since 2004 (minus 2007 and 2009)
+- http://sciviscontest.ieeevis.org
+  - Some LANL data is available
+  - Simulation of an asteroid hitting the ocean
+    - Data used for winning entry in Supercomputing visualization contest
 <!-- END SLIDE --></section></section>
 
 <!-- END VERTICAL --></section>
@@ -197,6 +288,9 @@ open *r.rmd* from the github repository
 
 <!-- START SLIDE --><section data-markdown><section data-template>
 ### Cinema
+<!-- END SLIDE --></section></section>
+
+<!-- START SLIDE --><section data-markdown><section data-template>
 <!-- END SLIDE --></section></section>
 
 <!-- END VERTICAL --></section>
@@ -208,12 +302,39 @@ open *r.rmd* from the github repository
 <!-- END SLIDE --></section></section>
 
 <!-- START SLIDE --><section data-markdown><section data-template>
+### Los Alamos National Laboratory
+
+![The lab from a distance](local/lanl.png)
+<!-- END SLIDE --></section></section>
+
+<!-- START SLIDE --><section data-markdown><section data-template>
+### Los Alamos National Laboratory
+
+![https://www.lanl.gov/careers/career-options/student-internships/index.php](local/qr3.png)
+
+https://www.lanl.gov/careers/career-options/student-internships/index.php
+<!-- END SLIDE --></section></section>
+
+
+<!-- START SLIDE --><section data-markdown><section data-template>
+### My UCSC faculty colleagues if you are interested in pursuing more about both data and visualization
+
+- Carlos Maltzahn
+  - https://users.soe.ucsc.edu/~carlosm/UCSC/Home/Home.html
+- Alex Pang
+  - https://users.soe.ucsc.edu/~pang/
+<!-- END SLIDE --></section></section>
+
+<!-- START SLIDE --><section data-markdown><section data-template>
 ![https://jonwoodring.github.io/ucsc-2019-03-05/slides/index.html](local/qr.png)
 ![https://github.com/jonwoodring/ucsc-2019-03-05](local/qr2.png)
+![https://www.lanl.gov/careers/career-options/student-internships/index.php](local/qr3.png)
 
 https://jonwoodring.github.io/ucsc-2019-03-05/slides/index.html
 
 https://github.com/jonwoodring/ucsc-2019-03-05
+
+https://www.lanl.gov/careers/career-options/student-internships/index.php
 <!-- END SLIDE --></section></section>
 
 <!-- START SLIDE --><section data-markdown><section data-template>
